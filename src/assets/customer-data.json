@@ -1,0 +1,118 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Heathcote-Johnston",
+      "address": "89531 Sundown Park",
+      "stockIndustry": "Farming/Seeds/Milling"
+    },
+    {
+      "id": 2,
+      "name": "Walker-Pagac",
+      "address": "40 Village Street",
+      "stockIndustry": "Consumer Specialties"
+    },
+    {
+      "id": 3,
+      "name": "O'Keefe-Jakubowski",
+      "address": "55 Loomis Junction",
+      "stockIndustry": "Specialty Chemicals"
+    },
+    {
+      "id": 4,
+      "name": "Crona-Huels",
+      "address": "17 Bashford Lane",
+      "stockIndustry": null
+    },
+    {
+      "id": 5,
+      "name": "Cole LLC",
+      "address": "781 Melvin Crossing",
+      "stockIndustry": "Real Estate Investment Trusts"
+    },
+    {
+      "id": 6,
+      "name": "Dietrich-Bednar",
+      "address": "46 Morningstar Court",
+      "stockIndustry": null
+    },
+    {
+      "id": 7,
+      "name": "Jerde-Stehr",
+      "address": "457 Killdeer Trail",
+      "stockIndustry": null
+    },
+    {
+      "id": 8,
+      "name": "Skiles, Keeling and Feeney",
+      "address": "97 Northview Junction",
+      "stockIndustry": "Medical/Dental Instruments"
+    },
+    {
+      "id": 9,
+      "name": "Hyatt LLC",
+      "address": "81 Linden Way",
+      "stockIndustry": null
+    },
+    {
+      "id": 10,
+      "name": "Kling-Schimmel",
+      "address": "79472 Sommers Junction",
+      "stockIndustry": null
+    },
+    {
+      "id": 11,
+      "name": "Cremin Inc",
+      "address": "7334 Kenwood Park",
+      "stockIndustry": "Other Specialty Stores"
+    },
+    {
+      "id": 12,
+      "name": "Robel, Kautzer and Gorczany",
+      "address": "41162 Packers Crossing",
+      "stockIndustry": null
+    },
+    {
+      "id": 13,
+      "name": "Lang, Wolf and Toy",
+      "address": "3910 Ilene Avenue",
+      "stockIndustry": "Commercial Banks"
+    },
+    {
+      "id": 14,
+      "name": "Koelpin LLC",
+      "address": "742 Derek Point",
+      "stockIndustry": "Real Estate Investment Trusts"
+    },
+    {
+      "id": 15,
+      "name": "Altenwerth Group",
+      "address": "693 Bonner Lane",
+      "stockIndustry": "Electrical Products"
+    },
+    {
+      "id": 16,
+      "name": "Jones, Torphy and Lind",
+      "address": "2 Northridge Crossing",
+      "stockIndustry": null
+    },
+    {
+      "id": 17,
+      "name": "Green, Ullrich and Reichert",
+      "address": "46496 Bartillon Plaza",
+      "stockIndustry": null
+    },
+    {
+      "id": 18,
+      "name": "Hand, Volkman and Lang",
+      "address": "6 Becker Junction",
+      "stockIndustry": "Restaurants"
+    },
+    {
+      "id": 19,
+      "name": "Bauch-Bernier",
+      "address": "98762 East Parkway",
+      "stockIndustry": "Air Freight/Delivery Services"
+    }
+  ]
+}

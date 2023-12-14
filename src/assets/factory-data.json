@@ -1,0 +1,286 @@
+{
+  "factories": [
+    {
+      "id": 1,
+      "name": "Factory E",
+      "customerId": 13,
+      "address": "5976 Surrey Trail"
+    },
+    {
+      "id": 2,
+      "name": "Factory D",
+      "customerId": 16,
+      "address": "74698 4th Trail"
+    },
+    {
+      "id": 3,
+      "name": "Factory E",
+      "customerId": 18,
+      "address": "7 Mesta Crossing"
+    },
+    {
+      "id": 4,
+      "name": "Factory E",
+      "customerId": 5,
+      "address": "6 Lindbergh Plaza"
+    },
+    {
+      "id": 5,
+      "name": "Factory E",
+      "customerId": 17,
+      "address": "7 Southridge Way"
+    },
+    {
+      "id": 6,
+      "name": "Factory D",
+      "customerId": 17,
+      "address": "851 Welch Terrace"
+    },
+    {
+      "id": 7,
+      "name": "Factory B",
+      "customerId": 4,
+      "address": "42645 3rd Circle"
+    },
+    {
+      "id": 8,
+      "name": "Factory D",
+      "customerId": 19,
+      "address": "30 Cordelia Place"
+    },
+    {
+      "id": 9,
+      "name": "Factory D",
+      "customerId": 17,
+      "address": "6 Merrick Street"
+    },
+    {
+      "id": 10,
+      "name": "Factory B",
+      "customerId": 11,
+      "address": "10803 School Parkway"
+    },
+    {
+      "id": 11,
+      "name": "Factory C",
+      "customerId": 3,
+      "address": "28 Corscot Circle"
+    },
+    {
+      "id": 12,
+      "name": "Factory E",
+      "customerId": 7,
+      "address": "3981 Weeping Birch Avenue"
+    },
+    {
+      "id": 13,
+      "name": "Factory E",
+      "customerId": 13,
+      "address": "7 Prairie Rose Plaza"
+    },
+    {
+      "id": 14,
+      "name": "Factory C",
+      "customerId": 3,
+      "address": "08 Karstens Way"
+    },
+    {
+      "id": 15,
+      "name": "Factory E",
+      "customerId": 18,
+      "address": "7 Red Cloud Way"
+    },
+    {
+      "id": 16,
+      "name": "Factory B",
+      "customerId": 15,
+      "address": "32 Dayton Crossing"
+    },
+    {
+      "id": 17,
+      "name": "Factory C",
+      "customerId": 12,
+      "address": "3754 Northfield Parkway"
+    },
+    {
+      "id": 18,
+      "name": "Factory C",
+      "customerId": 17,
+      "address": "778 Iowa Crossing"
+    },
+    {
+      "id": 19,
+      "name": "Factory E",
+      "customerId": 1,
+      "address": "2142 Corry Park"
+    },
+    {
+      "id": 20,
+      "name": "Factory E",
+      "customerId": 14,
+      "address": "944 Charing Cross Street"
+    },
+    {
+      "id": 21,
+      "name": "Factory C",
+      "customerId": 8,
+      "address": "15107 Lien Court"
+    },
+    {
+      "id": 22,
+      "name": "Factory E",
+      "customerId": 5,
+      "address": "7 Westport Crossing"
+    },
+    {
+      "id": 23,
+      "name": "Factory E",
+      "customerId": 12,
+      "address": "86 Springs Parkway"
+    },
+    {
+      "id": 24,
+      "name": "Factory D",
+      "customerId": 3,
+      "address": "3237 Meadow Vale Point"
+    },
+    {
+      "id": 25,
+      "name": "Factory D",
+      "customerId": 8,
+      "address": "741 Monica Alley"
+    },
+    {
+      "id": 26,
+      "name": "Factory D",
+      "customerId": 10,
+      "address": "49022 Surrey Place"
+    },
+    {
+      "id": 27,
+      "name": "Factory C",
+      "customerId": 4,
+      "address": "1989 Twin Pines Park"
+    },
+    {
+      "id": 28,
+      "name": "Factory E",
+      "customerId": 8,
+      "address": "818 Autumn Leaf Street"
+    },
+    {
+      "id": 29,
+      "name": "Factory B",
+      "customerId": 7,
+      "address": "154 North Lane"
+    },
+    {
+      "id": 30,
+      "name": "Factory A",
+      "customerId": 6,
+      "address": "095 Bayside Lane"
+    },
+    {
+      "id": 31,
+      "name": "Factory B",
+      "customerId": 3,
+      "address": "745 Dakota Circle"
+    },
+    {
+      "id": 32,
+      "name": "Factory E",
+      "customerId": 14,
+      "address": "0 Shopko Plaza"
+    },
+    {
+      "id": 33,
+      "name": "Factory A",
+      "customerId": 17,
+      "address": "61 Mccormick Crossing"
+    },
+    {
+      "id": 34,
+      "name": "Factory B",
+      "customerId": 15,
+      "address": "7488 Oriole Lane"
+    },
+    {
+      "id": 35,
+      "name": "Factory A",
+      "customerId": 7,
+      "address": "83663 Sachtjen Plaza"
+    },
+    {
+      "id": 36,
+      "name": "Factory E",
+      "customerId": 9,
+      "address": "7316 Brown Street"
+    },
+    {
+      "id": 37,
+      "name": "Factory C",
+      "customerId": 17,
+      "address": "5 Schlimgen Pass"
+    },
+    {
+      "id": 38,
+      "name": "Factory B",
+      "customerId": 4,
+      "address": "1103 Lyons Avenue"
+    },
+    {
+      "id": 39,
+      "name": "Factory A",
+      "customerId": 6,
+      "address": "8791 Crowley Hill"
+    },
+    {
+      "id": 40,
+      "name": "Factory E",
+      "customerId": 5,
+      "address": "08 Dayton Circle"
+    },
+    {
+      "id": 41,
+      "name": "Factory A",
+      "customerId": 5,
+      "address": "39099 Troy Way"
+    },
+    {
+      "id": 42,
+      "name": "Factory E",
+      "customerId": 12,
+      "address": "53513 Drewry Lane"
+    },
+    {
+      "id": 43,
+      "name": "Factory E",
+      "customerId": 10,
+      "address": "83344 Badeau Lane"
+    },
+    {
+      "id": 44,
+      "name": "Factory C",
+      "customerId": 11,
+      "address": "06788 Weeping Birch Park"
+    },
+    {
+      "id": 45,
+      "name": "Factory B",
+      "customerId": 7,
+      "address": "7355 Old Shore Hill"
+    },
+    {
+      "id": 46,
+      "name": "Factory B",
+      "customerId": 3,
+      "address": "3 Hollow Ridge Circle"
+    },
+    {
+      "id": 47,
+      "name": "Factory B",
+      "customerId": 15,
+      "address": "4795 Debs Circle"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+    "elements": [
+        {
+            "id": 11,
+            "brand": "be quiet!",
+            "model": "Pure Power 12 M 650W 80PLUS Gold",
+            "price": 116.95,
+            "img": null,
+            "type": "POWER_SUPPLY",
+            "constraints": [
+                {
+                    "name": "Power",
+                    "code": "POWER",
+                    "value": [650],
+                    "type": "MAX"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "Norme 80 PLUS",
+                    "code": "NORME_80_PLUS",
+                    "value": "80 PLUS Gold"
+                }
+            ]
+        },
+        {
+            "id": 12,
+            "brand": "MSI",
+            "model": "MAG A850GL PCIE5",
+            "price": 129.95,
+            "img": null,
+            "type": "POWER_SUPPLY",
+            "constraints": [
+                {
+                    "name": "Power",
+                    "code": "POWER",
+                    "value": [850],
+                    "type": "MAX"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "Norme 80 PLUS",
+                    "code": "NORME_80_PLUS",
+                    "value": "80 PLUS Gold"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+  "brands": [
+    {
+      "id": 0,
+      "name": "Hexagon",
+      "website": "https://hexagon.com/fr/company",
+      "hqAddress": "Lilla Bantorget 15 SE-111 23 Stockholm, Sweden"
+    },
+    {
+      "id": 1,
+      "name": "Mitutoyo",
+      "website": "https://www.mitutoyo.fr/fr_fr",
+      "hqAddress": "20-1 Sakado 1-Chome, Takatsu-ku, Kawasaki-shi, Kanagawa 213-8533, Japan"
+    },
+    {
+      "id": 2,
+      "name": "Keyence",
+      "website": "https://www.keyence.fr/",
+      "hqAddress": "1-3-14, Higashi-Nakajima, Higashi-Yodogawa-ku, Osaka, Japan"
+    },
+    {
+      "id": 3,
+      "name": "Zeiss",
+      "website": "https://www.zeiss.fr/corporate/home.html",
+      "hqAddress": "Carl-Zeiss-Straße 22, Oberkochen, Germany"
+    }
+  ]
+}

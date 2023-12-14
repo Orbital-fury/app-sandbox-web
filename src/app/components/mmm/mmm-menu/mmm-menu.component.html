@@ -1,0 +1,40 @@
+<table class="table table-bordered table-primary">
+  <tbody>
+    <tr>
+      <td>
+        <a [routerLink]="['/', 'mmm']" class="sub-menu">Overview</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          [routerLink]="['/', 'mmm', { outlets: { mmm: 'manage-machine' } }]"
+          class="sub-menu"
+          >Manage Machine</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          [routerLink]="['/', 'mmm', { outlets: { mmm: 'maintenance' } }]"
+          class="sub-menu"
+          >Maintenance</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a
+          [routerLink]="[
+            '/',
+            'mmm',
+            { outlets: { mmm: 'machine-calibration' } }
+          ]"
+          class="sub-menu"
+          >Machine Calibration</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

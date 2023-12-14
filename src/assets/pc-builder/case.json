@@ -1,0 +1,105 @@
+{
+    "elements": [
+        {
+            "id": 5,
+            "brand": "Corsair",
+            "model": "4000D AIRFLOW TG",
+            "price": 109.96,
+            "img": null,
+            "type": "CASE",
+            "constraints": [
+                {
+                    "name": "Motherboard Size",
+                    "code": "MOBO_SIZE",
+                    "value": [
+                        "ATX",
+                        "E_ATX",
+                        "MICRO_ATX"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Cooling fan max length",
+                    "code": "COOLING_FAN_MAX_LENGTH",
+                    "value": [170],
+                    "type": "MAX"
+                },
+                {
+                    "name": "AIO fan size",
+                    "code": "AIO_FAN_SIZE",
+                    "value": [120],
+                    "type": "SAME"
+                },
+                {
+                    "name": "3.5\" capacity",
+                    "code": "3.5_CAPACITY",
+                    "value": [2],
+                    "type": "CAPACITY"
+                },
+                {
+                    "name": "2.5\" capacity",
+                    "code": "2.5_CAPACITY",
+                    "value": [2],
+                    "type": "CAPACITY"
+                },
+                {
+                    "name": "GPU max length",
+                    "code": "GPU_MAX_LENGTH",
+                    "value": [360],
+                    "type": "MAX"
+                }
+            ],
+            "specifications": []
+        },
+        {
+            "id": 6,
+            "brand": "be quiet!",
+            "model": "Pure Base 500DX",
+            "price": 119.95,
+            "img": null,
+            "type": "CASE",
+            "constraints": [
+                {
+                    "name": "Motherboard Size",
+                    "code": "MOBO_SIZE",
+                    "value": [
+                        "ATX",
+                        "MICRO_ATX"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Cooling fan max length",
+                    "code": "COOLING_FAN_MAX_LENGTH",
+                    "value": [190],
+                    "type": "MAX"
+                },
+                {
+                    "name": "AIO fan size",
+                    "code": "AIO_FAN_SIZE",
+                    "value": [120, 140],
+                    "type": "SAME"
+                },
+                {
+                    "name": "3.5\" capacity",
+                    "code": "3.5_CAPACITY",
+                    "value": [2],
+                    "type": "CAPACITY"
+                },
+                {
+                    "name": "2.5\" capacity",
+                    "code": "2.5_CAPACITY",
+                    "value": [5],
+                    "type": "CAPACITY"
+                },
+                {
+                    "name": "GPU max length",
+                    "code": "GPU_MAX_LENGTH",
+                    "value": [369],
+                    "type": "MAX"
+                }
+            ],
+            "specifications": []
+        }
+    ]
+}

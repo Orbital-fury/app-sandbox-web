@@ -1,0 +1,67 @@
+<table class="table table-bordered title-border my-4">
+  <thead></thead>
+  <tbody>
+    <tr>
+      <td class="p-4" colspan="3">
+        <div class="row align-items-center">
+          <div class="col-1">
+            <div
+              class="badge"
+              [ngClass]="{
+                'bg-success': machine.state === 'Running',
+                'bg-warning': machine.state === 'Idle',
+                'bg-danger': machine.state === 'Stop',
+                'bg-secondary': machine.state === 'Off'
+              }"
+            ><span title="Current state">{{ machine.state }}</span>
+            </div>
+          </div>
+          <div class="col-auto offset-1 fw-semibold fs-2">
+            {{ machine.model.brand.name }} {{ machine.model.name }} ({{
+              machine.model.type
+            }})
+          </div>
+        </div>
+      </td>
+      <td
+        class="p-4"
+        rowspan="2"
+        [ngClass]="machine.needMaintenance ? 'bg-danger' : 'bg-success'"
+      >
+        <span class="fw-bold">Maintenance</span><br />{{
+          machine.needMaintenance ? 'Needed' : 'Ok'
+        }}<br /><br /><span class="fw-bold">Last Maintenance</span><br />{{
+          machine.lastMaintenanceDate === null
+            ? '-'
+            : (machine.lastMaintenanceDate | date: 'dd/MM/yyyy')
+        }}
+      </td>
+    </tr>
+    <tr>
+      <td class="p-4 col-4">
+        <span class="fw-bold">S/N</span><br /><span
+          class="text-secondary small mark"
+          >{{ machine.sn }}</span
+        >
+      </td>
+      <td class="p-4 col-4">
+        <span class="fw-bold">{{ machine.factory.type }}</span
+        ><br />{{ machine.factory.name }}<br /><span
+          class="text-secondary small"
+          >{{ machine.factory.address }}</span
+        >
+      </td>
+      <td class="p-4 col-2">
+        <span class="fw-bold">Commissioning</span><br />{{
+          machine.createdAt | date: 'dd/MM/yyyy'
+        }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 class="border-bottom title-border pb-1 mb-4">Metrics</h2>
+<div class="row">
+  <div class="metric-width mb-3" *ngFor="let metric of metrics">
+    <app-machine-metric [metric]="metric"></app-machine-metric>
+  </div>
+</div>

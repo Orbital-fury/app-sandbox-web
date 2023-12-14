@@ -1,0 +1,94 @@
+<h2 class="border-bottom title-border pb-1 my-4">{{ update }} a machine</h2>
+<div class="row">
+  <div class="offset-2 col-8">
+    <form [formGroup]="machineForm">
+      <div class="row mb-3">
+        <label class="col-2 form-label form-text" for="brand">Brand</label>
+        <div class="col-10">
+          <ng-autocomplete
+            [data]="machineBrands"
+            [searchKeyword]="keyword"
+            placeholder="Select a brand name"
+            (selected)="brandSelected($event)"
+            (inputCleared)="brandCleared()"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            formControlName="brand"
+          >
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-2 form-label form-text" for="model">Model</label>
+        <div class="col-10">
+          <ng-autocomplete
+            [data]="machineModels"
+            [searchKeyword]="keyword"
+            placeholder="Select a model name"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            formControlName="model"
+          >
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-2 form-label form-text" for="sn">Serial number</label>
+        <div class="col-10">
+          <input
+            class="form-control"
+            [ngClass]="sn!.valid ? 'is-valid' : 'is-invalid'"
+            id="sn"
+            type="text"
+            formControlName="sn"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-2 form-label form-text" for="factory">Factory</label>
+        <div class="col-10">
+          <ng-autocomplete
+            [data]="factories"
+            [searchKeyword]="keyword"
+            placeholder="Select a factory"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate"
+            formControlName="factory"
+          >
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-secondary">Reset</button>
+      <button
+        class="btn btn-primary"
+        [disabled]="!machineForm.valid"
+        (click)="addMachine()"
+      >
+        {{ update }} a machine
+      </button>
+    </div>
+  </div>
+</div>

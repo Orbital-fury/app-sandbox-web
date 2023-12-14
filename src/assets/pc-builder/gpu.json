@@ -1,0 +1,62 @@
+{
+    "elements": [
+        {
+            "id": 7,
+            "brand": "Nvidia",
+            "model": "MSI GeForce RTX 4060",
+            "price": 349.96,
+            "img": null,
+            "type": "GPU",
+            "constraints": [
+                {
+                    "name": "GPU length",
+                    "code": "GPU_MAX_LENGTH",
+                    "value": [199],
+                    "type": "LIMIT"
+                },
+                {
+                    "name": "GPU power",
+                    "code": "POWER",
+                    "value": [115],
+                    "type": "LIMIT"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "GPU memory",
+                    "code": "GPU_MEMORY",
+                    "value": [8]
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "brand": "Nvidia",
+            "model": "Gainward GeForce RTX 4070",
+            "price": 649.94,
+            "img": null,
+            "type": "GPU",
+            "constraints": [
+                {
+                    "name": "GPU length",
+                    "code": "GPU_MAX_LENGTH",
+                    "value": [269.1],
+                    "type": "LIMIT"
+                },
+                {
+                    "name": "GPU power",
+                    "code": "POWER",
+                    "value": [200],
+                    "type": "LIMIT"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "GPU memory",
+                    "code": "GPU_MEMORY",
+                    "value": [12]
+                }
+            ]
+        }
+    ]
+}

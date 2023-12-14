@@ -1,0 +1,29 @@
+h1,
+.vignette:hover h1 {
+  color: var(--color30);
+}
+
+img {
+  width: 80%;
+}
+
+.vignette {
+  transition: 0.5s all;
+  transform-origin: top;
+  width: 50%;
+}
+
+.vignette:hover {
+  cursor: pointer;
+  transform: scale(110%);
+}
+
+.tile {
+  width: 50%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .tile {
+    width: auto !important;
+  }
+}

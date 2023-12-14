@@ -1,0 +1,88 @@
+{
+  "factories": [
+    {
+      "id": 0,
+      "name": "Diginetic",
+      "type": "Workshop",
+      "address": "63 Ridge Boulevard, National, Georgia"
+    },
+    {
+      "id": 1,
+      "name": "Infotrips",
+      "type": "Site",
+      "address": "3 Rock Street, Cuylerville, Yugoslavia"
+    },
+    {
+      "id": 2,
+      "name": "Qualitern",
+      "type": "Workshop",
+      "address": "33 Fleet Street, Wacissa, Congo"
+    },
+    {
+      "id": 3,
+      "name": "Martgo",
+      "type": "Site",
+      "address": "90 Rochester Avenue, Vallonia, France, Metropolitan"
+    },
+    {
+      "id": 4,
+      "name": "Sultraxin",
+      "type": "Site",
+      "address": "98 Belmont Avenue, Saranap, Guatemala"
+    },
+    {
+      "id": 5,
+      "name": "Accufarm",
+      "type": "Site",
+      "address": "31 Granite Street, Torboy, Honduras"
+    },
+    {
+      "id": 6,
+      "name": "Exotechno",
+      "type": "Workshop",
+      "address": "50 Micieli Place, Rossmore, Aruba"
+    },
+    {
+      "id": 7,
+      "name": "Eventage",
+      "type": "Factory",
+      "address": "51 Congress Street, Barstow, Heard and McDonald Islands"
+    },
+    {
+      "id": 8,
+      "name": "Shopabout",
+      "type": "Site",
+      "address": "6 Laurel Avenue, Fredericktown, Anguilla"
+    },
+    {
+      "id": 9,
+      "name": "Virxo",
+      "type": "Site",
+      "address": "45 Church Lane, Lund, Greece"
+    },
+    {
+      "id": 10,
+      "name": "Dognost",
+      "type": "Factory",
+      "address": "29 Pine Street, Foxworth, Liechtenstein"
+    },
+    {
+      "id": 11,
+      "name": "Oronoko",
+      "type": "Factory",
+      "address": "50 Stillwell Avenue, Enoree, Belarus"
+    },
+    {
+      "id": 12,
+      "name": "Ultrasure",
+      "type": "Site",
+      "address": "20 Elm Avenue, Ryderwood, Bangladesh"
+    },
+    {
+      "id": 13,
+      "name": "Niquent",
+      "type": "Site",
+      "address": "99 Menahan Street, Oretta, Gabon"
+    }
+  ]
+}

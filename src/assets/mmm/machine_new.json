@@ -1,0 +1,494 @@
+{
+  "machines": [
+    {
+      "id": 0,
+      "modelId": 5,
+      "sn": "7fe0ae86-2e61-4264-a3d0-f456a3548872",
+      "needMaintenance": true,
+      "factoryId": 5,
+      "createdAt": "2014-06-22T18:19:30.933Z",
+      "lastMaintenanceDate": "2016-12-24T18:19:30.933Z",
+      "state": "Idle"
+    },
+    {
+      "id": 1,
+      "modelId": 7,
+      "sn": "4434049b-bbf5-4ca3-81d3-77b7ef17dad8",
+      "needMaintenance": false,
+      "factoryId": 3,
+      "createdAt": "2014-11-06T05:16:41.518Z",
+      "lastMaintenanceDate": "2017-11-20T05:16:41.518Z",
+      "state": "Idle"
+    },
+    {
+      "id": 2,
+      "modelId": 1,
+      "sn": "1ed08b0c-b795-4b8d-877d-e8823a1b878b",
+      "needMaintenance": true,
+      "factoryId": 1,
+      "createdAt": "2018-04-18T04:06:24.017Z",
+      "lastMaintenanceDate": "2019-05-29T04:06:24.017Z",
+      "state": "Stop"
+    },
+    {
+      "id": 3,
+      "modelId": 2,
+      "sn": "d400f302-c1d7-43f9-90fd-08acaaf3a1a0",
+      "needMaintenance": false,
+      "factoryId": 4,
+      "createdAt": "2014-01-16T07:38:25.109Z",
+      "lastMaintenanceDate": "2015-10-06T07:38:25.109Z",
+      "state": "Idle"
+    },
+    {
+      "id": 4,
+      "modelId": 8,
+      "sn": "e22ae1a1-797f-4390-b276-99ca3370e80c",
+      "needMaintenance": false,
+      "factoryId": 3,
+      "createdAt": "2017-06-09T00:11:11.479Z",
+      "lastMaintenanceDate": "2020-03-29T00:11:11.479Z",
+      "state": "Running"
+    },
+    {
+      "id": 5,
+      "modelId": 0,
+      "sn": "01ba9b92-e940-4858-8df9-caf1fcc5cbb4",
+      "needMaintenance": true,
+      "factoryId": 7,
+      "createdAt": "2017-03-27T11:42:34.536Z",
+      "lastMaintenanceDate": "2020-03-15T11:42:34.536Z",
+      "state": "Stop"
+    },
+    {
+      "id": 6,
+      "modelId": 13,
+      "sn": "44e7bc14-a3fc-4742-8055-e54b739f5901",
+      "needMaintenance": true,
+      "factoryId": 11,
+      "createdAt": "2018-03-13T07:29:31.626Z",
+      "lastMaintenanceDate": "2021-02-17T07:29:31.626Z",
+      "state": "Stop"
+    },
+    {
+      "id": 7,
+      "modelId": 9,
+      "sn": "4785086c-7222-4619-ae84-34f31e8ae816",
+      "needMaintenance": false,
+      "factoryId": 11,
+      "createdAt": "2019-02-09T04:59:49.952Z",
+      "lastMaintenanceDate": "2021-12-29T04:59:49.952Z",
+      "state": "Stop"
+    },
+    {
+      "id": 8,
+      "modelId": 6,
+      "sn": "440b77ed-60cb-48d6-b72d-7036529c0ab1",
+      "needMaintenance": false,
+      "factoryId": 4,
+      "createdAt": "2019-09-20T02:03:14.658Z",
+      "lastMaintenanceDate": "2022-03-14T02:03:14.658Z",
+      "state": "Running"
+    },
+    {
+      "id": 9,
+      "modelId": 1,
+      "sn": "a5d33a84-0943-402f-a1f3-8e146d22fbca",
+      "needMaintenance": false,
+      "factoryId": 7,
+      "createdAt": "2020-11-29T12:41:39.362Z",
+      "lastMaintenanceDate": null,
+      "state": "Running"
+    },
+    {
+      "id": 10,
+      "modelId": 3,
+      "sn": "6aa99a42-1f70-4fd8-b4e0-1c9ad9dc998d",
+      "needMaintenance": false,
+      "factoryId": 13,
+      "createdAt": "2013-01-10T13:42:21.201Z",
+      "lastMaintenanceDate": "2014-06-03T13:42:21.201Z",
+      "state": "Running"
+    },
+    {
+      "id": 11,
+      "modelId": 7,
+      "sn": "2661ba23-e5b9-4012-8fc4-903384198e4a",
+      "needMaintenance": false,
+      "factoryId": 7,
+      "createdAt": "2018-04-15T00:46:48.940Z",
+      "lastMaintenanceDate": "2019-10-20T00:46:48.940Z",
+      "state": "Idle"
+    },
+    {
+      "id": 12,
+      "modelId": 11,
+      "sn": "8d7c2936-cc8c-404c-8fc5-f77a72a9db8d",
+      "needMaintenance": false,
+      "factoryId": 13,
+      "createdAt": "2016-04-27T04:44:33.793Z",
+      "lastMaintenanceDate": "2017-06-16T04:44:33.793Z",
+      "state": "Off"
+    },
+    {
+      "id": 13,
+      "modelId": 5,
+      "sn": "4661045b-052f-4e24-8d05-fe175be1593e",
+      "needMaintenance": true,
+      "factoryId": 1,
+      "createdAt": "2021-06-14T03:45:13.192Z",
+      "lastMaintenanceDate": null,
+      "state": "Running"
+    },
+    {
+      "id": 14,
+      "modelId": 4,
+      "sn": "3a649c49-1ae9-4774-af54-359beb4c9c40",
+      "needMaintenance": false,
+      "factoryId": 0,
+      "createdAt": "2019-11-05T09:44:09.270Z",
+      "lastMaintenanceDate": "2021-12-16T09:44:09.270Z",
+      "state": "Stop"
+    },
+    {
+      "id": 15,
+      "modelId": 5,
+      "sn": "6907b286-2e67-44e6-b15e-d37e46524138",
+      "needMaintenance": false,
+      "factoryId": 13,
+      "createdAt": "2014-03-19T17:15:29.545Z",
+      "lastMaintenanceDate": "2015-08-26T17:15:29.545Z",
+      "state": "Running"
+    },
+    {
+      "id": 16,
+      "modelId": 0,
+      "sn": "79740bd4-17d9-4f2f-8abc-22c13cd77e47",
+      "needMaintenance": false,
+      "factoryId": 13,
+      "createdAt": "2014-12-16T03:25:20.404Z",
+      "lastMaintenanceDate": "2017-08-04T03:25:20.404Z",
+      "state": "Idle"
+    },
+    {
+      "id": 17,
+      "modelId": 2,
+      "sn": "7dfa55aa-dab8-4781-8aab-04cc1e2e3f16",
+      "needMaintenance": false,
+      "factoryId": 12,
+      "createdAt": "2022-08-28T16:56:56.084Z",
+      "lastMaintenanceDate": null,
+      "state": "Off"
+    },
+    {
+      "id": 18,
+      "modelId": 8,
+      "sn": "cdf4c3f0-1f13-4c7f-a3f6-a3ac016884af",
+      "needMaintenance": true,
+      "factoryId": 4,
+      "createdAt": "2015-11-11T10:02:25.583Z",
+      "lastMaintenanceDate": "2017-08-04T10:02:25.583Z",
+      "state": "Off"
+    },
+    {
+      "id": 19,
+      "modelId": 13,
+      "sn": "b1cd4a80-9517-4e09-b5a8-cf5cc6935760",
+      "needMaintenance": true,
+      "factoryId": 13,
+      "createdAt": "2022-11-13T15:27:41.339Z",
+      "lastMaintenanceDate": null,
+      "state": "Running"
+    },
+    {
+      "id": 20,
+      "modelId": 2,
+      "sn": "dd258248-2d4f-4f1f-9323-b21b787b914b",
+      "needMaintenance": false,
+      "factoryId": 7,
+      "createdAt": "2019-01-21T04:52:24.724Z",
+      "lastMaintenanceDate": "2021-04-30T04:52:24.724Z",
+      "state": "Stop"
+    },
+    {
+      "id": 21,
+      "modelId": 7,
+      "sn": "9c36b0f1-3301-45c1-899f-3b669961f317",
+      "needMaintenance": false,
+      "factoryId": 12,
+      "createdAt": "2013-11-10T12:52:17.971Z",
+      "lastMaintenanceDate": "2015-08-25T12:52:17.971Z",
+      "state": "Off"
+    },
+    {
+      "id": 22,
+      "modelId": 1,
+      "sn": "09297405-85ed-4533-9fd0-2142194b301d",
+      "needMaintenance": false,
+      "factoryId": 2,
+      "createdAt": "2019-05-17T15:21:46.447Z",
+      "lastMaintenanceDate": "2021-09-08T15:21:46.447Z",
+      "state": "Off"
+    },
+    {
+      "id": 23,
+      "modelId": 7,
+      "sn": "8afa6e7e-fc5b-40c3-933b-452ff1556406",
+      "needMaintenance": false,
+      "factoryId": 8,
+      "createdAt": "2016-05-14T04:10:49.499Z",
+      "lastMaintenanceDate": "2018-06-22T04:10:49.499Z",
+      "state": "Running"
+    },
+    {
+      "id": 24,
+      "modelId": 6,
+      "sn": "f1a367f1-9500-4a61-afed-3622945b4589",
+      "needMaintenance": false,
+      "factoryId": 3,
+      "createdAt": "2018-06-27T13:18:06.134Z",
+      "lastMaintenanceDate": "2021-05-30T13:18:06.134Z",
+      "state": "Idle"
+    },
+    {
+      "id": 25,
+      "modelId": 9,
+      "sn": "857f6756-5fa4-4400-9d15-ed9838463d23",
+      "needMaintenance": false,
+      "factoryId": 4,
+      "createdAt": "2016-08-11T12:05:07.231Z",
+      "lastMaintenanceDate": "2018-11-15T12:05:07.231Z",
+      "state": "Stop"
+    },
+    {
+      "id": 26,
+      "modelId": 1,
+      "sn": "1c760cf0-859e-428e-a2a0-2bbc6b320df9",
+      "needMaintenance": false,
+      "factoryId": 5,
+      "createdAt": "2017-04-23T22:07:41.154Z",
+      "lastMaintenanceDate": "2019-11-24T22:07:41.154Z",
+      "state": "Stop"
+    },
+    {
+      "id": 27,
+      "modelId": 13,
+      "sn": "3f71b0ab-9a8c-4a43-ba03-47550811a033",
+      "needMaintenance": false,
+      "factoryId": 5,
+      "createdAt": "2016-03-11T06:07:08.677Z",
+      "lastMaintenanceDate": "2018-03-30T06:07:08.677Z",
+      "state": "Off"
+    },
+    {
+      "id": 28,
+      "modelId": 2,
+      "sn": "bd1feabe-1487-4a02-8a63-cfd044493fbb",
+      "needMaintenance": false,
+      "factoryId": 7,
+      "createdAt": "2022-12-31T03:36:27.428Z",
+      "lastMaintenanceDate": null,
+      "state": "Running"
+    },
+    {
+      "id": 29,
+      "modelId": 8,
+      "sn": "20187f60-0447-4ff7-a89c-69dbe15cc7eb",
+      "needMaintenance": false,
+      "factoryId": 12,
+      "createdAt": "2020-04-17T09:09:10.631Z",
+      "lastMaintenanceDate": "2022-05-20T09:09:10.631Z",
+      "state": "Off"
+    },
+    {
+      "id": 30,
+      "modelId": 0,
+      "sn": "6ed0c0f8-ef56-46e8-878b-1b13138e75ad",
+      "needMaintenance": false,
+      "factoryId": 0,
+      "createdAt": "2020-05-12T14:30:26.653Z",
+      "lastMaintenanceDate": "2021-07-16T14:30:26.653Z",
+      "state": "Idle"
+    },
+    {
+      "id": 31,
+      "modelId": 1,
+      "sn": "e1a5e0bd-fe2f-47cf-a2c9-30fa73f22374",
+      "needMaintenance": true,
+      "factoryId": 8,
+      "createdAt": "2019-12-18T10:48:58.257Z",
+      "lastMaintenanceDate": "2022-07-26T10:48:58.257Z",
+      "state": "Off"
+    },
+    {
+      "id": 32,
+      "modelId": 12,
+      "sn": "09b4747e-7245-4c6c-b211-17e7e8fa6af5",
+      "needMaintenance": true,
+      "factoryId": 11,
+      "createdAt": "2020-06-08T08:21:08.410Z",
+      "lastMaintenanceDate": "2021-09-20T08:21:08.410Z",
+      "state": "Off"
+    },
+    {
+      "id": 33,
+      "modelId": 4,
+      "sn": "d3d31632-5415-4cb1-ac8d-a961d58679a1",
+      "needMaintenance": false,
+      "factoryId": 6,
+      "createdAt": "2014-05-20T16:13:56.758Z",
+      "lastMaintenanceDate": "2017-04-26T16:13:56.758Z",
+      "state": "Off"
+    },
+    {
+      "id": 34,
+      "modelId": 10,
+      "sn": "75da12c6-4045-4ddd-9910-583d63f1935c",
+      "needMaintenance": true,
+      "factoryId": 6,
+      "createdAt": "2016-06-09T03:20:28.817Z",
+      "lastMaintenanceDate": "2018-07-31T03:20:28.817Z",
+      "state": "Running"
+    },
+    {
+      "id": 35,
+      "modelId": 5,
+      "sn": "2dd7440c-9051-4eb5-b83f-5f9927980cf5",
+      "needMaintenance": true,
+      "factoryId": 10,
+      "createdAt": "2017-07-07T08:24:44.107Z",
+      "lastMaintenanceDate": "2020-05-25T08:24:44.107Z",
+      "state": "Stop"
+    },
+    {
+      "id": 36,
+      "modelId": 6,
+      "sn": "6a6c5132-2dd5-4e33-aa52-e1a551bf597a",
+      "needMaintenance": false,
+      "factoryId": 11,
+      "createdAt": "2015-06-26T11:11:00.654Z",
+      "lastMaintenanceDate": "2018-04-11T11:11:00.654Z",
+      "state": "Running"
+    },
+    {
+      "id": 37,
+      "modelId": 8,
+      "sn": "7f901a12-6aaf-4b49-9f5f-e22b2a1ad759",
+      "needMaintenance": false,
+      "factoryId": 2,
+      "createdAt": "2019-09-13T11:19:53.189Z",
+      "lastMaintenanceDate": "2022-08-30T11:19:53.189Z",
+      "state": "Stop"
+    },
+    {
+      "id": 38,
+      "modelId": 5,
+      "sn": "c338d09f-f70e-4f8d-a8b7-c7814c3d1e54",
+      "needMaintenance": true,
+      "factoryId": 6,
+      "createdAt": "2021-06-25T15:43:54.099Z",
+      "lastMaintenanceDate": null,
+      "state": "Off"
+    },
+    {
+      "id": 39,
+      "modelId": 10,
+      "sn": "d41e983b-47a5-42a7-ab54-d8ad55712e15",
+      "needMaintenance": false,
+      "factoryId": 10,
+      "createdAt": "2019-06-11T14:02:41.087Z",
+      "lastMaintenanceDate": "2021-12-16T14:02:41.087Z",
+      "state": "Running"
+    },
+    {
+      "id": 40,
+      "modelId": 6,
+      "sn": "b8587437-c3ac-427e-b22d-5c33315ad99f",
+      "needMaintenance": false,
+      "factoryId": 10,
+      "createdAt": "2015-12-25T11:35:03.978Z",
+      "lastMaintenanceDate": "2018-08-08T11:35:03.978Z",
+      "state": "Running"
+    },
+    {
+      "id": 41,
+      "modelId": 8,
+      "sn": "7cb9dee0-4df6-45d9-80f0-f9c79174276a",
+      "needMaintenance": true,
+      "factoryId": 1,
+      "createdAt": "2016-10-16T10:04:15.420Z",
+      "lastMaintenanceDate": "2019-06-21T10:04:15.420Z",
+      "state": "Stop"
+    },
+    {
+      "id": 42,
+      "modelId": 13,
+      "sn": "6f322ae9-0d2f-44dc-8d70-f38b519797fd",
+      "needMaintenance": false,
+      "factoryId": 5,
+      "createdAt": "2020-11-20T23:09:11.481Z",
+      "lastMaintenanceDate": "2022-01-30T23:09:11.481Z",
+      "state": "Idle"
+    },
+    {
+      "id": 43,
+      "modelId": 0,
+      "sn": "f88ab601-647b-41a9-beee-7874c9699896",
+      "needMaintenance": false,
+      "factoryId": 3,
+      "createdAt": "2022-05-13T01:01:43.034Z",
+      "lastMaintenanceDate": null,
+      "state": "Running"
+    },
+    {
+      "id": 44,
+      "modelId": 1,
+      "sn": "881fc17f-f471-4d66-b57b-80374d069bed",
+      "needMaintenance": false,
+      "factoryId": 11,
+      "createdAt": "2013-09-27T00:35:39.249Z",
+      "lastMaintenanceDate": "2014-11-16T00:35:39.249Z",
+      "state": "Off"
+    },
+    {
+      "id": 45,
+      "modelId": 12,
+      "sn": "a2edec5b-dda5-4ea7-815d-84c9646eefe0",
+      "needMaintenance": false,
+      "factoryId": 3,
+      "createdAt": "2014-09-06T04:04:35.871Z",
+      "lastMaintenanceDate": "2016-06-18T04:04:35.871Z",
+      "state": "Stop"
+    },
+    {
+      "id": 46,
+      "modelId": 2,
+      "sn": "03568fc8-96e3-4dea-9aab-26e6391a5db0",
+      "needMaintenance": false,
+      "factoryId": 6,
+      "createdAt": "2017-10-09T15:01:54.953Z",
+      "lastMaintenanceDate": "2019-11-23T15:01:54.953Z",
+      "state": "Stop"
+    },
+    {
+      "id": 47,
+      "modelId": 12,
+      "sn": "5c8ad8d1-c501-44c4-9162-1ee2a2dd530c",
+      "needMaintenance": false,
+      "factoryId": 11,
+      "createdAt": "2019-06-03T04:22:37.230Z",
+      "lastMaintenanceDate": "2022-04-11T04:22:37.230Z",
+      "state": "Stop"
+    },
+    {
+      "id": 48,
+      "modelId": 13,
+      "sn": "b65eb5c3-be65-487b-9ac8-4e4748de9a24",
+      "needMaintenance": true,
+      "factoryId": 4,
+      "createdAt": "2014-05-08T09:44:31.216Z",
+      "lastMaintenanceDate": "2016-10-23T09:44:31.216Z",
+      "state": "Stop"
+    }
+  ]
+}

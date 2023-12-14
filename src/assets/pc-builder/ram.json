@@ -1,0 +1,60 @@
+{
+    "elements": [
+        {
+            "id": 13,
+            "brand": "G.Skill",
+            "model": "Aegis 16 Go (2 x 8 Go) DDR4 3200 MHz CL16",
+            "price": 56.95,
+            "img": null,
+            "type": "RAM",
+            "constraints": [
+                {
+                    "name": "RAM frequency",
+                    "code": "RAM_FREQUENCY",
+                    "value": [3200],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "Number of RAM",
+                    "code": "NUMBER_OF_RAM",
+                    "value": 2
+                },
+                {
+                    "name": "RAM memory",
+                    "code": "RAM_MEMORY",
+                    "value": 8
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "brand": "Corsair",
+            "model": "Vengeance DDR5 32 Go (2 x 16 Go) 4800 MHz CL40",
+            "price": 134.95,
+            "img": null,
+            "type": "RAM",
+            "constraints": [
+                {
+                    "name": "RAM frequency",
+                    "code": "RAM_FREQUENCY",
+                    "value": [4800],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "Number of RAM",
+                    "code": "NUMBER_OF_RAM",
+                    "value": 2
+                },
+                {
+                    "name": "RAM memory",
+                    "code": "RAM_MEMORY",
+                    "value": 16
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,152 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/*
+@import '@swimlane/ngx-datatable/index.scss';
+@import '@swimlane/ngx-datatable/themes/bootstrap.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+*/
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --bg-color: rgb(229, 230, 233); //rgb(5, 15, 59);
+  --bg-color-darker: rgb(201, 212, 229); //white;
+  --bg-tooltip-color: white;
+  --tooltip-color: black;
+  --color60: white;
+  --color30: rgb(40, 40, 78);
+  --color10: rgb(218, 228, 255);
+}
+
+.btn {
+  --bs-btn-border-radius: 0;
+}
+
+.dropdown-menu {
+  --bs-dropdown-border-radius: 0;
+}
+
+.card {
+  --bs-card-border-radius: 0;
+}
+
+.badge {
+  --bs-badge-border-radius: 0;
+}
+
+.badge::before {
+  display: inline-block;
+  margin-right: 0.5em;
+  vertical-align: 0.1em;
+  content: '';
+  border-top: 0.3em solid;
+  border-right: 0.3em solid;
+  border-bottom: 0.3em solid;
+  border-left: 0.3em solid;
+  opacity: 0.5;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: var(--color30);
+}
+
+img {
+  width: 100%;
+}
+
+.title-border {
+  border-color: var(--bg-color-darker) !important;
+}
+
+.bg-color30 {
+  --bs-bg-opacity: 1;
+  background-color: var(--color30) !important;
+}
+
+.bg-color10 {
+  --bs-bg-opacity: 1;
+  background-color: var(--color10) !important;
+}
+
+.m-content {
+  margin: 0 20px;
+}
+
+.content-bis {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.light-tooltip .tooltip-inner {
+  background-color: var(--bg-tooltip-color);
+  color: var(--tooltip-color);
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.light-tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: var(--bg-tooltip-color);
+}
+
+.light-tooltip.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: var(--bg-tooltip-color);
+}
+
+.light-tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: var(--bg-tooltip-color);
+}
+
+.light-tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: var(--bg-tooltip-color);
+}
+
+.ng-autocomplete {
+  width: 300px !important;
+}
+
+.ng-autocomplete ul li:hover,
+.ng-autocomplete ul li div.complete-selected {
+  background-color: var(--color10) !important;
+}
+
+.machine-row {
+  
+}
+
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row.machine-row:hover,
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row.machine-row:hover .datatable-row-group {
+  background-color: rgba(#000, .1);
+}
+
+.lastMaint6Months {
+  background-color: rgba(#000, .5);
+  color: lightgray !important;
+}

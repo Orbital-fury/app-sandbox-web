@@ -1,0 +1,105 @@
+<div class="d-flex my-4 align-items-center">
+  <div class="me-3">Filter by:</div>
+  <div class="ng-autocomplete me-4">
+    <ng-autocomplete [data]="factories" [searchKeyword]="factoryKeyword" placeholder="Select a factory name"
+      (selected)="selectEvent($event)" (inputCleared)="onInputCleared()" [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.name"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
+  <div class="me-3">Sort by:</div>
+  <div class="dropdown me-3">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {{ orderBy }}
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <button class="dropdown-item" type="button" (click)="orderByFunc('Factory')">
+          Factory
+        </button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button" (click)="orderByFunc('Brand')">
+          Brand
+        </button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button" (click)="orderByFunc('Type')">
+          Type
+        </button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button" (click)="orderByFunc('Maintenance')">
+          Maintenance
+        </button>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-secondary" type="button" (click)="reverseOrder()">
+    <i class="fa-solid" [ngClass]="
+        sortByDesc ? 'fa-arrow-down-wide-short' : 'fa-arrow-down-short-wide'
+      "></i>
+  </button>
+</div>
+<div class="d-flex justify-content-end mb-3">
+  <a [routerLink]="[
+      '/',
+      'mmm',
+      { outlets: { mmm: ['manage-machine', 'create'] } }
+    ]">
+    <div class="fw-bold btn btn-dark">+ Add</div>
+  </a>
+</div>
+<h2 class="border-bottom title-border pb-1 mb-4">
+  Machines ({{ machines.length }})
+</h2>
+<div class="row">
+  <div class="col-4 mb-3" *ngFor="let machine of machines">
+    <div class="card maint-border" [ngClass]="machine.needMaintenance ? 'maint-nok' : 'maint-ok'">
+      <a [routerLink]="[
+          '/',
+          'mmm',
+          { outlets: { mmm: ['manage-machine', machine.id] } }
+        ]">
+        <div class="card-header bg-color10 d-flex justify-content-between">
+          <div>
+            <h5 class="">
+              {{ machine.model.brand.name }} {{ machine.model.name }} ({{ machine.model.type }})
+            </h5>
+          </div>
+          <div>
+            <span class="badge" [ngClass]="{
+                'bg-success': machine.state === 'Running',
+                'bg-warning': machine.state === 'Idle',
+                'bg-danger': machine.state === 'Stop',
+                'bg-secondary': machine.state === 'Off'
+              }"
+              title="Current state">{{ machine.state }}</span>
+          </div>
+        </div>
+      </a>
+      <div class="card-body">
+        <div class="card-text row">
+          <div class="col-9">
+            {{ machine.factory.type }}: {{ machine.factory.name }}<br />
+            <span class="text-secondary small mark">S/N: {{ machine.sn }}</span>
+          </div>
+          <div class="col-3 d-flex justify-content-start">
+            <i class="fa-solid fs-1" [ngClass]="
+                machine.needMaintenance
+                  ? 'fa-circle-xmark text-danger'
+                  : 'fa-circle-check text-success'
+              " alt="Maintenance level" title="Maintenance state"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

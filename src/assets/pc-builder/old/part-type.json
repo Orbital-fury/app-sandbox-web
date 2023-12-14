@@ -1,0 +1,50 @@
+{
+    "partTypes": [
+        {
+            "id": 0,
+            "name": "CASE",
+            "dependantIds": [2, 3, 4, 5, 8]
+        },
+        {
+            "id": 1,
+            "name": "CPU",
+            "dependantIds": [2, 4]
+        },
+        {
+            "id": 2,
+            "name": "MOTHERBOARD",
+            "dependantIds": [0, 1, 6, 7]
+        },
+        {
+            "id": 3,
+            "name": "POWER_SUPPLY",
+            "dependantIds": [0, 8]
+        },
+        {
+            "id": 4,
+            "name": "COOLING",
+            "dependantIds": [0, 1]
+        },
+        {
+            "id": 5,
+            "name": "STORAGE",
+            "dependantIds": [0]
+        },
+        {
+            "id": 6,
+            "name": "SSD_M2",
+            "dependantIds": [2]
+        },
+        
+        {
+            "id": 7,
+            "name": "RAM",
+            "dependantIds": [2]
+        },
+        {
+            "id": 8,
+            "name": "GPU",
+            "dependantIds": [0, 3]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+.metric-width {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+@media only screen and (max-width: 1400px) {
+  .metric-width {
+    width: 33.3333%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .metric-width {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .metric-width {
+    width: 100%;
+  }
+}

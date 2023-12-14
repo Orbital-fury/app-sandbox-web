@@ -1,0 +1,54 @@
+<div class="d-flex my-4 align-items-center">
+  <div class="me-3">Sort by:</div>
+  <div class="dropdown me-3">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      {{ orderBy }}
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <button
+          class="dropdown-item"
+          type="button"
+          (click)="orderByFunc('Name')"
+        >
+          Name
+        </button>
+      </li>
+      <li>
+        <button
+          class="dropdown-item"
+          type="button"
+          (click)="orderByFunc('Type')"
+        >
+          Type
+        </button>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-secondary" type="button" (click)="reverseOrder()">
+    <i
+      class="fa-solid"
+      [ngClass]="
+        sortByDesc ? 'fa-arrow-down-wide-short' : 'fa-arrow-down-short-wide'
+      "
+    ></i>
+  </button>
+</div>
+<h2 class="border-bottom title-border pb-1 mb-4">
+  Company's sites ({{ factories.length }})
+</h2>
+<div class="row">
+  <div class="col-4 mb-3" *ngFor="let factory of factories">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ factory.name }}</h5>
+        <div class="card-text">{{ factory.type }}: {{ factory.address }}</div>
+      </div>
+    </div>
+  </div>
+</div>

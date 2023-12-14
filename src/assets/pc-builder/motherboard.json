@@ -1,0 +1,90 @@
+{
+    "elements": [
+        {
+            "id": 9,
+            "brand": "MSI",
+            "model": "PRO Z790-P",
+            "price": 249.95,
+            "img": null,
+            "type": "MOTHERBOARD",
+            "constraints": [
+                {
+                    "name": "Motherboard Size",
+                    "code": "MOBO_SIZE",
+                    "value": ["ATX"],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "1700"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": ["Z790"],
+                    "type": "SAME"
+                },
+                {
+                    "name": "RAM frequency",
+                    "code": "RAM_FREQUENCY",
+                    "value": [4800],
+                    "type": "SAME"
+                },
+                {
+                    "name": "SSD M.2 capacity",
+                    "code": "SSD_M.2_CAPACITY",
+                    "value": [4],
+                    "type": "CAPACITY"
+                }
+            ],
+            "specifications": []
+        },
+        {
+            "id": 10,
+            "brand": "Gigabyte",
+            "model": "B550M AORUS ELITE",
+            "price": 123.95,
+            "img": null,
+            "type": "MOTHERBOARD",
+            "constraints": [
+                {
+                    "name": "Motherboard Size",
+                    "code": "MOBO_SIZE",
+                    "value": ["MICRO_ATX"],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "AM4"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": ["B550"],
+                    "type": "SAME"
+                },
+                {
+                    "name": "RAM frequency",
+                    "code": "RAM_FREQUENCY",
+                    "value": [2666, 2933, 3200, 3600],
+                    "type": "SAME"
+                },
+                {
+                    "name": "SSD M.2 capacity",
+                    "code": "SSD_M.2_CAPACITY",
+                    "value": [2],
+                    "type": "CAPACITY"
+                }
+            ],
+            "specifications": []
+        }
+    ]
+}

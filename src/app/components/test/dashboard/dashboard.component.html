@@ -1,0 +1,24 @@
+<div class="m-content">
+<h1>Customers ({{ customers.length }})</h1>
+<div class="card-group d-grid dashboard-grid">
+  <ng-container *ngFor="let customer of customers">
+    <a
+      class="w-100"
+      [routerLink]="['/', 'customer', customer.id]"
+      ngbTooltip="{{ customer.factories.length }} {{
+        customer.factories.length <= 1 ? 'factory' : 'factories'
+      }}"
+      tooltipClass="light-tooltip"
+    >
+      <div class="card dashboard-card">
+        <div class="card-body">
+          <h4 class="card-title border-bottom pb-1 mb-3">
+            {{ customer.name }}
+          </h4>
+          <p class="card-text">Address: {{ customer.address }}</p>
+        </div>
+      </div>
+    </a>
+  </ng-container>
+</div>
+</div>

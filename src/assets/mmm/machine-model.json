@@ -1,0 +1,88 @@
+{
+  "models": [
+    {
+      "id": 0,
+      "name": "Quantum Vision",
+      "type": "Vision",
+      "brandId": 2
+    },
+    {
+      "id": 1,
+      "name": "IM-8000",
+      "type": "Vision",
+      "brandId": 2
+    },
+    {
+      "id": 2,
+      "name": "Série XM",
+      "type": "CMM",
+      "brandId": 2
+    },
+    {
+      "id": 3,
+      "name": "Absolute Arm",
+      "type": "CMM",
+      "brandId": 0
+    },
+    {
+      "id": 4,
+      "name": "OPTIV Reference",
+      "type": "Vision",
+      "brandId": 0
+    },
+    {
+      "id": 5,
+      "name": "TIGO SF",
+      "type": "CMM",
+      "brandId": 0
+    },
+    {
+      "id": 6,
+      "name": "GLOBAL",
+      "type": "CMM",
+      "brandId": 0
+    },
+    {
+      "id": 7,
+      "name": "CV-Series",
+      "type": "Surface",
+      "brandId": 1
+    },
+    {
+      "id": 8,
+      "name": "SurfTest",
+      "type": "Surface",
+      "brandId": 1
+    },
+    {
+      "id": 9,
+      "name": "Quick Vision",
+      "type": "Vision",
+      "brandId": 1
+    },
+    {
+      "id": 10,
+      "name": "Crysta-Apex V",
+      "type": "CMM",
+      "brandId": 1
+    },
+    {
+      "id": 11,
+      "name": "Contura",
+      "type": "CMM",
+      "brandId": 3
+    },
+    {
+      "id": 12,
+      "name": "DuraMax",
+      "type": "CMM",
+      "brandId": 3
+    },
+    {
+      "id": 13,
+      "name": "O-Inspect",
+      "type": "Vision",
+      "brandId": 3
+    }
+  ]
+}

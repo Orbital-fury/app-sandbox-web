@@ -1,0 +1,18 @@
+.maint-border {
+  --bs-border-opacity: 1;
+  border-top-width: 2px;
+}
+
+.maint-ok {
+  border-top-color: rgba(
+    var(--bs-success-rgb),
+    var(--bs-border-opacity)
+  ) !important;
+}
+
+.maint-nok {
+  border-top-color: rgba(
+    var(--bs-danger-rgb),
+    var(--bs-border-opacity)
+  ) !important;
+}

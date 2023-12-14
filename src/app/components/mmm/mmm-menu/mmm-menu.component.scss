@@ -1,0 +1,26 @@
+.sub-menu {
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color30);
+  color: var(--color60);
+  text-align: center;
+}
+
+.sub-menu:hover {
+  filter:saturate(0.5);
+}
+
+table, td, tr {
+  border-color: var(--color30);
+}
+
+tbody > tr:not(:last-child) {
+  border-bottom-color: var(--color10);
+}
+
+td {
+  padding: 0;
+}

@@ -1,0 +1,22 @@
+<!--<div class="m-5 d-flex tile flex-row" [ngClass]="{'ms-auto': rightAlign}">-->
+<div
+  class="m-5 py-3 d-flex tile flex-row"
+  [ngClass]="rightAlign ? 'flex-row-reverse ms-auto' : 'flex-row'"
+>
+  <div class="position-relative vignette">
+    <a routerLink="{{ linkUrl }}">
+      <div class="position-absolute pt-5 w-75">
+        <h1>{{ title }}</h1>
+      </div>
+      <div
+        class="d-flex justify-content-end"
+        [ngClass]="rightAlign ? 'justify-content-start' : 'justify-content-end'"
+      >
+        <img src="{{ imageUrl }}" />
+      </div>
+    </a>
+  </div>
+  <div class="w-50" [ngClass]="rightAlign ? 'pe-5' : 'ps-5'">
+    {{ description }}
+  </div>
+</div>

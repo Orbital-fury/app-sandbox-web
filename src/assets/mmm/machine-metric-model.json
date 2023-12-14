@@ -1,0 +1,157 @@
+{
+  "metrics": [
+    {
+      "id": 0,
+      "name": "Nombre total de points mesurés",
+      "unit": "points",
+      "current": 602726,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 12000000,
+        "critical": 18000000
+      }
+    },
+    {
+      "id": 1,
+      "name": "Nombre de points mesurés sur profil",
+      "unit": "points",
+      "current": 176472,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 600000,
+        "critical": 900000
+      }
+    },
+    {
+      "id": 2,
+      "name": "Distance total de scanning",
+      "unit": "m",
+      "current": 15361,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 100000,
+        "critical": 150000
+      }
+    },
+    {
+      "id": 3,
+      "name": "Distance total de déplacement",
+      "unit": "m",
+      "current": 66967,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 400000,
+        "critical": 600000
+      }
+    },
+    {
+      "id": 4,
+      "name": "Distance de déplacement sur X",
+      "unit": "m",
+      "current": 25448,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 200000,
+        "critical": 300000
+      }
+    },
+    {
+      "id": 5,
+      "name": "Distance de déplacement sur Y",
+      "unit": "m",
+      "current": 28127,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 200000,
+        "critical": 300000
+      }
+    },
+    {
+      "id": 6,
+      "name": "Distance de déplacement sur Z",
+      "unit": "m",
+      "current": 13392,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 200000,
+        "critical": 300000
+      }
+    },
+    {
+      "id": 7,
+      "name": "Nombre de rotation de tête",
+      "unit": "rotations",
+      "current": 65295,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 150000,
+        "critical": 225000
+      }
+    },
+    {
+      "id": 8,
+      "name": "Nombre de changement de palpeur",
+      "unit": "changements",
+      "current": 53575,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 400000,
+        "critical": 600000
+      }
+    },
+    {
+      "id": 9,
+      "name": "Nombre de changement de module",
+      "unit": "changements",
+      "current": 0,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 100000,
+        "critical": 150000
+      }
+    },
+    {
+      "id": 10,
+      "name": "Nombre de collision",
+      "unit": "collisions",
+      "current": 208,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 500,
+        "critical": 750
+      }
+    },
+    {
+      "id": 11,
+      "name": "Nombre d'arrêt d'urgence",
+      "unit": "arrêts",
+      "current": 35,
+      "dataType": "MAINTENANCE",
+      "dataMaintenance": {
+        "target": 100,
+        "critical": 150
+      }
+    },
+    {
+      "id": 12,
+      "name": "Température ambiante moyenne",
+      "unit": "°C",
+      "current": 23.2,
+      "dataType": "INFO"
+    },
+    {
+      "id": 13,
+      "name": "Température ambiante minimum",
+      "unit": "°C",
+      "current": 17.5,
+      "dataType": "INFO"
+    },
+    {
+      "id": 14,
+      "name": "Température ambiante maximum",
+      "unit": "°C",
+      "current": 28.8,
+      "dataType": "INFO"
+    }
+  ]
+}

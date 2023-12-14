@@ -1,0 +1,67 @@
+<div class="my-5">
+    <h2 class="border-bottom title-border pb-1 mb-4">Maintenance dashboard</h2>
+    <div class="row mb-3 align-items-center">
+        <label class="form-label form-text col-1">Search S/N</label>
+        <div class="col-3">
+            <input class="form-control" type="text" placeholder="e.g.: 1ed08b0c-b795-4b8d-877d-e8823a1b878b"
+                (keyup)="filterBySn($event)" />
+        </div>
+        <div class="form-check d-flex justify-content-end col-2">
+            <input class="form-check-input me-1" type="checkbox" (click)="filterByNeedMaintenance($event)"
+                id="needMaintenance">
+            <label class="form-check-label" for="needMaintenance">Need Maintenance only</label>
+        </div>
+    </div>
+
+    <!-- [limit]="12" -->
+    <ngx-datatable class="material" [headerHeight]="50" columnMode="flex" [rows]="rows" [rowHeight]="50"
+        [rowClass]="getRowClass" [scrollbarV]="true" [footerHeight]="50" [reorderable]="false">
+        <ngx-datatable-column name="Machine" prop="name" resizable="false" [flexGrow]="1">
+            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <div class="d-flex justify-content-between">
+                    <ng-template #tipMachine>
+                        Machine type: {{row.model.type}}<br>
+                        Site: {{row.factory.name}} ({{row.factory.type}})
+                    </ng-template>
+                    <span [ngbTooltip]="tipMachine">{{ value }}</span>
+                    <a [routerLink]="[
+                    '/',
+                    'mmm',
+                    { outlets: { mmm: ['manage-machine', row.id] } }
+                  ]"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="S/N" prop="sn" resizable="false" [flexGrow]="2"
+            [sortable]="false"></ngx-datatable-column>
+        <ngx-datatable-column name="Last Maintenance" prop="lastMaintenance" resizable="false" [flexGrow]="1"
+            [comparator]="sortLastMaintenance" [cellClass]="getLastMaintClass">
+            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                <ng-template #tipLastMaintenance>
+                    Last maintenance was {{row.lastMaintenanceAgo.value}} years ago
+                </ng-template>
+                <span [ngbTooltip]="tipLastMaintenance" tooltipClass="light-tooltip"
+                    [disableTooltip]="!row.lastMaintenanceAgo.isCritic">{{ value }}</span>
+            </ng-template>
+
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Need Maintenance" prop="needMaintenance" resizable="false"
+            [flexGrow]="1"></ngx-datatable-column>
+        <ngx-datatable-column name="Brand" prop="brand" resizable="false" [flexGrow]="1"></ngx-datatable-column>
+        <ngx-datatable-column name="Contact" prop="contact" resizable="false" [flexGrow]="1" [sortable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <a href="{{ row.contact }}" target="_blank">{{ row.contact }}</a>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-footer>
+            <ng-template ngx-datatable-footer-template let-rowCount="rowCount">
+                <div class="row w-100 p-3">
+                    <div class="col-1">{{ machines.length }} Total</div>
+                    <div class="col-auto" *ngIf="machines.length !== rows.length">{{ rowCount }} displayed
+                        machine{{rows.length > 1 ? 's' : ''}}</div>
+                </div>
+            </ng-template>
+        </ngx-datatable-footer>
+    </ngx-datatable>
+</div>

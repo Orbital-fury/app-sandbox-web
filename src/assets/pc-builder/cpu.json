@@ -1,0 +1,196 @@
+{
+    "elements": [
+        {
+            "id": 0,
+            "brand": "Intel",
+            "model": "i5-12400F",
+            "price": 184.96,
+            "img": null,
+            "type": "CPU",
+            "constraints": [
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "1700"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": [
+                        "B660",
+                        "Z790"
+                    ],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "CPU frequency",
+                    "code": "CPU_FREQUENCY",
+                    "value": 2.5
+                },
+                {
+                    "name": "Number of cores",
+                    "code": "NUMBER_OF_CORE",
+                    "value": 6
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "brand": "Intel",
+            "model": "i7-12700KF",
+            "price": 379.96,
+            "img": null,
+            "type": "CPU",
+            "constraints": [
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "1700"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": [
+                        "B660",
+                        "Z790"
+                    ],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "CPU frequency",
+                    "code": "CPU_FREQUENCY",
+                    "value": 3.6
+                },
+                {
+                    "name": "Number of cores",
+                    "code": "NUMBER_OF_CORE",
+                    "value": 12
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "brand": "AMD",
+            "model": "Ryzen 5 3600",
+            "price": 77.95,
+            "img": null,
+            "type": "CPU",
+            "constraints": [
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "AM4"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": [
+                        "B550"
+                    ],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "CPU frequency",
+                    "code": "CPU_FREQUENCY",
+                    "value": 3.6
+                },
+                {
+                    "name": "Number of cores",
+                    "code": "NUMBER_OF_CORE",
+                    "value": 6
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "brand": "AMD",
+            "model": "Ryzen 5 7600X",
+            "price": 279.95,
+            "img": null,
+            "type": "CPU",
+            "constraints": [
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "AM5"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": [
+                        "X670"
+                    ],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "CPU frequency",
+                    "code": "CPU_FREQUENCY",
+                    "value": 4.7
+                },
+                {
+                    "name": "Number of cores",
+                    "code": "NUMBER_OF_CORE",
+                    "value": 6
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "brand": "AMD",
+            "model": "Ryzen 7 5800X",
+            "price": 224.95,
+            "img": null,
+            "type": "CPU",
+            "constraints": [
+                {
+                    "name": "Socket",
+                    "code": "SOCKET",
+                    "value": [
+                        "AM4"
+                    ],
+                    "type": "SAME"
+                },
+                {
+                    "name": "Chipset",
+                    "code": "CHIPSET",
+                    "value": [
+                        "B550"
+                    ],
+                    "type": "SAME"
+                }
+            ],
+            "specifications": [
+                {
+                    "name": "CPU frequency",
+                    "code": "CPU_FREQUENCY",
+                    "value": 3.8
+                },
+                {
+                    "name": "Number of cores",
+                    "code": "NUMBER_OF_CORE",
+                    "value": 8
+                }
+            ]
+        }
+    ]
+}
