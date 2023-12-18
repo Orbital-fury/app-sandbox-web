@@ -8,13 +8,13 @@ import { FactoryEntity, FactoryHttp } from '../../../typing-mmm';
 })
 export class MmmFactoryService {
   private api_url: string = 'assets/mmm/factory.json';
-  private machinesUrl: string = 'assets/mmm/machine.json';
+  private new_api: string = 'http://localhost:8080/factories';
 
   constructor(private http: HttpClient) {}
 
   getFactoryEntities(): Observable<FactoryEntity[]> {
     return this.http
-      .get<FactoryHttp>(this.api_url)
+      .get<FactoryHttp>(this.new_api)
       .pipe(map((factories) => factories.factories));
   }
 
