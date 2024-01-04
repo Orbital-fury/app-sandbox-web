@@ -1,29 +1,40 @@
-export interface FactoryEntity {
+export interface Factories {
+  factories: Factory[];
+}
+
+export interface Factory {
+  id: number;
+  name: string;
+  type: string;
+  address: string;
+  machines: MachineWithoutFactory[];
+}
+
+export interface FactoryWithoutMachines {
   id: number;
   name: string;
   type: string;
   address: string;
 }
 
-export interface FactoryHttp {
-  factories: FactoryEntity[];
+export interface Machines {
+  machines: Machine[];
 }
 
-export interface FactoryWithMachines {
+export interface Machine {
   id: number;
-  name: string;
-  type: string;
-  address: string;
-  machines: MachineEntity[];
+  model: Model;
+  sn: string;
+  needMaintenance: boolean;
+  state: string;
+  factory: FactoryWithoutMachines;
+  createdAt: Date;
+  lastMaintenanceDate: Date | null;
 }
 
-export interface MachineHttp {
-  machines: MachineEntity[];
-}
-
-export interface MachineEntity {
+export interface MachineWithoutFactory {
   id: number;
-  modelId: number;
+  model: Model;
   sn: string;
   needMaintenance: boolean;
   state: string;
@@ -32,13 +43,13 @@ export interface MachineEntity {
   lastMaintenanceDate: Date | null;
 }
 
-export interface MachineWithModelAndFactory {
+export interface MachineUpdate {
   id: number;
-  model: ModelWithBrand;
+  modelId: number;
   sn: string;
   needMaintenance: boolean;
   state: string;
-  factory: FactoryEntity;
+  factoryId: number;
   createdAt: Date;
   lastMaintenanceDate: Date | null;
 }
@@ -61,39 +72,33 @@ export interface MachineMetrics {
   metrics: MachineMetric[];
 }
 
-export interface BrandWithModels {
+export interface Model {
+  id: number;
+  name: string;
+  type: string;
+  brand: Brand;
+}
+
+export interface Models {
+  models: Model[];
+}
+
+export interface ModelWithoutBrand {
+  id: number;
+  name: string;
+  type: string;
+}
+
+export interface Brand {
   id: number;
   name: string;
   website: string;
   hqAddress: string;
-  models: ModelEntity[];
+  models: ModelWithoutBrand[];
 }
 
-export interface ModelWithBrand {
-  id: number;
-  name: string;
-  type: string;
-  brand: BrandEntity;
+export interface Brands {
+  brands: Brand[];
 }
 
-export interface ModelEntity {
-  id: number;
-  name: string;
-  type: string;
-  brandId: number;
-}
-
-export interface ModelHttp {
-  models: ModelEntity[];
-}
-
-export interface BrandEntity {
-  id: number;
-  name: string;
-  website: string;
-  hqAddress: string;
-}
-
-export interface BrandHttp {
-  brands: BrandEntity[];
-}
+export type MachineState = 'RUNNING' | 'IDLE' | 'STOP' | 'OFF';

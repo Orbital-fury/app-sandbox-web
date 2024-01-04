@@ -25,7 +25,6 @@ export class MachineMetricService {
     return this.http.get<MachineMetrics>(url).pipe(
       map((metrics) => {
         const machineMetrics = metrics.metrics;
-        console.log(`Metrics for machine ${machineId}:`, machineMetrics);
         return machineMetrics;
       })
     );

@@ -76,10 +76,10 @@
           </div>
           <div>
             <span class="badge" [ngClass]="{
-                'bg-success': machine.state === 'Running',
-                'bg-warning': machine.state === 'Idle',
-                'bg-danger': machine.state === 'Stop',
-                'bg-secondary': machine.state === 'Off'
+                'bg-success': machine.state === 'RUNNING',
+                'bg-warning': machine.state === 'IDLE',
+                'bg-danger': machine.state === 'STOP',
+                'bg-secondary': machine.state === 'OFF'
               }"
               title="Current state">{{ machine.state }}</span>
           </div>

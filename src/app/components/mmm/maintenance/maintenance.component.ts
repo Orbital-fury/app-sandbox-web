@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import { MachineWithModelAndFactory } from '../../../../typing-mmm';
+import { Machine } from '../../../../typing-mmm';
 import { MmmMachineService } from '../../../services/mmm/mmm-machine.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MmmMachineService } from '../../../services/mmm/mmm-machine.service';
   styleUrls: ['./maintenance.component.scss'],
 })
 export class MaintenanceComponent implements OnInit {
-  machines: MachineWithModelAndFactory[] = [];
+  machines: Machine[] = [];
 
   rows: any[] = [];
   temp: any[] = [];
@@ -21,7 +21,7 @@ export class MaintenanceComponent implements OnInit {
 
   ngOnInit(): void {
     let rowsToCreate: any[] = [];
-    this.machineService.getMachinesWithModel().subscribe((data) => {
+    this.machineService.getMachines().subscribe((data) => {
       this.machines = data;
       this.machines.forEach((machine) => {
         rowsToCreate.push({
@@ -112,7 +112,7 @@ export class MaintenanceComponent implements OnInit {
     }
   }
 
-  lastMaintenanceAgo(machine: MachineWithModelAndFactory) {
+  lastMaintenanceAgo(machine: Machine) {
     const lastMaintenanceLimit = this.lastMaintenanceLimit(machine.lastMaintenanceDate)
     return { 
       isCritic: lastMaintenanceLimit > 4 && machine.needMaintenance, 

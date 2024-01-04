@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MmmMachineService } from '../../../services/mmm/mmm-machine.service';
 import { MmmFactoryService } from '../../../services/mmm/mmm-factory.service';
 import {
-  FactoryEntity,
-  MachineWithModelAndFactory,
+  FactoryWithoutMachines,
+  Machine,
 } from '../../../../typing-mmm';
 
 @Component({
@@ -12,11 +12,11 @@ import {
   styleUrls: ['./manage-machine.component.scss'],
 })
 export class ManageMachineComponent {
-  machinesAll: MachineWithModelAndFactory[] = [];
-  machines: MachineWithModelAndFactory[] = [];
+  machinesAll: Machine[] = [];
+  machines: Machine[] = [];
   orderBy: string = 'Name';
   sortByDesc: boolean = false;
-  factories: FactoryEntity[] = [];
+  factories: FactoryWithoutMachines[] = [];
   factoryKeyword = 'name';
 
   constructor(
@@ -25,7 +25,7 @@ export class ManageMachineComponent {
   ) {}
 
   ngOnInit(): void {
-    this.machineService.getMachinesWithModel().subscribe((data) => {
+    this.machineService.getMachines().subscribe((data) => {
       this.machines = data;
       this.machinesAll = data;
       this.orderByFunc('Factory');

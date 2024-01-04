@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
   MachineMetric,
-  MachineWithModelAndFactory,
+  Machine,
 } from '../../../../../typing-mmm';
 import { ActivatedRoute } from '@angular/router';
 import { MmmMachineService } from '../../../../services/mmm/mmm-machine.service';
@@ -14,7 +14,7 @@ import { MachineMetricService } from '../../../../services/mmm/machine-metric.se
 })
 export class MachineComponent implements OnInit {
   machineId: number;
-  machine: MachineWithModelAndFactory;
+  machine: Machine;
   metrics: MachineMetric[];
 
   constructor(
@@ -26,7 +26,7 @@ export class MachineComponent implements OnInit {
   ngOnInit(): void {
     this.machineId = parseInt(this.route.snapshot.paramMap.get('machineId')!);
     this.machineService
-      .getMachineWithModel(this.machineId)
+      .getMachine(this.machineId)
       .subscribe((data) => (this.machine = data!));
     this.machineMetricService
       .getMachineMetric(this.machineId)

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MmmFactoryService } from '../../../services/mmm/mmm-factory.service';
-import { FactoryEntity } from '../../../../typing-mmm';
+import { Factory, FactoryWithoutMachines } from '../../../../typing-mmm';
 
 @Component({
   selector: 'app-mmm-home',
@@ -8,7 +8,7 @@ import { FactoryEntity } from '../../../../typing-mmm';
   styleUrls: ['./mmm-home.component.scss'],
 })
 export class MmmHomeComponent implements OnInit {
-  factories: FactoryEntity[] = [];
+  factories: Factory[] = [];
   orderBy: string = 'Name';
   sortByDesc: boolean = false;
 

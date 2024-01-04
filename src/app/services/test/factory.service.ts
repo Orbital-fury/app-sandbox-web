@@ -56,7 +56,6 @@ export class FactoryService {
               machines: factoryMachines,
             };
           });
-        console.log(factoriesWithMachines);
         return factoriesWithMachines;
       })
     );

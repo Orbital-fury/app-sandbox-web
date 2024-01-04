@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {
+  Brand,
+  FactoryWithoutMachines,
+  MachineUpdate,
+  Model,
+  ModelWithoutBrand,
+} from '../../../../../typing-mmm';
+import { IndexedDbService } from '../../../../services/indexed-db.service';
 import { MachineBrandService } from '../../../../services/mmm/machine-brand.service';
 import { MmmFactoryService } from '../../../../services/mmm/mmm-factory.service';
-import { IndexedDbService } from '../../../../services/indexed-db.service';
-import {
-  BrandWithModels,
-  FactoryEntity,
-  MachineEntity,
-  ModelEntity,
-} from '../../../../../typing-mmm';
 
 @Component({
   selector: 'app-update-machine',
@@ -26,20 +27,19 @@ export class UpdateMachineComponent implements OnInit {
     factory: [''],
   });
 
-  machineBrands: BrandWithModels[] = [];
-  machineModels: ModelEntity[] = [];
-  factories: FactoryEntity[] = [];
+  machineBrands: Brand[] = [];
+  machineModels: ModelWithoutBrand[] = [];
+  factories: FactoryWithoutMachines[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private machineBrandService: MachineBrandService,
-    private factoryService: MmmFactoryService,
-    private dbService: IndexedDbService
-  ) {}
+    private factoryService: MmmFactoryService
+  ) { }
 
   ngOnInit(): void {
     this.machineBrandService
-      .getBrandsWithModels()
+      .getBrands()
       .subscribe((data) => (this.machineBrands = data!));
     this.factoryService
       .getFactories()
@@ -59,7 +59,7 @@ export class UpdateMachineComponent implements OnInit {
     return this.machineForm.get('factory');
   }
 
-  brandSelected(brand: BrandWithModels): void {
+  brandSelected(brand: Brand): void {
     this.machineModels = brand.models;
   }
 
@@ -69,15 +69,13 @@ export class UpdateMachineComponent implements OnInit {
   }
 
   addMachine(): void {
-    let newBrand: BrandWithModels = this.brand!
-      .value as unknown as BrandWithModels;
-    let newModel: ModelEntity = this.model!.value as unknown as ModelEntity;
-    let newFactory: FactoryEntity = this.factory!
-      .value as unknown as FactoryEntity;
+    let newModel: Model = this.model!.value as unknown as Model;
+    let newFactory: FactoryWithoutMachines = this.factory!
+      .value as unknown as FactoryWithoutMachines;
 
     let availableId = 0;
 
-    let newMachine: MachineEntity = {
+    let newMachine: MachineUpdate = {
       id: availableId,
       modelId: newModel.id,
       sn: this.sn!.value!,
