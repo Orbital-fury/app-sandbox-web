@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MachineMetric } from '../../../../../../typing-mmm';
 import * as Highcharts from 'highcharts';
 import HighChartsMore from 'highcharts/highcharts-more';
+import { MachineMetric } from '../../../../../../typing-mmm';
 
 HighChartsMore(Highcharts);
 
@@ -47,56 +47,58 @@ export class MachineMetricComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    const maxGauge = Math.max(
-      this.metric.dataMaintenance.critical,
-      this.metric.current
-    );
+    if (this.metric.dataType === 'MAINTENANCE') {
+      const maxGauge = Math.max(
+        this.metric.dataMaintenance.critical,
+        this.metric.current
+      );
 
-    const metric = this.metric;
+      const metric = this.metric;
 
-    this.chartOptions.yAxis = {
-      min: 0,
-      max: maxGauge,
-      plotBands: [
-        {
-          from: 0,
-          to: this.metric.dataMaintenance.target,
-          color: '#55BF3B', // green
-          thickness: '20%',
+      this.chartOptions.yAxis = {
+        min: 0,
+        max: maxGauge,
+        plotBands: [
+          {
+            from: 0,
+            to: this.metric.dataMaintenance.target,
+            color: '#55BF3B', // green
+            thickness: '20%',
+          },
+          {
+            from: this.metric.dataMaintenance.target,
+            to: this.metric.dataMaintenance.critical,
+            color: '#DDDF0D', // yellow
+            thickness: '20%',
+          },
+          {
+            from: this.metric.dataMaintenance.critical,
+            to: maxGauge,
+            color: '#DF5353', // red
+            thickness: '20%',
+          },
+        ],
+        tickLength: 0,
+        minorTickLength: 0,
+        labels: {
+          enabled: false,
         },
-        {
-          from: this.metric.dataMaintenance.target,
-          to: this.metric.dataMaintenance.critical,
-          color: '#DDDF0D', // yellow
-          thickness: '20%',
-        },
-        {
-          from: this.metric.dataMaintenance.critical,
-          to: maxGauge,
-          color: '#DF5353', // red
-          thickness: '20%',
-        },
-      ],
-      tickLength: 0,
-      minorTickLength: 0,
-      labels: {
-        enabled: false,
-      },
-    };
+      };
 
-    this.chartOptions.series!.push({
-      type: 'gauge',
-      data: [this.metric.current],
-      dataLabels: {
-        format: '{point.y} ' + this.metric.unit,
-        verticalAlign: 'middle',
-      },
-      tooltip: {
-        pointFormatter: function () {
-          return `Current: ${this.y}<br><span style="color: rgba(255, 193, 7)">Limit: ${metric.dataMaintenance.target}</span><br><span style="color: rgba(220, 53, 69)">Critical: ${metric.dataMaintenance.critical}</span>`;
+      this.chartOptions.series!.push({
+        type: 'gauge',
+        data: [this.metric.current],
+        dataLabels: {
+          format: '{point.y} ' + this.metric.unit,
+          verticalAlign: 'middle',
         },
-        //pointFormat: `Current: {point.y}<br><span style="color: red">Limit: ${metric.dataMaintenance.target}</span><br>Critical: ${metric.dataMaintenance.critical}`,
-      },
-    });
+        tooltip: {
+          pointFormatter: function () {
+            return `Current: ${this.y}<br><span style="color: rgba(255, 193, 7)">Limit: ${metric.dataMaintenance.target}</span><br><span style="color: rgba(220, 53, 69)">Critical: ${metric.dataMaintenance.critical}</span>`;
+          },
+          //pointFormat: `Current: {point.y}<br><span style="color: red">Limit: ${metric.dataMaintenance.target}</span><br>Critical: ${metric.dataMaintenance.critical}`,
+        },
+      });
+    }
   }
 }

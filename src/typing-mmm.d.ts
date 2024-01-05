@@ -26,7 +26,7 @@ export interface Machine {
   model: Model;
   sn: string;
   needMaintenance: boolean;
-  state: string;
+  state: MachineState;
   factory: FactoryWithoutMachines;
   createdAt: Date;
   lastMaintenanceDate: Date | null;
@@ -37,7 +37,7 @@ export interface MachineWithoutFactory {
   model: Model;
   sn: string;
   needMaintenance: boolean;
-  state: string;
+  state: MachineState;
   factoryId: number;
   createdAt: Date;
   lastMaintenanceDate: Date | null;
@@ -48,7 +48,7 @@ export interface MachineUpdate {
   modelId: number;
   sn: string;
   needMaintenance: boolean;
-  state: string;
+  state: MachineState;
   factoryId: number;
   createdAt: Date;
   lastMaintenanceDate: Date | null;
@@ -76,7 +76,7 @@ export interface Model {
   id: number;
   name: string;
   type: string;
-  brand: Brand;
+  brand: BrandWithoutModels;
 }
 
 export interface Models {
@@ -95,6 +95,13 @@ export interface Brand {
   website: string;
   hqAddress: string;
   models: ModelWithoutBrand[];
+}
+
+export interface BrandWithoutModels {
+  id: number;
+  name: string;
+  website: string;
+  hqAddress: string;
 }
 
 export interface Brands {

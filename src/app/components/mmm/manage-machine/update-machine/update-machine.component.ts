@@ -80,7 +80,7 @@ export class UpdateMachineComponent implements OnInit {
       modelId: newModel.id,
       sn: this.sn!.value!,
       needMaintenance: false,
-      state: 'Off',
+      state: 'OFF',
       factoryId: newFactory.id ? newFactory.id : -1,
       createdAt: new Date(),
       lastMaintenanceDate: null,
