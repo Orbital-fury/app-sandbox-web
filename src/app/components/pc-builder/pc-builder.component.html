@@ -9,17 +9,18 @@
     <div class="row">
         <div class="col-3 pe-0">
             <!-- Choice of element type -->
-            <app-element-type-choice name="CPU"></app-element-type-choice>
-            <app-element-type-choice name="Case"></app-element-type-choice>
-            <app-element-type-choice name="GPU"></app-element-type-choice>
-            <app-element-type-choice name="Motherboard"></app-element-type-choice>
-            <app-element-type-choice name="RAM"></app-element-type-choice>
-            <app-element-type-choice name="Power Supply"></app-element-type-choice>
-            <app-element-type-choice name="Storage"></app-element-type-choice>
-            <app-element-type-choice name="Cooling system"></app-element-type-choice>
+            <app-element-type-choice name="CPU" elementType="CPU"></app-element-type-choice>
+            <app-element-type-choice name="Case" elementType="CASE"></app-element-type-choice>
+            <app-element-type-choice name="GPU" elementType="GPU"></app-element-type-choice>
+            <app-element-type-choice name="Motherboard" elementType="MOBO"></app-element-type-choice>
+            <app-element-type-choice name="RAM" elementType="RAM"></app-element-type-choice>
+            <app-element-type-choice name="Power Supply" elementType="POWER"></app-element-type-choice>
+            <app-element-type-choice name="Storage" elementType="STORAGE"></app-element-type-choice>
+            <app-element-type-choice name="Cooling system" elementType="COOLING"></app-element-type-choice>
         </div>
-        <div class="col-5" style="height:70vh;border: 5px solid var(--bs-primary);">
+        <div class="col-5" style="height:65vh;border: 5px solid var(--bs-primary);overflow-y: scroll;">
             <!-- List display of elements -->
+            <p *ngFor="let pcElement of pcElementsOfChoosenType">{{ pcElement.brand }} {{ pcElement.model }}</p>
         </div>
         <div class="col-4">
             <h3>Build</h3>

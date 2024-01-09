@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ElementType } from 'src/typing-pc-builder';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElementTypeChoiceService {
-  private selectedButtonSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  selectedButton$: Observable<string> = this.selectedButtonSubject.asObservable();
+  private selectedButtonSubject: BehaviorSubject<ElementType> = new BehaviorSubject<ElementType>('CPU');
+  selectedButton$: Observable<ElementType> = this.selectedButtonSubject.asObservable();
 
-  setSelectedButton(buttonName: string) {
+  setSelectedButton(buttonName: ElementType) {
     this.selectedButtonSubject.next(buttonName);
   }
 
-  getSelectedButton(): string {
+  getSelectedButton(): ElementType {
     return this.selectedButtonSubject.getValue();
   }
 }

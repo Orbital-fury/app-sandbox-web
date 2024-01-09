@@ -1,7 +1,7 @@
-export type PartType = "CASE" | "MOTHERBOARD" | "POWER_SUPPLY" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU";
+export type ElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
 
 export interface PcElements {
-    elements: PcElement[];
+    pcElements: PcElement[];
 }
 
 export interface PcElement {
@@ -9,18 +9,19 @@ export interface PcElement {
     model: string;
     price: number;
     img: string | null;
-    type: PartType;
+    type: ElementType;
     constraint: PcConstraint[];
-    specifications: Specification[];
+    // specifications: PcSpecification[];
 }
 
 export abstract class PcConstraint {
     name: string;
     code: string;
-    value: (MoboSize | RamFrequency | Socket | Chipset | StorageType | CoolingFanSpace | AoiFanSize | StorageCapacity | GpuLength)[];
+    type: string;
+    value: string[];
 }
 
-export abstract class Specification {
+export abstract class PcSpecification {
     name: string;
     code: string;
     value: string | number;
