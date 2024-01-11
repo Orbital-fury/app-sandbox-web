@@ -1,7 +1,7 @@
-<div (click)="onClick()" class="mx-1 my-3 p-3 row element-choice">
+<div (click)="onClick()" class="mx-1 mb-3 p-3 row element-choice">
     <div class="col-7">
         <span>{{pcElement.brand}} {{pcElement.model}}</span><br>
-        <table class="ms-4 table">
+        <table class="ms-4 table" [ngClass]="{'d-none' : false}">
             <thead></thead>
             <tbody>
                 <tr *ngFor="let constraint of pcElement.constraints">

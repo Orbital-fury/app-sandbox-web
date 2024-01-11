@@ -12,5 +12,8 @@ export class ElementTypeChoiceService {
   setSelectedElementType(elementTypeInfo: ElementTypeInfo) {
     this.selectedElementTypeSubject.next(elementTypeInfo);
   }
-  
+
+  getSelectedElementType(): ElementTypeInfo {
+    return this.selectedElementTypeSubject.getValue();
+  }
 }

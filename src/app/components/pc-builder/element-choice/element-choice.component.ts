@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ElementChoiceService } from 'src/app/services/pc-builder/element-choice.service';
+import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElement } from 'src/typing-pc-builder';
 
 @Component({
@@ -11,10 +12,13 @@ export class ElementChoiceComponent {
   @Input()
   pcElement: PcElement;
 
-  constructor(private pcElementChoiceService: ElementChoiceService) {}
+  constructor(private pcElementChoiceService: ElementChoiceService, private elementTypeChoiceService: ElementTypeChoiceService) {}
 
   onClick() {
-    this.pcElementChoiceService.addSelectedPcElementToBuild(this.pcElement);
+    if (!this.elementTypeChoiceService.getSelectedElementType().isPcElementSelected) {
+      this.pcElementChoiceService.addSelectedPcElementToBuild(this.pcElement);
+    }
+    
   }
 
 }

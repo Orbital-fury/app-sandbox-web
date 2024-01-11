@@ -1,7 +1,6 @@
 .elements-selection {
     height: 65vh;
-    border: 5px solid var(--bs-primary);
-    overflow-y: scroll;
+    border-left: 5px solid var(--bs-primary);
 }
 
 .elements-selection.selected {
