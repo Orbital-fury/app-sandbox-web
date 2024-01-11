@@ -1,5 +1,11 @@
 export type ElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
 
+export interface ElementTypeInfo {
+    name: string;
+    code: ElementType;
+    isPcElementSelected: boolean;
+}
+
 export interface PcElements {
     pcElements: PcElement[];
 }

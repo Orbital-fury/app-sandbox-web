@@ -10,25 +10,17 @@
         <div class="row col-8">
             <h3 class="mb-4 text-center" style="color:darkgrey">PC ELEMENTS</h3>
             <div class="col-3 pe-0">
-                <!-- Choice of element type -->
-                <app-element-type-choice name="CPU" elementType="CPU"></app-element-type-choice>
-                <app-element-type-choice name="Case" elementType="CASE"></app-element-type-choice>
-                <app-element-type-choice name="GPU" elementType="GPU"></app-element-type-choice>
-                <app-element-type-choice name="Motherboard" elementType="MOBO"></app-element-type-choice>
-                <app-element-type-choice name="RAM" elementType="RAM"></app-element-type-choice>
-                <app-element-type-choice name="Power Supply" elementType="POWER"></app-element-type-choice>
-                <app-element-type-choice name="Storage" elementType="STORAGE"></app-element-type-choice>
-                <app-element-type-choice name="Cooling system" elementType="COOLING"></app-element-type-choice>
+                <ng-container *ngFor="let elementTypeChoice of elementTypeChoices">
+                    <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>
+                </ng-container>
             </div>
-            <div class="col-9" style="height:65vh;border: 5px solid var(--bs-primary);overflow-y: scroll;">
+            <div class="col-9 elements-selection" [ngClass]="{'selected' : selectedElementTypeInfo.isPcElementSelected}">
                 <!-- List display of elements -->
                 <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"
                     [pcElement]="pcElement"></app-element-choice>
-                <!-- <p *ngFor="let pcElement of pcElementsOfChoosenType">{{ pcElement.brand }} {{ pcElement.model }}</p> -->
             </div>
         </div>
         <div class="col-4 ms-3">
-            <!-- Summary of builder -->
             <h3 class="mb-4 text-center" style="color:darkgray">PC BUILD</h3>
             <div class="p-4" style="max-height:65vh;border: 5px solid darkgrey;">
                 <div style="height: 90%;">

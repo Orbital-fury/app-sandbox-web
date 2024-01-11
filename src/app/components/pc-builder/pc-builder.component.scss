@@ -1,14 +1,9 @@
-/*
-button.btn.btn-primary.w-100.d-flex.justify-content-between {
-    border: 0px;
-    border-right: 20px solid var(--bg-color) !important;
+.elements-selection {
+    height: 65vh;
+    border: 5px solid var(--bs-primary);
+    overflow-y: scroll;
 }
 
-button.btn.btn-primary.w-100.d-flex.justify-content-between.choosen {
-    border-right: 20px solid transparent !important;
+.elements-selection.selected {
+    border-color: var(--bs-success);
 }
-
-button.choosen span.add-pc-element {
-    display: none;
-}
-*/

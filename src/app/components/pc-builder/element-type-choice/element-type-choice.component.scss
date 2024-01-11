@@ -1,12 +1,12 @@
-button.btn.btn-primary.w-100.d-flex.justify-content-between {
+button.btn.w-100.d-flex.justify-content-between {
     border: 0px;
     border-right: 20px solid var(--bg-color) !important;
 }
 
-button.btn.btn-primary.w-100.d-flex.justify-content-between.choosen {
+button.btn.w-100.d-flex.justify-content-between.type-selected {
     border-right: 20px solid transparent !important;
 }
 
-button.choosen span.add-pc-element {
+.show-add {
     display: none;
 }

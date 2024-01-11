@@ -1,3 +1,5 @@
-<button class="btn btn-primary w-100 d-flex justify-content-between mb-2" type="button" (click)="onButtonClick()" [ngClass]="{'choosen': isSelected()}">
-    <span class="offset-2 col-8 text-start">{{name}}</span><span class="add-pc-element">+</span>
+<button class="btn w-100 d-flex justify-content-between mb-2" type="button" (click)="selectElementType()"
+    [ngClass]="{'type-selected': isElementTypeSelected, 'btn-success': elementTypeInfo.isPcElementSelected,
+    'btn-primary': !elementTypeInfo.isPcElementSelected}">
+    <span class="offset-2 col-8 text-start">{{elementTypeInfo.name}}</span><span [ngClass]="{'show-add': elementTypeInfo.isPcElementSelected || isElementTypeSelected}">+</span>
 </button>
