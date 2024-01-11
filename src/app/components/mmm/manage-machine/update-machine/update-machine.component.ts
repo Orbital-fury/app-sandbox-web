@@ -7,7 +7,6 @@ import {
   Model,
   ModelWithoutBrand,
 } from '../../../../../typing-mmm';
-import { IndexedDbService } from '../../../../services/indexed-db.service';
 import { MachineBrandService } from '../../../../services/mmm/machine-brand.service';
 import { MmmFactoryService } from '../../../../services/mmm/mmm-factory.service';
 

@@ -6,14 +6,14 @@ import { ElementType } from 'src/typing-pc-builder';
   providedIn: 'root'
 })
 export class ElementTypeChoiceService {
-  private selectedButtonSubject: BehaviorSubject<ElementType> = new BehaviorSubject<ElementType>('CPU');
-  selectedButton$: Observable<ElementType> = this.selectedButtonSubject.asObservable();
+  private selectedElementTypeSubject: BehaviorSubject<ElementType> = new BehaviorSubject<ElementType>('CPU');
+  selectedElementType$: Observable<ElementType> = this.selectedElementTypeSubject.asObservable();
 
-  setSelectedButton(buttonName: ElementType) {
-    this.selectedButtonSubject.next(buttonName);
+  setSelectedElementType(elementType: ElementType) {
+    this.selectedElementTypeSubject.next(elementType);
   }
 
-  getSelectedButton(): ElementType {
-    return this.selectedButtonSubject.getValue();
+  getSelectedElementType(): ElementType {
+    return this.selectedElementTypeSubject.getValue();
   }
 }

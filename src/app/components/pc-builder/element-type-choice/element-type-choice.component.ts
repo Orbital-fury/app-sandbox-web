@@ -11,14 +11,13 @@ export class ElementTypeChoiceComponent {
   @Input() name: string;
   @Input() elementType: ElementType;
 
-  constructor(private buttonStateService: ElementTypeChoiceService) { }
+  constructor(private elementTypeChoiceService: ElementTypeChoiceService) { }
 
   onButtonClick() {
-    this.buttonStateService.setSelectedButton(this.elementType);
+    this.elementTypeChoiceService.setSelectedElementType(this.elementType);
   }
 
   isSelected(): boolean {
-    // Ajoutez la logique pour vérifier si le bouton est sélectionné ou non
-    return this.buttonStateService.getSelectedButton() === this.elementType;
+    return this.elementTypeChoiceService.getSelectedElementType() === this.elementType;
   }
 }

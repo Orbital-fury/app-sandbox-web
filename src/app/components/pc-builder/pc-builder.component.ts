@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ElementChoiceService } from 'src/app/services/pc-builder/element-choice.service';
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
-import { PcElement } from 'src/typing-pc-builder';
+import { ElementType, PcElement } from 'src/typing-pc-builder';
 
 @Component({
   selector: 'app-pc-builder',
@@ -10,39 +11,46 @@ import { PcElement } from 'src/typing-pc-builder';
   styleUrls: ['./pc-builder.component.scss']
 })
 export class PCBuilderComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
-  selectedButton: string;
+  private subscriptionElementType: Subscription;
+  selectedElementType: ElementType;
+  private subscriptionPcElement: Subscription;
 
   pcElements: PcElement[] = [];
   pcElementsOfChoosenType: PcElement[] = [];
+  choosenPcElements: PcElement[] = [];
+  totalPrice: number = 0;
 
-  constructor(private pcElementService: PcElementService, private buttonStateService: ElementTypeChoiceService) {
-    this.subscription = this.buttonStateService.selectedButton$.subscribe(buttonName => {
-      this.selectedButton = buttonName;
+  constructor(
+    private pcElementService: PcElementService,
+    private elementTypeChoiceService: ElementTypeChoiceService,
+    private pcElementChoiceService: ElementChoiceService
+  ) {
+    this.subscriptionElementType = this.elementTypeChoiceService.selectedElementType$.subscribe(elementType => {
+      this.selectedElementType = elementType;
       this.getPcElementsOfChoosenType();
+    });
+    this.subscriptionPcElement = this.pcElementChoiceService.selectedPcElement$.subscribe(pcElement => {
+      if (pcElement) {
+        this.choosenPcElements.push(pcElement);
+        this.totalPrice += pcElement.price;
+      }
     });
   }
 
   ngOnInit(): void {
-    this.buttonStateService.setSelectedButton('CPU')
+    this.elementTypeChoiceService.setSelectedElementType('CPU')
     this.pcElementService.getPcElements().subscribe((data) => {
-      // this.pcElements = data;
-      var num: number = 0;
-      var i: number;
-      for (i = num; i <= 30; i++) {
-        this.pcElements.push(data[0]);
-      }
-
+      this.pcElements = data;
       this.getPcElementsOfChoosenType();
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionElementType.unsubscribe();
   }
 
   private getPcElementsOfChoosenType() {
-    this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedButton);
+    this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedElementType);
   }
 
 }

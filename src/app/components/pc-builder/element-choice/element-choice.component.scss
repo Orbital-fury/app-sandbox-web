@@ -1,0 +1,16 @@
+.element-choice {
+    background-color: var(--color10);
+    cursor: pointer;
+
+    table {
+        border-color: white;
+    }
+
+    td {
+        background-color:transparent !important;
+    }
+}
+
+.element-choice:hover {
+    filter: brightness(98%) saturate(200%);
+}

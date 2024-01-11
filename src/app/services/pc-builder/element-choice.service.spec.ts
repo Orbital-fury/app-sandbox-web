@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IndexedDbService } from './indexed-db.service';
+import { ElementChoiceService } from './element-choice.service';
 
-describe('IndexedDbService', () => {
-  let service: IndexedDbService;
+describe('ElementChoiceService', () => {
+  let service: ElementChoiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(IndexedDbService);
+    service = TestBed.inject(ElementChoiceService);
   });
 
   it('should be created', () => {

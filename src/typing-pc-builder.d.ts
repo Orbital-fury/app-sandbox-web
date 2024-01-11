@@ -10,7 +10,7 @@ export interface PcElement {
     price: number;
     img: string | null;
     type: ElementType;
-    constraint: PcConstraint[];
+    constraints: PcConstraint[];
     // specifications: PcSpecification[];
 }
 

@@ -1,0 +1,26 @@
+<div (click)="onClick()" class="mx-1 my-3 p-3 row element-choice">
+    <div class="col-7">
+        <span>{{pcElement.brand}} {{pcElement.model}}</span><br>
+        <table class="ms-4 table">
+            <thead></thead>
+            <tbody>
+                <tr *ngFor="let constraint of pcElement.constraints">
+                    <td>
+                        {{constraint.name}}
+                    </td>
+                    <td>
+                        <div *ngFor="let constraintValue of constraint.value">
+                            {{constraintValue}}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-2 d-flex justify-content-end fw-bold">
+        {{pcElement.price | euroCurrency}}
+    </div>
+    <div class="col-3" style="border:1px solix black">
+        <img src="{{pcElement.img}}">
+    </div>
+</div>

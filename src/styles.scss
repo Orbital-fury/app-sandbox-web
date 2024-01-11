@@ -16,13 +16,15 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --bg-color: rgb(229, 230, 233); //rgb(5, 15, 59);
+  --bg-color: rgb(236, 236, 240); //rgb(5, 15, 59);
   --bg-color-darker: rgb(201, 212, 229); //white;
   --bg-tooltip-color: white;
   --tooltip-color: black;
+  --rgb-color60: 40, 40, 78;
+  --rgb-color10: 218, 228, 255;
   --color60: white;
-  --color30: rgb(40, 40, 78);
-  --color10: rgb(218, 228, 255);
+  --color30: rgb(var(--rgb-color60));
+  --color10: rgb(var(--rgb-color10));
 }
 
 .btn {

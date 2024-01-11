@@ -7,29 +7,39 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-3 pe-0">
-            <!-- Choice of element type -->
-            <app-element-type-choice name="CPU" elementType="CPU"></app-element-type-choice>
-            <app-element-type-choice name="Case" elementType="CASE"></app-element-type-choice>
-            <app-element-type-choice name="GPU" elementType="GPU"></app-element-type-choice>
-            <app-element-type-choice name="Motherboard" elementType="MOBO"></app-element-type-choice>
-            <app-element-type-choice name="RAM" elementType="RAM"></app-element-type-choice>
-            <app-element-type-choice name="Power Supply" elementType="POWER"></app-element-type-choice>
-            <app-element-type-choice name="Storage" elementType="STORAGE"></app-element-type-choice>
-            <app-element-type-choice name="Cooling system" elementType="COOLING"></app-element-type-choice>
+        <div class="row col-8">
+            <h3 class="mb-4 text-center" style="color:darkgrey">PC ELEMENTS</h3>
+            <div class="col-3 pe-0">
+                <!-- Choice of element type -->
+                <app-element-type-choice name="CPU" elementType="CPU"></app-element-type-choice>
+                <app-element-type-choice name="Case" elementType="CASE"></app-element-type-choice>
+                <app-element-type-choice name="GPU" elementType="GPU"></app-element-type-choice>
+                <app-element-type-choice name="Motherboard" elementType="MOBO"></app-element-type-choice>
+                <app-element-type-choice name="RAM" elementType="RAM"></app-element-type-choice>
+                <app-element-type-choice name="Power Supply" elementType="POWER"></app-element-type-choice>
+                <app-element-type-choice name="Storage" elementType="STORAGE"></app-element-type-choice>
+                <app-element-type-choice name="Cooling system" elementType="COOLING"></app-element-type-choice>
+            </div>
+            <div class="col-9" style="height:65vh;border: 5px solid var(--bs-primary);overflow-y: scroll;">
+                <!-- List display of elements -->
+                <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"
+                    [pcElement]="pcElement"></app-element-choice>
+                <!-- <p *ngFor="let pcElement of pcElementsOfChoosenType">{{ pcElement.brand }} {{ pcElement.model }}</p> -->
+            </div>
         </div>
-        <div class="col-5" style="height:65vh;border: 5px solid var(--bs-primary);overflow-y: scroll;">
-            <!-- List display of elements -->
-            <p *ngFor="let pcElement of pcElementsOfChoosenType">{{ pcElement.brand }} {{ pcElement.model }}</p>
-        </div>
-        <div class="col-4">
-            <h3>Build</h3>
-            <ul>
-                <li>
-
-                </li>
-            </ul>
+        <div class="col-4 ms-3">
             <!-- Summary of builder -->
+            <h3 class="mb-4 text-center" style="color:darkgray">PC BUILD</h3>
+            <div class="p-4" style="max-height:65vh;border: 5px solid darkgrey;">
+                <div style="height: 90%;">
+                    <div *ngFor="let choosenPcElement of choosenPcElements">
+                        {{choosenPcElement.brand}} {{choosenPcElement.model}}
+                    </div>
+                </div>
+                <div id="total" class="fw-bold fs-3 text-primary">
+                    TOTAL: {{totalPrice | euroCurrency}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
