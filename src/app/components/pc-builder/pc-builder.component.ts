@@ -16,13 +16,13 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   private subscriptionPcElement: Subscription;
 
   elementTypeChoices: ElementTypeInfo[] = [
-    { name: "CPU", code: "CPU", isPcElementSelected: false }, 
-    { name: "Case", code: "CASE", isPcElementSelected: false }, 
-    { name: "GPU", code: "GPU", isPcElementSelected: false }, 
+    { name: "CPU", code: "CPU", isPcElementSelected: false },
+    { name: "Case", code: "CASE", isPcElementSelected: false },
+    { name: "GPU", code: "GPU", isPcElementSelected: false },
     { name: "Motherboard", code: "MOBO", isPcElementSelected: false },
-    { name: "RAM", code: "RAM", isPcElementSelected: false }, 
-    { name: "Power supply", code: "POWER", isPcElementSelected: false }, 
-    { name: "Storage", code: "STORAGE", isPcElementSelected: false }, 
+    { name: "RAM", code: "RAM", isPcElementSelected: false },
+    { name: "Power supply", code: "POWER", isPcElementSelected: false },
+    { name: "Storage", code: "STORAGE", isPcElementSelected: false },
     { name: "Cooling system", code: "COOLING", isPcElementSelected: false }
   ]
   pcElements: PcElement[] = [];
@@ -35,7 +35,7 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     private elementTypeChoiceService: ElementTypeChoiceService,
     private pcElementChoiceService: ElementChoiceService
   ) {
-    
+
   }
 
   ngOnInit(): void {
@@ -63,6 +63,18 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptionElementType.unsubscribe();
     this.subscriptionPcElement.unsubscribe();
+  }
+
+  removeElementFromChoosen(removedPcElement: PcElement) {
+    this.totalPrice -= removedPcElement.price;
+    const filteredItems = this.choosenPcElements.filter(pcElement => pcElement !== removedPcElement);
+    this.choosenPcElements = filteredItems;
+
+    // assumption that there is only on PC element for an element type
+    var elementTypeInfo = this.elementTypeChoices.find(elementTypeChoice => elementTypeChoice.code === removedPcElement.type);
+    if (elementTypeInfo) {
+      elementTypeInfo.isPcElementSelected = false;
+    }
   }
 
   private getPcElementsOfChoosenType() {

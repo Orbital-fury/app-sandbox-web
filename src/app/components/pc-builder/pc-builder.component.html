@@ -1,46 +1,50 @@
 <div class="m-4">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="border-bottom title-border pb-1 mb-4">
-                PC Builder
-            </h2>
-        </div>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="border-bottom title-border pb-1 mb-4">
+        PC Builder
+      </h2>
     </div>
-    <div class="row">
-        <div class="row col-8">
-            <h3 class="mb-4 text-center" style="color:darkgrey">PC ELEMENTS</h3>
-            <div class="col-3 pe-0">
-                <ng-container *ngFor="let elementTypeChoice of elementTypeChoices">
-                    <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>
-                </ng-container>
-            </div>
-            <div class="col-9 elements-selection"
-                [ngClass]="{'selected' : selectedElementTypeInfo.isPcElementSelected}">
-                <div class="mh-100" style="overflow-y: auto">
-                    <!-- List display of elements -->
-                    <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"
-                        [pcElement]="pcElement"></app-element-choice>
-                </div>
-            </div>
+  </div>
+  <div class="row">
+    <div class="row col-8">
+      <h3 class="mb-4 text-center" style="color:darkgrey">PC ELEMENTS</h3>
+      <div class="col-3 pe-0">
+        <ng-container *ngFor="let elementTypeChoice of elementTypeChoices">
+          <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>
+        </ng-container>
+      </div>
+      <div class="col-9 elements-selection" [ngClass]="{'selected' : selectedElementTypeInfo.isPcElementSelected}">
+        <div class="mh-100" style="overflow-y: auto">
+          <!-- List display of elements -->
+          <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"
+            [pcElement]="pcElement"></app-element-choice>
         </div>
-        <div class="col-4 ms-3">
-            <h3 class="mb-4 text-center" style="color:darkgray">PC BUILD</h3>
-            <div class="p-4" style="max-height:65vh;border: 5px solid darkgrey;">
-                <div style="height: 90%;">
-                    <div class="row" *ngFor="let choosenPcElement of choosenPcElements">
-                        <div class="col-7">
-                            {{choosenPcElement.brand}} {{choosenPcElement.model}}
-                        </div>
-                        <div class="col-5 d-flex justify-content-end">
-                            {{choosenPcElement.price | euroCurrency}}
-                            <button class="ms-3">X</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="total" class="fw-bold fs-3 text-primary">
-                    TOTAL: {{totalPrice | euroCurrency}}
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-4 ms-3">
+      <h3 class="mb-4 text-center" style="color:darkgray">PC BUILD</h3>
+      <div class="p-4" style="max-height:65vh;border: 5px solid darkgrey;">
+        <div style="height: 90%;">
+          <div class="row" *ngFor="let choosenPcElement of choosenPcElements">
+            <div class="col-9">
+              {{choosenPcElement.brand}} {{choosenPcElement.model}}
+            </div>
+            <div class="col-3 d-flex justify-content-end mb-2">
+              {{choosenPcElement.price | euroCurrency}}
+              <button type="button" class="ms-3 btn-close"
+                (click)="removeElementFromChoosen(choosenPcElement)"></button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="choosenPcElements.length !== 0" id="total" class="mt-3 pt-3 fw-bold fs-3 text-primary">
+          TOTAL: {{totalPrice | euroCurrency}}
+        </div>
+        <div *ngIf="choosenPcElements.length === 0">
+          Please select the PC elements on the left. The PC builder will automatically adjust the element list regarding
+          your selection.
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

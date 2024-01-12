@@ -1,8 +1,12 @@
 .elements-selection {
-    height: 65vh;
-    border-left: 5px solid var(--bs-primary);
+  height: 65vh;
+  border-left: 5px solid var(--bs-primary);
 }
 
 .elements-selection.selected {
-    border-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+#total {
+  border-top: 2px solid white;
 }

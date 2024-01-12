@@ -14,4 +14,8 @@ export class ElementChoiceService {
     this.selectedPcElementSubject.next(pcElement);
   }
 
+  removeSelectedPcElementToBuild() {
+
+  }
+
 }

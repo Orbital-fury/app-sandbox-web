@@ -1,36 +1,37 @@
 export type ElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
 
 export interface ElementTypeInfo {
-    name: string;
-    code: ElementType;
-    isPcElementSelected: boolean;
+  name: string;
+  code: ElementType;
+  isPcElementSelected: boolean;
 }
 
 export interface PcElements {
-    pcElements: PcElement[];
+  pcElements: PcElement[];
 }
 
 export interface PcElement {
-    brand: string;
-    model: string;
-    price: number;
-    img: string | null;
-    type: ElementType;
-    constraints: PcConstraint[];
-    // specifications: PcSpecification[];
+  id: number;
+  brand: string;
+  model: string;
+  price: number;
+  img: string | null;
+  type: ElementType;
+  constraints: PcConstraint[];
+  // specifications: PcSpecification[];
 }
 
 export abstract class PcConstraint {
-    name: string;
-    code: string;
-    type: string;
-    value: string[];
+  name: string;
+  code: string;
+  type: string;
+  value: string[];
 }
 
 export abstract class PcSpecification {
-    name: string;
-    code: string;
-    value: string | number;
+  name: string;
+  code: string;
+  value: string | number;
 }
 
 export type MoboSize = "ATX" | "E_ATX" | "MICRO_ATX";
