@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ElementChoiceService } from 'src/app/services/pc-builder/element-choice.service';
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElement } from 'src/typing-pc-builder';
@@ -11,14 +11,20 @@ import { PcElement } from 'src/typing-pc-builder';
 export class ElementChoiceComponent {
   @Input()
   pcElement: PcElement;
+  seeMore: boolean = false;
 
-  constructor(private pcElementChoiceService: ElementChoiceService, private elementTypeChoiceService: ElementTypeChoiceService) {}
+  constructor(private pcElementChoiceService: ElementChoiceService, private elementTypeChoiceService: ElementTypeChoiceService) { }
 
   onClick() {
     if (!this.elementTypeChoiceService.getSelectedElementType().isPcElementSelected) {
       this.pcElementChoiceService.addSelectedPcElementToBuild(this.pcElement);
     }
-    
+  }
+
+  seeMoreClick(event: MouseEvent, seeMore: boolean) {
+    this.seeMore = seeMore;
+    event.preventDefault();
+    event.stopPropagation();
   }
 
 }

@@ -18,10 +18,11 @@ export interface PcElement {
   img: string | null;
   type: ElementType;
   constraints: PcConstraint[];
-  // specifications: PcSpecification[];
+  specifications: PcSpecification[];
 }
 
 export abstract class PcConstraint {
+  id: number;
   name: string;
   code: string;
   type: string;
@@ -29,9 +30,10 @@ export abstract class PcConstraint {
 }
 
 export abstract class PcSpecification {
+  id: number;
   name: string;
   code: string;
-  value: string | number;
+  value: string;
 }
 
 export type MoboSize = "ATX" | "E_ATX" | "MICRO_ATX";

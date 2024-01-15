@@ -80,7 +80,6 @@ export class ManageMachineComponent {
   }
 
   selectEvent(event: any): void {
-    console.log('selectEvent', event.name);
     this.machines = this.machines.filter(
       (machine) => machine.factory.name === event.name
     );

@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { ElementChoiceService } from 'src/app/services/pc-builder/element-choice.service';
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
-import { ElementType, ElementTypeInfo, PcElement } from 'src/typing-pc-builder';
+import { ElementType, ElementTypeInfo, PcConstraint, PcElement } from 'src/typing-pc-builder';
 
 @Component({
   selector: 'app-pc-builder',
@@ -29,6 +29,7 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   pcElementsOfChoosenType: PcElement[] = [];
   choosenPcElements: PcElement[] = [];
   totalPrice: number = 0;
+  pcConstraints: PcConstraint[] = [];
 
   constructor(
     private pcElementService: PcElementService,
@@ -41,7 +42,7 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscriptionElementType = this.elementTypeChoiceService.selectedElementType$.subscribe(elementType => {
       this.selectedElementTypeInfo = elementType;
-      this.getPcElementsOfChoosenType();
+      this.pcElementsOfChoosenType = this.getPcElementsOfChoosenType();
     });
     this.subscriptionPcElement = this.pcElementChoiceService.selectedPcElement$.subscribe(pcElement => {
       if (pcElement) {
@@ -56,7 +57,8 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     this.elementTypeChoiceService.setSelectedElementType(this.elementTypeChoices[0])
     this.pcElementService.getPcElements().subscribe((data) => {
       this.pcElements = data;
-      this.getPcElementsOfChoosenType();
+      this.pcElementsOfChoosenType = this.getPcElementsOfChoosenType();
+      console.log("subscribe de getPcElements")
     });
   }
 
@@ -77,8 +79,8 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getPcElementsOfChoosenType() {
-    this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedElementTypeInfo.code);
+  private getPcElementsOfChoosenType(): PcElement[] {
+    return this.pcElements.filter(pcElement => pcElement.type === this.selectedElementTypeInfo.code);
   }
 
 }

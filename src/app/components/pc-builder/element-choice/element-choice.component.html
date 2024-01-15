@@ -1,21 +1,39 @@
 <div (click)="onClick()" class="mx-1 mb-3 p-3 row element-choice">
     <div class="col-7">
         <span>{{pcElement.brand}} {{pcElement.model}}</span><br>
-        <table class="ms-4 table" [ngClass]="{'d-none' : false}">
-            <thead></thead>
-            <tbody>
-                <tr *ngFor="let constraint of pcElement.constraints">
-                    <td>
-                        {{constraint.name}}
-                    </td>
-                    <td>
-                        <div *ngFor="let constraintValue of constraint.value">
-                            {{constraintValue}}
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <span *ngIf="!seeMore" class="ps-3 text-primary see-more" (click)="seeMoreClick($event, true)">
+            See more...
+        </span>
+        <ng-container *ngIf="seeMore">
+            <table class="ms-4 table" [ngClass]="{'d-none' : false}">
+                <thead></thead>
+                <tbody>
+                    <tr *ngFor="let constraint of pcElement.constraints">
+                        <td>
+                            {{constraint.name}}
+                        </td>
+                        <td>
+                            <div *ngFor="let constraintValue of constraint.value">
+                                {{constraintValue}}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let specification of pcElement.specifications">
+                        <td>
+                            {{specification.name}}
+                        </td>
+                        <td>
+                            <div *ngFor="let specificationValue of specification.value">
+                                {{specificationValue}}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <span class="ps-3 text-primary see-more" (click)="seeMoreClick($event, false)">
+                See less...
+            </span>
+        </ng-container>
     </div>
     <div class="col-2 d-flex justify-content-end fw-bold">
         {{pcElement.price | euroCurrency}}
