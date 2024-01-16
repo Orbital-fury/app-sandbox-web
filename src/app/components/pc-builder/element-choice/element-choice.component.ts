@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ElementChoiceService } from 'src/app/services/pc-builder/element-choice.service';
-import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { PcBuilderStore } from 'src/app/store/component-store/pc-builder.store';
 import { PcElement } from 'src/typing-pc-builder';
 
 @Component({
@@ -8,17 +8,27 @@ import { PcElement } from 'src/typing-pc-builder';
   templateUrl: './element-choice.component.html',
   styleUrls: ['./element-choice.component.scss']
 })
-export class ElementChoiceComponent {
+export class ElementChoiceComponent implements OnDestroy {
   @Input()
   pcElement: PcElement;
   seeMore: boolean = false;
+  private ngUnsubscribe$ = new Subject<void>();
 
-  constructor(private pcElementChoiceService: ElementChoiceService, private elementTypeChoiceService: ElementTypeChoiceService) { }
+  constructor(private readonly pcBuilderStore: PcBuilderStore) { }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.complete();
+  }
 
   addPcElementToBuild() {
-    if (!this.elementTypeChoiceService.getSelectedElementType().isPcElementSelected) {
-      this.pcElementChoiceService.addSelectedPcElementToBuild(this.pcElement);
-    }
+    this.pcBuilderStore.selectSelectedElementTypeInfo$
+      .pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe(elementTypeInfo => {
+        if (!elementTypeInfo.isPcElementSelected) {
+          this.pcBuilderStore.addPcElementToBuild(this.pcElement);
+        }
+      });
   }
 
   seeMoreClick(event: MouseEvent, seeMore: boolean) {
