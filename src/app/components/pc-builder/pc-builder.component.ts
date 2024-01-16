@@ -4,11 +4,13 @@ import { ElementChoiceService } from 'src/app/services/pc-builder/element-choice
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
 import { ElementType, ElementTypeInfo, PcConstraint, PcElement } from 'src/typing-pc-builder';
+import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
 
 @Component({
   selector: 'app-pc-builder',
   templateUrl: './pc-builder.component.html',
-  styleUrls: ['./pc-builder.component.scss']
+  styleUrls: ['./pc-builder.component.scss'],
+  providers: [PcBuilderStore]
 })
 export class PCBuilderComponent implements OnInit, OnDestroy {
   private subscriptionElementType: Subscription;
@@ -31,10 +33,13 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   totalPrice: number = 0;
   pcConstraints: PcConstraint[] = [];
 
+  choosenPcElements$ = this._pcBuilderStore.choosenPcElement$;
+
   constructor(
     private pcElementService: PcElementService,
     private elementTypeChoiceService: ElementTypeChoiceService,
-    private pcElementChoiceService: ElementChoiceService
+    private pcElementChoiceService: ElementChoiceService,
+    private readonly _pcBuilderStore: PcBuilderStore
   ) {
 
   }
@@ -53,12 +58,21 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
           elementTypeChoice.isPcElementSelected = true;
         }
       }
+      this.pcElementChoiceService.setChoosenPcElements(this.choosenPcElements);
     });
     this.elementTypeChoiceService.setSelectedElementType(this.elementTypeChoices[0])
-    this.pcElementService.getPcElements().subscribe((data) => {
-      this.pcElements = data;
-      this.pcElementsOfChoosenType = this.getPcElementsOfChoosenType();
-      console.log("subscribe de getPcElements")
+    // this.pcElementService.getPcElementsWithConstraints(this.choosenPcElements).subscribe((data) => {
+    //   this.pcElements = data;
+    //   this.pcElementsOfChoosenType = this.getPcElementsOfChoosenType();
+    //   console.log("subscribe de getPcElements")
+    // });
+    this.pcElementChoiceService.choosenPcElements$.subscribe(pcElements => {
+      this.pcElementService.getPcElementsWithConstraints(pcElements).subscribe((data) => {
+        this.pcElements = data;
+        this.choosenPcElements = pcElements;
+        this.pcElementsOfChoosenType = this.getPcElementsOfChoosenType();
+        console.log("subscribe de getPcElements");
+      });
     });
   }
 
@@ -69,8 +83,9 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
 
   removeElementFromChoosen(removedPcElement: PcElement) {
     this.totalPrice -= removedPcElement.price;
-    const filteredItems = this.choosenPcElements.filter(pcElement => pcElement !== removedPcElement);
-    this.choosenPcElements = filteredItems;
+    // const filteredItems = this.choosenPcElements.filter(pcElement => pcElement !== removedPcElement);
+    // this.choosenPcElements = filteredItems;
+    this.pcElementChoiceService.removeSelectedPcElementToBuild(removedPcElement);
 
     // assumption that there is only on PC element for an element type
     var elementTypeInfo = this.elementTypeChoices.find(elementTypeChoice => elementTypeChoice.code === removedPcElement.type);

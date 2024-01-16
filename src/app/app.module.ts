@@ -11,6 +11,7 @@ import { TestModule } from './components/test/test.module';
 import { CoreModule } from './core.module';
 import { MmmModule } from './components/mmm/mmm.module';
 import { PCBuilderModule } from './components/pc-builder/pc-builder.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LeftTileComponent],
@@ -22,7 +23,8 @@ import { PCBuilderModule } from './components/pc-builder/pc-builder.module';
     BrowserAnimationsModule,
     TestModule,
     MmmModule,
-    PCBuilderModule
+    PCBuilderModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent],

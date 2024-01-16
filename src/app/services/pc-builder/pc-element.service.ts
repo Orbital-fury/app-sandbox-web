@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environment.dev';
 import { PcConstraint, PcElement, PcElements } from 'src/typing-pc-builder';
 
@@ -18,14 +18,14 @@ export class PcElementService {
       .pipe(map((pcElements) => pcElements.pcElements));
   }
 
-  getPcElementsWithConstraints(pcConstraints: PcConstraint[]): Observable<PcElement[]> {
+  getPcElementsWithConstraints(pcElementsFromBuild: PcElement[]): Observable<PcElement[]> {
     // Obtenez les ids des contraintes
-    const constraintIds = pcConstraints.map(constraint => constraint.id);
-
+    const elementFromBuildIds = pcElementsFromBuild.map(element => element.id);
+    
     // Construisez les paramètres de requête
-    const params = new HttpParams().set('id', constraintIds.join(','));
+    const params = new HttpParams().set('ids', elementFromBuildIds.join(','));
     return this.http
-      .get<PcElements>(this.baseUrl, { params })
+      .get<PcElements>(`${this.baseUrl}/constraints/elements`, { params })
       .pipe(map((pcElements) => pcElements.pcElements));
   }
 

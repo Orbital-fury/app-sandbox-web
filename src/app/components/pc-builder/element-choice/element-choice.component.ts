@@ -15,7 +15,7 @@ export class ElementChoiceComponent {
 
   constructor(private pcElementChoiceService: ElementChoiceService, private elementTypeChoiceService: ElementTypeChoiceService) { }
 
-  onClick() {
+  addPcElementToBuild() {
     if (!this.elementTypeChoiceService.getSelectedElementType().isPcElementSelected) {
       this.pcElementChoiceService.addSelectedPcElementToBuild(this.pcElement);
     }
