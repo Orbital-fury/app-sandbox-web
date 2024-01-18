@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ElementType, ElementTypeInfo } from 'src/typing-pc-builder';
+import { PcElementType, ElementTypeInfo } from 'src/typing-pc-builder';
 
 @Injectable({
   providedIn: 'root'

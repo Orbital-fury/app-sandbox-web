@@ -17,12 +17,10 @@ export class ElementChoiceComponent implements OnInit, OnDestroy {
   constructor(private readonly pcBuilderStore: PcBuilderStore) { }
 
   ngOnInit() {
-    this.pcBuilderStore.selectElementTypeChoices$.subscribe(elementTypeChoices =>
-      this.canBeAdded = !elementTypeChoices.find(elementTypeChoice => elementTypeChoice.code === this.pcElement.type)!.isPcElementSelected
-    );
-    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements =>
-      this.isInBuild = pcBuildElements.includes(this.pcElement)
-    );
+    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements => {
+      this.isInBuild = pcBuildElements.includes(this.pcElement);
+      this.canBeAdded = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.pcElement.type) === undefined;
+    });
   }
 
   ngOnDestroy() { }

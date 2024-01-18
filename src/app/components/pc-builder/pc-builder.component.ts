@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
-import { ElementTypeInfo, PcConstraint, PcElement } from 'src/typing-pc-builder';
+import { ElementTypeInfo, PcConstraint, PcElement, PcElementType } from 'src/typing-pc-builder';
 import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
 
 @Component({
@@ -12,12 +12,22 @@ import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
 })
 export class PCBuilderComponent implements OnInit, OnDestroy {
 
-  selectedElementTypeInfo: ElementTypeInfo;
+  selectedElementType: PcElementType;
   pcElements: PcElement[] = [];
   pcElementsOfChoosenType: PcElement[] = [];
   pcBuildElements: PcElement[] = [];
   totalPrice: number = 0;
-  elementTypeChoices: ElementTypeInfo[] = [];
+  elementTypeChoices: ElementTypeInfo[] = [
+    { name: "CPU", code: "CPU" },
+    { name: "Case", code: "CASE" },
+    { name: "GPU", code: "GPU" },
+    { name: "Motherboard", code: "MOBO" },
+    { name: "RAM", code: "RAM" },
+    { name: "Power supply", code: "POWER" },
+    { name: "Storage", code: "STORAGE" },
+    { name: "Cooling system", code: "COOLING" }
+  ];
+  isTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
 
   constructor(
     private pcElementService: PcElementService,
@@ -27,20 +37,20 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.pcElementService.getPcElements().subscribe(pcElements => {
       this.pcElements = pcElements;
-      this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedElementTypeInfo.code);
+      this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedElementType);
     });
 
     combineLatest([
-      this.pcBuilderStore.selectSelectedElementTypeInfo$,
+      this.pcBuilderStore.selectSelectedElementType$,
       this.pcBuilderStore.selectPcBuildElements$
     ]).subscribe(([selectedElementTypeInfo, pcBuildElements]) => {
-      this.selectedElementTypeInfo = selectedElementTypeInfo;
+      this.selectedElementType = selectedElementTypeInfo;
       this.pcBuildElements = pcBuildElements;
+      this.isTypeInBuild = this.pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.selectedElementType) !== undefined
       this.totalPrice = pcBuildElements.map(pcBuildElement => pcBuildElement.price).reduce((sum, current) => sum + current, 0);
-      this.pcElementsOfChoosenType = this.getPcElementsWithConstraints(pcBuildElements).filter(pcElement => pcElement.type === this.selectedElementTypeInfo.code);
+      this.pcElementsOfChoosenType = this.getPcElementsWithConstraints().filter(pcElement => pcElement.type === this.selectedElementType);
     });
 
-    this.pcBuilderStore.selectElementTypeChoices$.subscribe(elementTypeChoices => this.elementTypeChoices = elementTypeChoices);
   }
 
   ngOnDestroy() { }
@@ -49,10 +59,9 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     this.pcBuilderStore.removePcElementFromBuild(removedPcElement);
   }
 
-  private getPcElementsWithConstraints(pcBuildElements: PcElement[]): PcElement[] {
+  private getPcElementsWithConstraints(): PcElement[] {
     console.log(new Date().toISOString());
-    const pcBuildConstraints = this.getPcConstraintsfromPcElements(pcBuildElements);
-    return this.pcElements.filter(pcElement => this.canBeAddedRegardingConstraints(pcElement, pcBuildConstraints));
+    return this.pcElements.filter(pcElement => this.canBeAddedRegardingConstraints(pcElement));
   }
 
   private getPcConstraintsfromPcElements(pcElements: PcElement[]): PcConstraint[] {
@@ -68,10 +77,15 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     return Array.from(constraintMap.values());
   }
 
-  private canBeAddedRegardingConstraints(pcElement: PcElement, pcBuildConstraints: PcConstraint[]): boolean {
+  private canBeAddedRegardingConstraints(pcElement: PcElement): boolean {
+    const pcElementsToLookAt = this.pcBuildElements.filter(pcBuildElement =>
+      pcBuildElement.type !== this.selectedElementType
+    );
+    const pcBuildConstraints = this.getPcConstraintsfromPcElements(pcElementsToLookAt);
+
     const canBeAdded: boolean = pcElement.constraints.every((constraint) => {
-      const pcBuildConstraintToManage: PcConstraint | undefined = pcBuildConstraints.find(
-        (buildConstraint) => buildConstraint.code === constraint.code
+      const pcBuildConstraintToManage = pcBuildConstraints.find(buildConstraint =>
+        buildConstraint.code === constraint.code
       );
 
       if (!pcBuildConstraintToManage) {

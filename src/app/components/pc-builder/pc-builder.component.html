@@ -14,7 +14,7 @@
           <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>
         </ng-container>
       </div>
-      <div class="col-9 elements-selection" [ngClass]="{'selected' : selectedElementTypeInfo.isPcElementSelected}">
+      <div class="col-9 elements-selection" [ngClass]="{'selected' : isTypeInBuild}">
         <div class="mh-100" style="overflow-y: auto">
           <!-- List display of elements -->
           <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"

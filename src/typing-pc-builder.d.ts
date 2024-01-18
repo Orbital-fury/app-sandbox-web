@@ -1,9 +1,8 @@
-export type ElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
+export type PcElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
 
 export interface ElementTypeInfo {
   name: string;
-  code: ElementType;
-  isPcElementSelected: boolean;
+  code: PcElementType;
 }
 
 export interface PcElements {
@@ -16,7 +15,7 @@ export interface PcElement {
   model: string;
   price: number;
   img: string | null;
-  type: ElementType;
+  type: PcElementType;
   constraints: PcConstraint[];
   specifications: PcSpecification[];
 }

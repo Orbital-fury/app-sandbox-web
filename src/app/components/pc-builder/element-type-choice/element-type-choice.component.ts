@@ -9,20 +9,24 @@ import { ElementTypeInfo } from 'src/typing-pc-builder';
 })
 export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
   @Input() elementTypeInfo: ElementTypeInfo;
-  isElementTypeSelected: boolean = false;
+  isElementTypeSelected: boolean = false; // bar extended to display the selection of type
+  isTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
 
   constructor(private readonly pcBuilderStore: PcBuilderStore) { }
 
   ngOnInit(): void {
-    this.pcBuilderStore.selectSelectedElementTypeInfo$.subscribe(elementTypeInfo =>
-      this.isElementTypeSelected = elementTypeInfo.code === this.elementTypeInfo.code
-    )
+    this.pcBuilderStore.selectSelectedElementType$.subscribe(elementType =>
+      this.isElementTypeSelected = elementType === this.elementTypeInfo.code
+    );
+    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements =>
+      this.isTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.elementTypeInfo.code) !== undefined
+    );
   }
 
   ngOnDestroy() { }
 
   selectElementType() {
-    this.pcBuilderStore.patchState({ selectedElementTypeInfo: this.elementTypeInfo });
+    this.pcBuilderStore.patchState({ selectedElementType: this.elementTypeInfo.code });
   }
 
 }
