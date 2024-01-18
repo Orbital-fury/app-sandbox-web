@@ -11,15 +11,18 @@ export class ElementChoiceComponent implements OnInit, OnDestroy {
   @Input()
   pcElement: PcElement;
   seeMore: boolean = false;
-  canBeAdded: boolean;
+  canBeAdded: boolean = true;
+  isInBuild: boolean = false;
 
   constructor(private readonly pcBuilderStore: PcBuilderStore) { }
 
   ngOnInit() {
-    this.pcBuilderStore.selectElementTypeChoices$
-      .subscribe(elementTypeChoices => {
-        this.canBeAdded = !elementTypeChoices.find(elementTypeChoice => elementTypeChoice.code === this.pcElement.type)!.isPcElementSelected
-      });
+    this.pcBuilderStore.selectElementTypeChoices$.subscribe(elementTypeChoices =>
+      this.canBeAdded = !elementTypeChoices.find(elementTypeChoice => elementTypeChoice.code === this.pcElement.type)!.isPcElementSelected
+    );
+    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements =>
+      this.isInBuild = pcBuildElements.includes(this.pcElement)
+    );
   }
 
   ngOnDestroy() { }

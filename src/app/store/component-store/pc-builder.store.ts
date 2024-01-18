@@ -16,14 +16,12 @@ const elementTypeChoices: ElementTypeInfo[] = [
 // State in component-store on purpose to have red flag if @ngrx/store is needed
 export interface PcBuilderState {
   pcBuildElements: PcElement[];
-  pcElements: PcElement[];
   elementTypeChoices: ElementTypeInfo[];
   selectedElementTypeInfo: ElementTypeInfo;
 };
 
 const initialState: PcBuilderState = {
   pcBuildElements: [],
-  pcElements: [],
   elementTypeChoices: elementTypeChoices,
   selectedElementTypeInfo: elementTypeChoices[0]
 };
@@ -37,7 +35,6 @@ export class PcBuilderStore extends ComponentStore<PcBuilderState> {
 
   // selector can be written as : readonly choosenPcElement$ = this.select(({choosenPcElement}) => choosenPcElement);
   readonly selectPcBuildElements$ = this.select(state => state.pcBuildElements);
-  readonly selectPcElements$ = this.select(state => state.pcElements);
   readonly selectSelectedElementTypeInfo$ = this.select(state => state.selectedElementTypeInfo);
   readonly selectElementTypeChoices$ = this.select(state => state.elementTypeChoices);
 

@@ -12,6 +12,10 @@
     }
 }
 
+.element-choice.selected {
+    background-color: var(--color10-success) !important;
+}
+
 .element-choice:hover {
     border-color: var(--bg-color-darker) !important;
     filter: brightness(98%) saturate(200%);
