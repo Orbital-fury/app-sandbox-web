@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { combineLatest } from 'rxjs';
+import { combineLatest, startWith } from 'rxjs';
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
 import { ElementTypeInfo, PcConstraint, PcElement, PcElementType } from 'src/typing-pc-builder';
@@ -45,8 +45,8 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     });
 
     combineLatest([
-      this.pcBuilderStore.selectPcBuildElements$,
-      this.elementTypeChoiceService.selectedElementType$
+      this.pcBuilderStore.selectPcBuildElements$.pipe(startWith(this.pcBuildElements)),
+      this.elementTypeChoiceService.selectedElementType$.pipe(startWith(this.selectedElementType))
     ]).subscribe(([pcBuildElements, selectedElementType]) => {
       this.pcBuildElements = pcBuildElements;
       this.selectedElementType = selectedElementType;

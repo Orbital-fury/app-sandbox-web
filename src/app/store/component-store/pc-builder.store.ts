@@ -36,10 +36,9 @@ export class PcBuilderStore extends ComponentStore<PcBuilderState> {
   readonly selectElementTypeChoices$ = this.select(state => state.elementTypeChoices);
 
   readonly addPcElementToBuild = this.updater((state, pcElement: PcElement) => {
-    const toto = [...state.pcBuildElements, pcElement];
     return {
       ...state,
-      pcBuildElements: toto
+      pcBuildElements: [...state.pcBuildElements, pcElement]
     }
   });
 
