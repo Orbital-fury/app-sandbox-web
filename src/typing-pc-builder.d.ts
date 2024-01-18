@@ -3,6 +3,7 @@ export type PcElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | 
 export interface ElementTypeInfo {
   name: string;
   code: PcElementType;
+  pcElements: PcElement[];
 }
 
 export interface PcElements {

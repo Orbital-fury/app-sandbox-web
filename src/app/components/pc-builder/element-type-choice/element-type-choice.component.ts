@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcBuilderStore } from 'src/app/store/component-store/pc-builder.store';
 import { ElementTypeInfo } from 'src/typing-pc-builder';
 
@@ -9,24 +10,30 @@ import { ElementTypeInfo } from 'src/typing-pc-builder';
 })
 export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
   @Input() elementTypeInfo: ElementTypeInfo;
-  isElementTypeSelected: boolean = false; // bar extended to display the selection of type
-  isTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
 
-  constructor(private readonly pcBuilderStore: PcBuilderStore) { }
+  isElementTypeSelected: boolean; // bar extended to display the selection of type
+  isElementTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
 
-  ngOnInit(): void {
-    this.pcBuilderStore.selectSelectedElementType$.subscribe(elementType =>
-      this.isElementTypeSelected = elementType === this.elementTypeInfo.code
-    );
+  constructor(
+    private readonly pcBuilderStore: PcBuilderStore,
+    private elementTypeChoiceService: ElementTypeChoiceService
+  ) { }
+
+  ngOnInit() {
+    this.isElementTypeSelected = this.elementTypeInfo.code === "CPU";
+
     this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements =>
-      this.isTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.elementTypeInfo.code) !== undefined
+      this.isElementTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.elementTypeInfo.code) !== undefined
     );
+    this.elementTypeChoiceService.selectedElementType$.subscribe(selectedType => {
+      this.isElementTypeSelected = selectedType === this.elementTypeInfo.code
+    });
   }
 
   ngOnDestroy() { }
 
   selectElementType() {
-    this.pcBuilderStore.patchState({ selectedElementType: this.elementTypeInfo.code });
+    this.elementTypeChoiceService.notifySelectedElementType(this.elementTypeInfo.code);
   }
 
 }

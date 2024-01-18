@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { combineLatest } from 'rxjs';
+import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
 import { ElementTypeInfo, PcConstraint, PcElement, PcElementType } from 'src/typing-pc-builder';
 import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
@@ -12,55 +13,57 @@ import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
 })
 export class PCBuilderComponent implements OnInit, OnDestroy {
 
-  selectedElementType: PcElementType;
+  selectedElementType: PcElementType = "CPU";
   pcElements: PcElement[] = [];
+  filetredPcElements: PcElement[] = [];
   pcElementsOfChoosenType: PcElement[] = [];
   pcBuildElements: PcElement[] = [];
   totalPrice: number = 0;
   elementTypeChoices: ElementTypeInfo[] = [
-    { name: "CPU", code: "CPU" },
-    { name: "Case", code: "CASE" },
-    { name: "GPU", code: "GPU" },
-    { name: "Motherboard", code: "MOBO" },
-    { name: "RAM", code: "RAM" },
-    { name: "Power supply", code: "POWER" },
-    { name: "Storage", code: "STORAGE" },
-    { name: "Cooling system", code: "COOLING" }
+    { name: "CPU", code: "CPU", pcElements: [] },
+    { name: "Case", code: "CASE", pcElements: [] },
+    { name: "GPU", code: "GPU", pcElements: [] },
+    { name: "Motherboard", code: "MOBO", pcElements: [] },
+    { name: "RAM", code: "RAM", pcElements: [] },
+    { name: "Power supply", code: "POWER", pcElements: [] },
+    { name: "Storage", code: "STORAGE", pcElements: [] },
+    { name: "Cooling system", code: "COOLING", pcElements: [] }
   ];
-  isTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
+  isCurrentElementTypeInBuild: boolean = false;
 
   constructor(
     private pcElementService: PcElementService,
-    private readonly pcBuilderStore: PcBuilderStore
+    private readonly pcBuilderStore: PcBuilderStore,
+    private elementTypeChoiceService: ElementTypeChoiceService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.pcElementService.getPcElements().subscribe(pcElements => {
       this.pcElements = pcElements;
+      this.filetredPcElements = pcElements;
       this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedElementType);
     });
 
     combineLatest([
-      this.pcBuilderStore.selectSelectedElementType$,
-      this.pcBuilderStore.selectPcBuildElements$
-    ]).subscribe(([selectedElementTypeInfo, pcBuildElements]) => {
-      this.selectedElementType = selectedElementTypeInfo;
+      this.pcBuilderStore.selectPcBuildElements$,
+      this.elementTypeChoiceService.selectedElementType$
+    ]).subscribe(([pcBuildElements, selectedElementType]) => {
       this.pcBuildElements = pcBuildElements;
-      this.isTypeInBuild = this.pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.selectedElementType) !== undefined
+      this.selectedElementType = selectedElementType;
+      this.filetredPcElements = this.getPcElementsWithConstraints();
       this.totalPrice = pcBuildElements.map(pcBuildElement => pcBuildElement.price).reduce((sum, current) => sum + current, 0);
-      this.pcElementsOfChoosenType = this.getPcElementsWithConstraints().filter(pcElement => pcElement.type === this.selectedElementType);
+      this.pcElementsOfChoosenType = this.filetredPcElements.filter(pcElement => pcElement.type === this.selectedElementType);
+      this.isCurrentElementTypeInBuild = this.pcBuildElements.map(pcBuildElement => pcBuildElement.type).includes(this.selectedElementType);
     });
-
   }
 
-  ngOnDestroy() { }
+  ngOnDestroy() { this.pcBuilderStore.destroy$ }
 
   removeElementFromChoosen(removedPcElement: PcElement) {
     this.pcBuilderStore.removePcElementFromBuild(removedPcElement);
   }
 
   private getPcElementsWithConstraints(): PcElement[] {
-    console.log(new Date().toISOString());
     return this.pcElements.filter(pcElement => this.canBeAddedRegardingConstraints(pcElement));
   }
 
@@ -78,10 +81,10 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   }
 
   private canBeAddedRegardingConstraints(pcElement: PcElement): boolean {
-    const pcElementsToLookAt = this.pcBuildElements.filter(pcBuildElement =>
+    const pcBuildElementsOfOtherType = this.pcBuildElements.filter(pcBuildElement =>
       pcBuildElement.type !== this.selectedElementType
     );
-    const pcBuildConstraints = this.getPcConstraintsfromPcElements(pcElementsToLookAt);
+    const pcBuildConstraints = this.getPcConstraintsfromPcElements(pcBuildElementsOfOtherType);
 
     const canBeAdded: boolean = pcElement.constraints.every((constraint) => {
       const pcBuildConstraintToManage = pcBuildConstraints.find(buildConstraint =>
@@ -108,7 +111,6 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
           return false; // Au cas où une nouvelle valeur de type serait ajoutée
       }
     });
-    console.log("manage PC element : ", new Date().toISOString());
     return canBeAdded;
   }
 

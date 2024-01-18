@@ -1,5 +1,5 @@
 <button class="btn w-100 d-flex justify-content-between mb-2" type="button" (click)="selectElementType()"
-    [ngClass]="{'type-selected': isElementTypeSelected, 'btn-success': isTypeInBuild,
-    'btn-primary': !isTypeInBuild}">
-    <span class="offset-2 col-8 text-start">{{elementTypeInfo.name}}</span><span [ngClass]="{'show-add': isTypeInBuild || isElementTypeSelected}">+</span>
+    [ngClass]="{'type-selected': isElementTypeSelected, 'btn-success': isElementTypeInBuild,
+    'btn-primary': !isElementTypeInBuild}">
+    <span class="offset-2 col-8 text-start">{{elementTypeInfo.name}}</span><span [ngClass]="{'show-add': isElementTypeInBuild || isElementTypeSelected}">+</span>
 </button>

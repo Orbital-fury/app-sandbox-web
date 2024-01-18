@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { PcElement, PcElementType } from 'src/typing-pc-builder';
+import { ElementTypeInfo, PcElement } from 'src/typing-pc-builder';
 
 
 
 // State in component-store on purpose to have red flag if @ngrx/store is needed
 export interface PcBuilderState {
   pcBuildElements: PcElement[];
-  selectedElementType: PcElementType;
+  elementTypeChoices: ElementTypeInfo[];
 };
 
 const initialState: PcBuilderState = {
   pcBuildElements: [],
-  selectedElementType: "CPU"
+  elementTypeChoices: [
+    { name: "CPU", code: "CPU", pcElements: [] },
+    { name: "Case", code: "CASE", pcElements: [] },
+    { name: "GPU", code: "GPU", pcElements: [] },
+    { name: "Motherboard", code: "MOBO", pcElements: [] },
+    { name: "RAM", code: "RAM", pcElements: [] },
+    { name: "Power supply", code: "POWER", pcElements: [] },
+    { name: "Storage", code: "STORAGE", pcElements: [] },
+    { name: "Cooling system", code: "COOLING", pcElements: [] }
+  ]
 };
 
 @Injectable()
@@ -24,12 +33,13 @@ export class PcBuilderStore extends ComponentStore<PcBuilderState> {
 
   // selector can be written as : readonly choosenPcElement$ = this.select(({choosenPcElement}) => choosenPcElement);
   readonly selectPcBuildElements$ = this.select(state => state.pcBuildElements);
-  readonly selectSelectedElementType$ = this.select(state => state.selectedElementType);
+  readonly selectElementTypeChoices$ = this.select(state => state.elementTypeChoices);
 
   readonly addPcElementToBuild = this.updater((state, pcElement: PcElement) => {
+    const toto = [...state.pcBuildElements, pcElement];
     return {
       ...state,
-      pcBuildElements: [...state.pcBuildElements, pcElement]
+      pcBuildElements: toto
     }
   });
 
