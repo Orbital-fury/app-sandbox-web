@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { combineLatest, startWith } from 'rxjs';
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
 import { ElementTypeInfo, PcConstraint, PcElement, PcElementType } from 'src/typing-pc-builder';
@@ -14,21 +13,21 @@ import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
 export class PCBuilderComponent implements OnInit, OnDestroy {
 
   selectedElementType: PcElementType = "CPU";
-  pcElements: PcElement[] = [];
-  filetredPcElements: PcElement[] = [];
-  pcElementsOfChoosenType: PcElement[] = [];
-  pcBuildElements: PcElement[] = [];
+  pcBuildElements: PcElement[] = []; // PC elements displayed in PC build
+  pcElements: PcElement[] = []; // needed to filter on the global pcElements
+  pcElementsOfChoosenType: PcElement[] = []; // PC elements displayed for selection
   totalPrice: number = 0;
   elementTypeChoices: ElementTypeInfo[] = [
-    { name: "CPU", code: "CPU", pcElements: [] },
-    { name: "Case", code: "CASE", pcElements: [] },
-    { name: "GPU", code: "GPU", pcElements: [] },
-    { name: "Motherboard", code: "MOBO", pcElements: [] },
-    { name: "RAM", code: "RAM", pcElements: [] },
-    { name: "Power supply", code: "POWER", pcElements: [] },
-    { name: "Storage", code: "STORAGE", pcElements: [] },
-    { name: "Cooling system", code: "COOLING", pcElements: [] }
+    { name: "CPU", code: "CPU" },
+    { name: "Case", code: "CASE" },
+    { name: "GPU", code: "GPU" },
+    { name: "Motherboard", code: "MOBO" },
+    { name: "RAM", code: "RAM" },
+    { name: "Power supply", code: "POWER" },
+    { name: "Storage", code: "STORAGE" },
+    { name: "Cooling system", code: "COOLING" }
   ];
+  mapElementTypeChoices: Map<PcElementType, PcElement[]>;
   isCurrentElementTypeInBuild: boolean = false;
 
   constructor(
@@ -38,22 +37,26 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.mapElementTypeChoices = new Map<PcElementType, PcElement[]>(
+      this.elementTypeChoices.map(elementType => [elementType.code, []])
+    );
+
     this.pcElementService.getPcElements().subscribe(pcElements => {
       this.pcElements = pcElements;
-      this.filetredPcElements = pcElements;
-      this.pcElementsOfChoosenType = this.pcElements.filter(pcElement => pcElement.type === this.selectedElementType);
+      this.updateMapElementTypeChoices(pcElements);
+      this.updatePcElementSelection();
     });
 
-    combineLatest([
-      this.pcBuilderStore.selectPcBuildElements$.pipe(startWith(this.pcBuildElements)),
-      this.elementTypeChoiceService.selectedElementType$.pipe(startWith(this.selectedElementType))
-    ]).subscribe(([pcBuildElements, selectedElementType]) => {
+    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements => {
       this.pcBuildElements = pcBuildElements;
-      this.selectedElementType = selectedElementType;
-      this.filetredPcElements = this.getPcElementsWithConstraints();
       this.totalPrice = pcBuildElements.map(pcBuildElement => pcBuildElement.price).reduce((sum, current) => sum + current, 0);
-      this.pcElementsOfChoosenType = this.filetredPcElements.filter(pcElement => pcElement.type === this.selectedElementType);
-      this.isCurrentElementTypeInBuild = this.pcBuildElements.map(pcBuildElement => pcBuildElement.type).includes(this.selectedElementType);
+      this.updateMapElementTypeChoices(this.getPcElementsWithConstraints());
+      this.updatePcElementSelection();
+    });
+
+    this.elementTypeChoiceService.selectedElementType$.subscribe(selectedElementType => {
+      this.selectedElementType = selectedElementType;
+      this.updatePcElementSelection();
     });
   }
 
@@ -61,6 +64,22 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
 
   removeElementFromChoosen(removedPcElement: PcElement) {
     this.pcBuilderStore.removePcElementFromBuild(removedPcElement);
+  }
+
+  private updatePcElementSelection() {
+    this.pcElementsOfChoosenType = this.mapElementTypeChoices.get(this.selectedElementType)!;
+    this.isCurrentElementTypeInBuild = this.pcBuildElements.map(pcBuildElement => pcBuildElement.type).includes(this.selectedElementType);
+  }
+
+  private updateMapElementTypeChoices(fileteredPcElements: PcElement[]) {
+    this.mapElementTypeChoices.clear()
+    this.elementTypeChoices.forEach(
+      elementTypeChoice => {
+        this.mapElementTypeChoices.set(
+          elementTypeChoice.code,
+          fileteredPcElements.filter(pcElement => pcElement.type === elementTypeChoice.code))
+      }
+    );
   }
 
   private getPcElementsWithConstraints(): PcElement[] {
@@ -82,7 +101,7 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
 
   private canBeAddedRegardingConstraints(pcElement: PcElement): boolean {
     const pcBuildElementsOfOtherType = this.pcBuildElements.filter(pcBuildElement =>
-      pcBuildElement.type !== this.selectedElementType
+      pcBuildElement.type !== pcElement.type
     );
     const pcBuildConstraints = this.getPcConstraintsfromPcElements(pcBuildElementsOfOtherType);
 
