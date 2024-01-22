@@ -28,7 +28,10 @@
         <div style="height: 90%;">
           <div class="row" *ngFor="let pcBuildElement of pcBuildElements">
             <div class="col-9">
-              {{pcBuildElement.brand}} {{pcBuildElement.model}}
+              {{pcBuildElement.brand}} {{pcBuildElement.model}} <a [routerLink]="'/pc-builder/pc-elements/' + pcBuildElement.id" (click)="$event.stopPropagation()"
+              title="Visit information page: {{pcBuildElement.brand}} {{pcBuildElement.model}}">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
             </div>
             <div class="col-3 d-flex justify-content-end mb-2">
               {{pcBuildElement.price | euroCurrency}}

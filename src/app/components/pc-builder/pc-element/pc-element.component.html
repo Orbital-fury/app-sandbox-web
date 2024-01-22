@@ -1,0 +1,15 @@
+<div class="spinner-border" role="status" *ngIf="loadingSinglePcElement">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="m-4" *ngIf="!loadingSinglePcElement">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="border-bottom title-border pb-1 mb-4">
+        {{pcElement.brand}} {{pcElement.model}}
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    C'est bon !
+  </div>
+</div>

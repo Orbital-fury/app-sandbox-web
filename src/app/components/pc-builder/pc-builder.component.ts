@@ -12,6 +12,7 @@ import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
 })
 export class PCBuilderComponent implements OnInit, OnDestroy {
 
+  loadingPcElements: boolean;
   selectedElementType: PcElementType = "CPU";
   pcBuildElements: PcElement[] = []; // PC elements displayed in PC build
   pcElements: PcElement[] = []; // needed to filter on the global pcElements

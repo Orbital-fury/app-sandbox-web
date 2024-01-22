@@ -28,4 +28,9 @@ export class PcElementService {
       .pipe(map((pcElements) => pcElements.pcElements));
   }
 
+  getPcElement(id: number): Observable<PcElement> {
+    return this.http
+      .get<PcElement>(`${this.baseUrl}/${id}`);
+  }
+
 }

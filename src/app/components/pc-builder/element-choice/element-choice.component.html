@@ -1,6 +1,10 @@
 <div (click)="addPcElementToBuild()" class="mx-1 mb-3 p-3 row element-choice" [ngClass]="{'selected' : isInBuild}">
     <div class="col-7">
-        <span>{{pcElement.brand}} {{pcElement.model}}</span><br>
+        <span>{{pcElement.brand}} {{pcElement.model}} </span>
+        <a [routerLink]="'/pc-builder/pc-elements/' + pcElement.id" (click)="$event.stopPropagation()"
+            title="Visit information page: {{pcElement.brand}} {{pcElement.model}}">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a><br>
         <span *ngIf="!seeMore" class="ps-3 text-primary see-more" (click)="seeMoreClick($event, true)">
             See more...
         </span>
@@ -40,7 +44,7 @@
     </div>
     <div class="col-3" style="border:1px solix black">
         <div class="img-container">
-          <img src="{{pcElement.img}}">
+            <img src="{{pcElement.img}}">
         </div>
     </div>
 </div>
