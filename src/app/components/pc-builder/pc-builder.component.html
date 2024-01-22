@@ -9,18 +9,21 @@
   <div class="row">
     <div class="row col-8">
       <h3 class="mb-4 text-center" style="color:darkgrey">PC ELEMENTS</h3>
-      <div class="col-3 pe-0">
-        <ng-container *ngFor="let elementTypeChoice of elementTypeChoices">
-          <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>
-        </ng-container>
-      </div>
-      <div class="col-9 elements-selection" [ngClass]="{'in-build' : isCurrentElementTypeInBuild}">
-        <div class="mh-100" style="overflow-y: auto">
-          <!-- List display of elements -->
-          <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"
-            [pcElement]="pcElement"></app-element-choice>
+      <app-loader *ngIf="loadingPcElements"></app-loader>
+      <ng-container *ngIf="!loadingPcElements">
+        <div class="col-3 pe-0">
+          <ng-container *ngFor="let elementTypeChoice of elementTypeChoices">
+            <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>
+          </ng-container>
         </div>
-      </div>
+        <div class="col-9 elements-selection" [ngClass]="{'in-build' : isCurrentElementTypeInBuild}">
+          <div class="mh-100" style="overflow-y: auto">
+            <!-- List display of elements -->
+            <app-element-choice *ngFor="let pcElement of pcElementsOfChoosenType"
+              [pcElement]="pcElement"></app-element-choice>
+          </div>
+        </div>
+      </ng-container>
     </div>
     <div class="col-4 ms-3">
       <h3 class="mb-4 text-center" style="color:darkgray">PC BUILD</h3>
@@ -28,10 +31,11 @@
         <div style="height: 90%;">
           <div class="row" *ngFor="let pcBuildElement of pcBuildElements">
             <div class="col-9">
-              {{pcBuildElement.brand}} {{pcBuildElement.model}} <a [routerLink]="'/pc-builder/pc-elements/' + pcBuildElement.id" (click)="$event.stopPropagation()"
-              title="Visit information page: {{pcBuildElement.brand}} {{pcBuildElement.model}}">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+              {{pcBuildElement.brand}} {{pcBuildElement.model}} <a
+                [routerLink]="'/pc-builder/pc-elements/' + pcBuildElement.id" (click)="$event.stopPropagation()"
+                title="Visit information page: {{pcBuildElement.brand}} {{pcBuildElement.model}}">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
             </div>
             <div class="col-3 d-flex justify-content-end mb-2">
               {{pcBuildElement.price | euroCurrency}}

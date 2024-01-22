@@ -1,7 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
-import { PcBuilderStore } from 'src/app/store/component-store/pc-builder.store';
+import { selectPcBuildElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
+import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
 import { ElementTypeInfo } from 'src/typing-pc-builder';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-element-type-choice',
@@ -14,23 +17,28 @@ export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
   isElementTypeSelected: boolean; // bar extended to display the selection of type
   isElementTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
 
+  private subs = new SubSink();
+
   constructor(
-    private readonly pcBuilderStore: PcBuilderStore,
+    private readonly pcElementsStore: Store<PcElementsState>,
     private elementTypeChoiceService: ElementTypeChoiceService
   ) { }
 
   ngOnInit() {
     this.isElementTypeSelected = this.elementTypeInfo.code === "CPU";
 
-    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements =>
+    this.subs.sink = this.pcElementsStore.select(selectPcBuildElements).subscribe(pcBuildElements =>
       this.isElementTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.elementTypeInfo.code) !== undefined
     );
+
     this.elementTypeChoiceService.selectedElementType$.subscribe(selectedType => {
       this.isElementTypeSelected = selectedType === this.elementTypeInfo.code
     });
   }
 
-  ngOnDestroy() { }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 
   selectElementType() {
     this.elementTypeChoiceService.notifySelectedElementType(this.elementTypeInfo.code);

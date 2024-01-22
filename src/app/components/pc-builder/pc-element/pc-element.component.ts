@@ -14,10 +14,12 @@ import { SubSink } from 'subsink';
   styleUrls: ['./pc-element.component.scss']
 })
 export class PcElementComponent implements OnInit, OnDestroy {
-  private subs = new SubSink();
+
   elementId: number = parseInt(this.route.snapshot.paramMap.get('elementId')!);
   pcElement: PcElement;
   loadingSinglePcElement: boolean;
+
+  private subs = new SubSink();
 
   constructor(private readonly route: ActivatedRoute, private readonly pcElementStore: Store<PcElementsState>) { }
 

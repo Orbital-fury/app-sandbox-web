@@ -1,6 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { PcBuilderStore } from 'src/app/store/component-store/pc-builder.store';
+import { Store } from '@ngrx/store';
+import { addPcElementToBuild } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
+import { selectPcBuildElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
+import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
 import { PcElement } from 'src/typing-pc-builder';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-element-choice',
@@ -14,20 +18,24 @@ export class ElementChoiceComponent implements OnInit, OnDestroy {
   canBeAdded: boolean = true;
   isInBuild: boolean = false;
 
-  constructor(private readonly pcBuilderStore: PcBuilderStore) { }
+  private subs = new SubSink();
+
+  constructor(private readonly pcElementsStore: Store<PcElementsState>) { }
 
   ngOnInit() {
-    this.pcBuilderStore.selectPcBuildElements$.subscribe(pcBuildElements => {
+    this.subs.sink = this.pcElementsStore.select(selectPcBuildElements).subscribe(pcBuildElements => {
       this.isInBuild = pcBuildElements.includes(this.pcElement);
       this.canBeAdded = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.pcElement.type) === undefined;
-    });
+    })
   }
 
-  ngOnDestroy() { }
+  ngOnDestroy() {
+    this.subs.unsubscribe();
+  }
 
   addPcElementToBuild() {
     if (this.canBeAdded) {
-      this.pcBuilderStore.addPcElementToBuild(this.pcElement);
+      this.pcElementsStore.dispatch(addPcElementToBuild({ pcElement: this.pcElement }));
     }
   }
 

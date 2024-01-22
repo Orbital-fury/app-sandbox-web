@@ -1,6 +1,4 @@
-<div class="spinner-border" role="status" *ngIf="loadingSinglePcElement">
-  <span class="visually-hidden">Loading...</span>
-</div>
+<app-loader *ngIf="loadingSinglePcElement"></app-loader>
 <div class="m-4" *ngIf="!loadingSinglePcElement">
   <div class="row">
     <div class="col-12">

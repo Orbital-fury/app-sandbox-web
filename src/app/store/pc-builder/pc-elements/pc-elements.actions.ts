@@ -15,9 +15,14 @@ export const loadPcElementsFailure = createAction(
   props<{ error: any }>()
 );
 
-export const changePcBuildElements = createAction(
-  '[PC Build Elements] Change PcBuildElements',
-  props<{ pcBuildElements: PcElement[] }>()
+export const addPcElementToBuild = createAction(
+  '[PC Build Elements] Add PC element to PcBuildElements',
+  props<{ pcElement: PcElement }>()
+);
+
+export const removePcElementFromBuild = createAction(
+  '[PC Build Elements] Remove PC element from PcBuildElements',
+  props<{ pcElement: PcElement }>()
 );
 
 export const loadSinglePcElement = createAction(

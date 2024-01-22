@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import * as fromPcElementActions from './pc-elements.actions';
-import { pcElementsState as pcElementsState } from './pc-elements.state';
+import { pcElementsState } from './pc-elements.state';
 
 export const reducer = createReducer(
   pcElementsState,
+
   on(fromPcElementActions.loadPcElements, (state) => ({
     ...state,
     loadingPcElements: true
@@ -20,10 +21,7 @@ export const reducer = createReducer(
     pcElements: [],
     error
   })),
-  on(fromPcElementActions.changePcBuildElements, (state, { pcBuildElements }) => ({
-    ...state,
-    pcBuildElements
-  })),
+
   on(fromPcElementActions.loadSinglePcElement, (state) => ({
     ...state,
     loadingSinglePcElement: true
@@ -40,4 +38,24 @@ export const reducer = createReducer(
     singlePcElement: undefined,
     error
   })),
+
+  on(fromPcElementActions.addPcElementToBuild, (state, { pcElement }) => ({
+    ...state,
+    pcBuildElements: [...state.pcBuildElements, pcElement]
+  })),
+  on(fromPcElementActions.removePcElementFromBuild, (state, { pcElement }) => {
+    const index = state.pcBuildElements.findIndex(pcBuildElement => pcBuildElement === pcElement);
+    if (index !== -1) {
+      const updatedPcBuildElements = [
+        ...state.pcBuildElements.slice(0, index),
+        ...state.pcBuildElements.slice(index + 1)
+      ];
+
+      return {
+        ...state,
+        pcBuildElements: updatedPcBuildElements
+      };
+    }
+    return state;
+  })
 );

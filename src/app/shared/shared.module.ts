@@ -4,9 +4,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoaderComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -14,6 +17,6 @@ import { BrowserModule } from '@angular/platform-browser';
     NgbModule,
     MatTooltipModule,
   ],
-  exports: [CommonModule, RouterModule, BrowserModule, NgbModule, MatTooltipModule],
+  exports: [CommonModule, RouterModule, BrowserModule, NgbModule, MatTooltipModule, LoaderComponent],
 })
 export class SharedModule {}
