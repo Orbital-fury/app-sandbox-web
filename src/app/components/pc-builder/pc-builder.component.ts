@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
 import { loadPcElements, removePcElementFromBuild } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
-import { selectLoadingPcElements, selectPcBuildElements, selectPcElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
+import { selectLoadingPcElements, selectPcBuildElements, selectPcElements, selectSelectedPcElementType } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
 import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
 import { ElementTypeInfo, PcConstraint, PcElement, PcElementType } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
@@ -37,10 +36,7 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
 
   private subs = new SubSink();
 
-  constructor(
-    private readonly pcElementStore: Store<PcElementsState>,
-    private elementTypeChoiceService: ElementTypeChoiceService
-  ) { }
+  constructor(private readonly pcElementStore: Store<PcElementsState>) { }
 
   ngOnInit() {
     this.mapElementTypeChoices = new Map<PcElementType, PcElement[]>(
@@ -50,8 +46,12 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
     this.subs.sink = this.pcElementStore.select(selectLoadingPcElements).subscribe(loading => this.loadingPcElements = loading);
     this.subs.sink = this.pcElementStore.select(selectPcElements).subscribe(pcElements => {
       this.pcElements = pcElements
-      this.updateMapElementTypeChoices(this.pcElements);
-      this.updatePcElementSelection();
+      if (this.pcBuildElements.length === 0) {
+        this.updateMapElementTypeChoices(this.pcElements);
+        this.updatePcElementSelection();
+        console.log("selectPcElements, à lancer qu'une fois pour charger le store")
+      }
+
     });
 
     this.subs.sink = this.pcElementStore.select(selectPcBuildElements).subscribe(pcBuildElements => {
@@ -61,10 +61,10 @@ export class PCBuilderComponent implements OnInit, OnDestroy {
       this.updatePcElementSelection();
     });
 
-    this.elementTypeChoiceService.selectedElementType$.subscribe(selectedElementType => {
+    this.subs.sink = this.pcElementStore.select(selectSelectedPcElementType).subscribe(selectedElementType => {
       this.selectedElementType = selectedElementType;
       this.updatePcElementSelection();
-    });
+    })
 
     this.pcElementStore.dispatch(loadPcElements());
   }

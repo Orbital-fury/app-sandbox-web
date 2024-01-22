@@ -57,5 +57,10 @@ export const reducer = createReducer(
       };
     }
     return state;
-  })
+  }),
+
+  on(fromPcElementActions.changeSelectedPcElementType, (state, { pcElementType }) => ({
+    ...state,
+    selectedPcElementType: pcElementType
+  }))
 );

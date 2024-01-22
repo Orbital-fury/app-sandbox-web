@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ElementTypeChoiceService } from 'src/app/services/pc-builder/element-type-choice.service';
-import { selectPcBuildElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
+import { changeSelectedPcElementType } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
+import { selectPcBuildElements, selectSelectedPcElementType } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
 import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
 import { ElementTypeInfo } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
@@ -19,10 +19,7 @@ export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
 
   private subs = new SubSink();
 
-  constructor(
-    private readonly pcElementsStore: Store<PcElementsState>,
-    private elementTypeChoiceService: ElementTypeChoiceService
-  ) { }
+  constructor(private readonly pcElementsStore: Store<PcElementsState>) { }
 
   ngOnInit() {
     this.isElementTypeSelected = this.elementTypeInfo.code === "CPU";
@@ -31,9 +28,9 @@ export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
       this.isElementTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.elementTypeInfo.code) !== undefined
     );
 
-    this.elementTypeChoiceService.selectedElementType$.subscribe(selectedType => {
-      this.isElementTypeSelected = selectedType === this.elementTypeInfo.code
-    });
+    this.subs.sink = this.pcElementsStore.select(selectSelectedPcElementType).subscribe(selectedElementType =>
+      this.isElementTypeSelected = selectedElementType === this.elementTypeInfo.code
+    );
   }
 
   ngOnDestroy() {
@@ -41,7 +38,7 @@ export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
   }
 
   selectElementType() {
-    this.elementTypeChoiceService.notifySelectedElementType(this.elementTypeInfo.code);
+    this.pcElementsStore.dispatch(changeSelectedPcElementType({ pcElementType: this.elementTypeInfo.code }));
   }
 
 }

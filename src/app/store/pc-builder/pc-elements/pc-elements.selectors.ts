@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { PcElementsState as PcElementsState } from './pc-elements.state';
+import { PcElementsState } from './pc-elements.state';
 
 // export const getPcElementState = (state: PcElementState) => state;
 export const getPcElementsState = createFeatureSelector<PcElementsState>('pcElements');
@@ -13,3 +13,5 @@ export const selectPcBuildElements = createSelector(getPcElementsState, state =>
 export const selectLoadingSinglePcElement = createSelector(getPcElementsState, state => state.loadingSinglePcElement);
 
 export const selectSinglePcElement = createSelector(getPcElementsState, state => state.singlePcElement);
+
+export const selectSelectedPcElementType = createSelector(getPcElementsState, state => state.selectedPcElementType);

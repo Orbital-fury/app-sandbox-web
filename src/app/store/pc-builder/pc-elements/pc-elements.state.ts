@@ -1,6 +1,7 @@
-import { PcElement } from "src/typing-pc-builder";
+import { PcElement, PcElementType } from "src/typing-pc-builder";
 
 export interface PcElementsState {
+    selectedPcElementType: PcElementType;
     loadingSinglePcElement: boolean;
     singlePcElement: PcElement | undefined;
     loadingPcElements: boolean;
@@ -10,6 +11,7 @@ export interface PcElementsState {
 };
 
 export const pcElementsState: PcElementsState = {
+    selectedPcElementType: 'CPU',
     loadingSinglePcElement: false,
     singlePcElement: undefined,
     loadingPcElements: false,
