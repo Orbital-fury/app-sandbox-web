@@ -15,10 +15,10 @@ import { SubSink } from 'subsink';
 })
 export class PcElementComponent implements OnInit, OnDestroy {
 
-  elementId: number = parseInt(this.route.snapshot.paramMap.get('elementId')!);
   pcElement: PcElement;
   loadingSinglePcElement: boolean;
 
+  private elementId: number = parseInt(this.route.snapshot.paramMap.get('elementId')!);
   private subs = new SubSink();
 
   constructor(private readonly route: ActivatedRoute, private readonly pcElementStore: Store<PcElementsState>) { }

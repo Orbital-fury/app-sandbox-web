@@ -12,8 +12,7 @@ import { SubSink } from 'subsink';
   styleUrls: ['./element-choice.component.scss']
 })
 export class ElementChoiceComponent implements OnInit, OnDestroy {
-  @Input()
-  pcElement: PcElement;
+  @Input() pcElement: PcElement;
   seeMore: boolean = false;
   canBeAdded: boolean = true;
   isInBuild: boolean = false;
