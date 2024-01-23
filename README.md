@@ -79,4 +79,4 @@ The pc-builder part is an example of how to configure hardware with constraints 
 
 ### component-store
 
-Example of a componenet-store, [here (ts file)](/src/app/store/component-store/pc-builder.store.ts)
+Example of a component-store, [here (ts file)](/src/app/store/component-store/pc-builder.store.ts)
