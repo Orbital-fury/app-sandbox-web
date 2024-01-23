@@ -29,7 +29,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 - bootstrap used
 - fontawesome used
 - bootstrap loader in shared component
-- [Shared module](\src\app\shared\shared.module.ts) and [core module](\src\app\core.module.ts) set up
+- [Shared module](/src/app/shared/shared.module.ts) and [core module](/src/app/core.module.ts) set up
 
 ## mmm (Manage measuring Machine)
 
@@ -44,11 +44,11 @@ Similar to GCD by displaying machines data. Possibility to add new machine. Mach
 
 ### Highlights
 
-- specific outlet to display a second menu [here](\src\app\components\mmm\mmm.component.html)
+- specific outlet to display a second menu [here](/src/app/components/mmm/mmm.component.html)
 - `highcharts` used to display graphics [here](/src/app/components/mmm/manage-machine/machine/machine-metric/machine-metric.component.ts)
 - `angular-ng-autocomplete` used for autocomplete [here](/src/app/components/mmm/manage-machine/manage-machine.component.ts)
-- `@swimlane/ngx-datatable` used for custom dynamic table [here](\src\app\components\mmm\maintenance\maintenance.component.ts)
-- Reactive form used [here](\src\app\components\mmm\manage-machine\update-machine\update-machine.component.ts)
+- `@swimlane/ngx-datatable` used for custom dynamic table [here](/src/app/components/mmm/maintenance/maintenance.component.ts)
+- Reactive form used [here](/src/app/components/mmm/manage-machine/update-machine/update-machine.component.ts)
 
 ## pc-builder
 
@@ -63,9 +63,9 @@ The pc-builder part is an example of how to configure hardware with constraints 
 
 ### Highlights
 
-- [ngrx/store used with pc-builder](\src\app\store\pc-builder)
-- service used for communication between component parent and child, [example here](\src\app\services\pc-builder\element-type-choice.service.ts)
-- custom pipe (currency pipe) [here](\src\app\components\pc-builder\currency-pipe\currency-pipe.component.ts)
+- [ngrx/store used with pc-builder](/src/app/store/pc-builder)
+- service used for communication between component parent and child, [example here](/src/app/services/pc-builder/element-type-choice.service.ts)
+- custom pipe (currency pipe) [here](/src/app/components/pc-builder/currency-pipe/currency-pipe.component.ts)
 
 ## ngrx/store
 
