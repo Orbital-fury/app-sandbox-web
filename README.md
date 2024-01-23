@@ -33,11 +33,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## mmm (Manage measuring Machine)
 
-Similar to GCD by displaying machines data. Possibility to add new machine. Machines are displayed regarding if a maintenance is needed: using a custom table ([Maintenance](<img src="/documentation/mmm_maintenance.PNG">)) and using cards ([Manage machine](/documentation/mmm_manage-machine.PNG))<br>
-[Maintenance](<img src="/documentation/mmm_maintenance.PNG">)<br>
-[Maintenance](<img src="/documentation/mmm_maintenance.PNG" onmouseover="this.src='/documentation/mmm_maintenance.PNG'">)<br>
-[Maintenance](/documentation/mmm_maintenance.PNG)<br>
-
+Similar to GCD by displaying machines data. Possibility to add new machine. Machines are displayed regarding if a maintenance is needed:
+- using cards ![mmm_manage-machine](/documentation/mmm_manage-machine.PNG)
+- using a custom table ![mmm_maintenance](/documentation/mmm_maintenance.PNG)
 
 ### Structure
 
@@ -53,6 +51,7 @@ Similar to GCD by displaying machines data. Possibility to add new machine. Mach
 - `angular-ng-autocomplete` used for autocomplete [here](/src/app/components/mmm/manage-machine/manage-machine.component.ts)
 - `@swimlane/ngx-datatable` used for custom dynamic table [here](/src/app/components/mmm/maintenance/maintenance.component.ts)
 - Reactive form used [here](/src/app/components/mmm/manage-machine/update-machine/update-machine.component.ts)
+![mmm_add-machine](/documentation/mmm_add-machine.PNG)
 
 ## pc-builder
 
@@ -62,8 +61,10 @@ The pc-builder part is an example of how to configure hardware with constraints 
 
 - User select an element type (CPU, Case, GPU, RAM, MoBo, etc), then select a PC element to add to the current PC build
 - When PC elements are in PC build, it will adjust the possible selection regarding PC build constraints
+![pc-builder_1](/documentation/pc-builder_1.PNG)
 - All PC elements are retrieved at first, then the logic is made with the Front-end (in order to select the PC elements and adjust the selection)
 - If the logic is made in the Back-end it will take 0.1 second instead of 0.01 second to get the new PC element selection regarding what are the PC elements in the current build. Tests have been made... maybe use another DB structure to prevent this
+![pc-builder_2](/documentation/pc-builder_2.PNG)
 
 ### Highlights
 
