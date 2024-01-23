@@ -33,7 +33,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## mmm (Manage measuring Machine)
 
-Similar to GCD by displaying machines data. Possibility to add new machine. Machines are displayed regarding if a maintenance is needed: using a custom table ([Maintenance]()) and using cards ([Manage machine]())
+Similar to GCD by displaying machines data. Possibility to add new machine. Machines are displayed regarding if a maintenance is needed: using a custom table ([Maintenance](<img src="/documentation/mmm-maintenance.PNG">)) and using cards ([Manage machine](/documentation/mmm-manage-machine.PNG))<br>
+[Maintenance](<img src="/documentation/mmm-maintenance.PNG">)<br>
+[Maintenance](<img src="/documentation/mmm-maintenance.PNG" onmouseover="this.src='/documentation/mmm-maintenance.PNG'" onmouseout="">)<br>
+[Maintenance](/documentation/mmm-maintenance.PNG")<br>
+
 
 ### Structure
 
