@@ -2,7 +2,7 @@
 
 ## Tasks
 
-- 
+- Develop PC element manager (choice between element and constraint) => add, edit, delete
 
 ## Development server
 

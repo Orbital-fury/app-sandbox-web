@@ -9,10 +9,13 @@ import { UpdateMachineComponent } from './components/mmm/manage-machine/update-m
 import { MmmHomeComponent } from './components/mmm/mmm-home/mmm-home.component';
 import { MmmComponent } from './components/mmm/mmm.component';
 import { PCBuilderComponent } from './components/pc-builder/pc-builder.component';
-import { PcElementComponent } from './components/pc-builder/pc-element/pc-element.component';
+import { PcElementComponent } from './components/pc-builder/manage-pc-element/pc-element/pc-element.component';
 import { CustomerComponent } from './components/test/customer/customer.component';
 import { DashboardComponent } from './components/test/dashboard/dashboard.component';
 import { ParallaxComponent } from './components/test/parallax/parallax.component';
+import { ManagePcComponent } from './components/pc-builder/manage-pc-element/manage-pc.component';
+import { UpdatePcElementComponent } from './components/pc-builder/manage-pc-element/update-pc-element/update-pc-element.component';
+import { UpdatePcElementConstraintComponent } from './components/pc-builder/manage-pc-element/update-pc-element-constraint/update-pc-element-constraint.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +26,13 @@ const routes: Routes = [
     path: 'pc-builder', children: [
       { path: '', component: PCBuilderComponent },
       { path: 'pc-elements/:elementId', component: PcElementComponent },
+      {
+        path: 'manage-pc-element', children: [
+          { path: '', component: ManagePcComponent },
+          { path: 'create', component: UpdatePcElementComponent },
+          { path: 'create-constraint', component: UpdatePcElementConstraintComponent },
+        ]
+      },
     ]
   },
   {
@@ -32,17 +42,11 @@ const routes: Routes = [
       { path: '', component: MmmHomeComponent, outlet: 'mmm' },
       {
         path: 'manage-machine',
-        component: ManageMachineComponent,
-        outlet: 'mmm',
-      },
-      {
-        path: 'manage-machine/create',
-        component: UpdateMachineComponent,
-        outlet: 'mmm',
-      },
-      {
-        path: 'manage-machine/:machineId',
-        component: MachineComponent,
+        children: [
+          { path: '', component: ManageMachineComponent },
+          { path: 'create', component: UpdateMachineComponent },
+          { path: ':machineId', component: MachineComponent },
+        ],
         outlet: 'mmm',
       },
       {

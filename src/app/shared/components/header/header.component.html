@@ -2,20 +2,13 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <div class="me-2 d-flex">
-        <img
-          class="me-2 navbar-toggler-icon"
-          src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/64x64/3a7ce1e2822d533565da050a0a8c0428"
-        />
+        <img class="me-2 navbar-toggler-icon"
+          src="https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/64x64/3a7ce1e2822d533565da050a0a8c0428" />
         <div>TEST</div>
       </div>
     </a>
-    <button
-      data-toggle="collapse"
-      class="navbar-toggler"
-      data-target="#navcol-1"
-    >
-      <span class="sr-only">Toggle navigation</span
-      ><span class="navbar-toggler-icon"></span>
+    <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+        navigation</span><span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navcol-1">
       <ul class="nav navbar-nav">
@@ -23,42 +16,36 @@
           <a class="nav-link" [routerLink]="['/', 'dashboard']">Dashboard</a>
         </li>
         <li class="nav-item dropdown">
-          <button
-            class="dropdown-toggle nav-link"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Test
-          </button>
+          <button class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Test</button>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" [routerLink]="['/', 'test', 'parallax']"
-                >Parallax</a
-              >
+              <a class="dropdown-item" [routerLink]="['/', 'test', 'parallax']">Parallax</a>
             </li>
           </ul>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" [routerLink]="['/', 'mmm']"
-            >Measuring Machine</a
-          >
+          <a class="nav-link" [routerLink]="['/', 'mmm']">Measuring Machine</a>
         </li>
-        <li class="nav-item" role="presentation">
-          <a class="nav-link" [routerLink]="['/', 'pc-builder']"
-            >PC Builder</a
-          >
+        <li class="nav-item dropdown">
+          <button class="dropdown-toggle nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">PC
+            Builder</button>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/', 'pc-builder']"><i class="fa-solid fa-cubes text-primary"></i>
+                Build PC</a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/pc-builder/manage-pc-element']"><i
+                  class="fa-solid fa-list-check text-danger"></i> Manage PC elements</a>
+            </li>
+          </ul>
         </li>
       </ul>
       <form class="form-inline ms-auto" target="_self">
         <div class="form-group">
-          <label for="search-field"><i class="fa fa-search"></i></label
-          ><input
-            class="form-control search-field"
-            type="search"
-            id="search-field"
-            name="search"
-          />
+          <label for="search-field"><i class="fa fa-search"></i></label>
+          <input class="form-control search-field" type="search" id="search-field" name="search" />
         </div>
       </form>
       <span class="navbar-text"><a class="login" href="#">Log In</a></span>
