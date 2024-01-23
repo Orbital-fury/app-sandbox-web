@@ -28,6 +28,10 @@ export abstract class PcConstraint {
   value: string[];
 }
 
+export interface PcConstraints {
+  pcConstraints: PcConstraint[];
+}
+
 export abstract class PcSpecification {
   id: number;
   name: string;

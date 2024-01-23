@@ -1,49 +1,49 @@
 import { createReducer, on } from '@ngrx/store';
-import * as fromPcElementActions from './pc-elements.actions';
+import * as fromPcElementsActions from './pc-elements.actions';
 import { pcElementsState } from './pc-elements.state';
 
 export const reducer = createReducer(
   pcElementsState,
 
-  on(fromPcElementActions.loadPcElements, (state) => ({
+  on(fromPcElementsActions.loadPcElements, (state) => ({
     ...state,
     loadingPcElements: true
   })),
-  on(fromPcElementActions.loadPcElementsSuccess, (state, { pcElements }) => ({
+  on(fromPcElementsActions.loadPcElementsSuccess, (state, { pcElements }) => ({
     ...state,
     loadingPcElements: false,
     pcElements,
     error: ''
   })),
-  on(fromPcElementActions.loadPcElementsFailure, (state, { error }) => ({
+  on(fromPcElementsActions.loadPcElementsFailure, (state, { error }) => ({
     ...state,
     loadingPcElements: false,
     pcElements: [],
     error
   })),
 
-  on(fromPcElementActions.loadSinglePcElement, (state) => ({
+  on(fromPcElementsActions.loadSinglePcElement, (state) => ({
     ...state,
     loadingSinglePcElement: true
   })),
-  on(fromPcElementActions.loadSinglePcElementSuccess, (state, { pcElement }) => ({
+  on(fromPcElementsActions.loadSinglePcElementSuccess, (state, { pcElement }) => ({
     ...state,
     loadingSinglePcElement: false,
     singlePcElement: pcElement,
     error: ''
   })),
-  on(fromPcElementActions.loadSinglePcElementFailure, (state, { error }) => ({
+  on(fromPcElementsActions.loadSinglePcElementFailure, (state, { error }) => ({
     ...state,
     loadingSinglePcElement: false,
     singlePcElement: undefined,
     error
   })),
 
-  on(fromPcElementActions.addPcElementToBuild, (state, { pcElement }) => ({
+  on(fromPcElementsActions.addPcElementToBuild, (state, { pcElement }) => ({
     ...state,
     pcBuildElements: [...state.pcBuildElements, pcElement]
   })),
-  on(fromPcElementActions.removePcElementFromBuild, (state, { pcElement }) => {
+  on(fromPcElementsActions.removePcElementFromBuild, (state, { pcElement }) => {
     const index = state.pcBuildElements.findIndex(pcBuildElement => pcBuildElement === pcElement);
     if (index !== -1) {
       const updatedPcBuildElements = [
@@ -59,7 +59,7 @@ export const reducer = createReducer(
     return state;
   }),
 
-  on(fromPcElementActions.changeSelectedPcElementType, (state, { pcElementType }) => ({
+  on(fromPcElementsActions.changeSelectedPcElementType, (state, { pcElementType }) => ({
     ...state,
     selectedPcElementType: pcElementType
   }))

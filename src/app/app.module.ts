@@ -9,12 +9,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LeftTileComponent } from './components/home/left-tile/left-tile.component';
 import { MmmModule } from './components/mmm/mmm.module';
-import { PCBuilderModule } from './components/pc-builder/pc-builder.module';
 import { TestModule } from './components/test/test.module';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { effects, reducers } from './store/pc-builder';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PcBuilderModule } from './components/pc-builder/pc-builder.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LeftTileComponent],
@@ -26,7 +26,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     TestModule,
     MmmModule,
-    PCBuilderModule,
+    PcBuilderModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({

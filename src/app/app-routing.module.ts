@@ -8,14 +8,16 @@ import { ManageMachineComponent } from './components/mmm/manage-machine/manage-m
 import { UpdateMachineComponent } from './components/mmm/manage-machine/update-machine/update-machine.component';
 import { MmmHomeComponent } from './components/mmm/mmm-home/mmm-home.component';
 import { MmmComponent } from './components/mmm/mmm.component';
-import { PCBuilderComponent } from './components/pc-builder/pc-builder.component';
-import { PcElementComponent } from './components/pc-builder/manage-pc-element/pc-element/pc-element.component';
+import { PcBuilderComponent } from './components/pc-builder/pc-builder.component';
 import { CustomerComponent } from './components/test/customer/customer.component';
 import { DashboardComponent } from './components/test/dashboard/dashboard.component';
 import { ParallaxComponent } from './components/test/parallax/parallax.component';
-import { ManagePcComponent } from './components/pc-builder/manage-pc-element/manage-pc.component';
-import { UpdatePcElementComponent } from './components/pc-builder/manage-pc-element/update-pc-element/update-pc-element.component';
-import { UpdatePcElementConstraintComponent } from './components/pc-builder/manage-pc-element/update-pc-element-constraint/update-pc-element-constraint.component';
+import { PcElementComponent } from './components/pc-builder/manage-pc-builder/manage-pc-element/pc-element/pc-element.component';
+import { ManagePcBuilderComponent } from './components/pc-builder/manage-pc-builder/manage-pc-builder.component';
+import { UpdatePcElementComponent } from './components/pc-builder/manage-pc-builder/manage-pc-element/update-pc-element/update-pc-element.component';
+import { UpdatePcConstraintComponent } from './components/pc-builder/manage-pc-builder/manage-pc-constraint/update-pc-constraint/update-pc-constraint.component';
+import { ManagePcElementComponent } from './components/pc-builder/manage-pc-builder/manage-pc-element/manage-pc-element.component';
+import { ManagePcConstraintComponent } from './components/pc-builder/manage-pc-builder/manage-pc-constraint/manage-pc-constraint.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,13 +26,24 @@ const routes: Routes = [
   { path: 'customer/:customerId', component: CustomerComponent },
   {
     path: 'pc-builder', children: [
-      { path: '', component: PCBuilderComponent },
+      { path: '', component: PcBuilderComponent },
       { path: 'pc-elements/:elementId', component: PcElementComponent },
       {
-        path: 'manage-pc-element', children: [
-          { path: '', component: ManagePcComponent },
-          { path: 'create', component: UpdatePcElementComponent },
-          { path: 'create-constraint', component: UpdatePcElementConstraintComponent },
+        path: 'manage-pc-builder', children: [
+          { path: '', component: ManagePcBuilderComponent },
+          {
+            path: 'pc-elements', children: [
+              { path: '', component: ManagePcElementComponent },
+              { path: 'create', component: UpdatePcElementComponent },
+              { path: ':elementId', component: UpdatePcElementComponent },
+            ]
+          },
+          {
+            path: 'pc-constraints', children: [
+              { path: '', component: ManagePcConstraintComponent },
+              { path: 'create', component: UpdatePcConstraintComponent },
+            ]
+          },
         ]
       },
     ]

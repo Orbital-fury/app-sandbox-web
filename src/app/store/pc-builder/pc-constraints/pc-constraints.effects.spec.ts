@@ -1,22 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
+import { PcConstraintsEffects } from './pc-constraints.effects';
 
-import { PcElementsEffects } from './pc-elements.effects';
 
-describe('PcElementsEffects', () => {
+describe('PcElementEffects', () => {
   let actions$: Observable<any>;
-  let effects: PcElementsEffects;
+  let effects: PcConstraintsEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        PcElementsEffects,
+        PcConstraintsEffects,
         provideMockActions(() => actions$)
       ]
     });
 
-    effects = TestBed.inject(PcElementsEffects);
+    effects = TestBed.inject(PcConstraintsEffects);
   });
 
   it('should be created', () => {

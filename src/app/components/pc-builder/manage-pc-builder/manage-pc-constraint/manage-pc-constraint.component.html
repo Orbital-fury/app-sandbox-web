@@ -1,0 +1,18 @@
+<div class="m-4">
+    <h2 class="border-bottom title-border pb-1 mb-4">
+        Manage PC constraints
+    </h2>
+    <div class="row row-cols-4">
+        <div class="col" *ngFor="let pcConstraint of pcConstraints">
+                <div class="card m-3">
+                    <div class="card-body bg-color10">
+                        <h5 class="card-title text-truncate pb-1">{{pcConstraint.name}}</h5>
+                        <div class="card-text">
+                            <button class="btn btn-secondary me-2"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

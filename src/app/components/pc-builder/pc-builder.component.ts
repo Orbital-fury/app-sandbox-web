@@ -13,7 +13,7 @@ import { PcBuilderStore } from '../../store/component-store/pc-builder.store';
   styleUrls: ['./pc-builder.component.scss'],
   providers: [PcBuilderStore]
 })
-export class PCBuilderComponent implements OnInit, OnDestroy {
+export class PcBuilderComponent implements OnInit, OnDestroy {
 
   loadingPcElements: boolean;
   pcBuildElements: PcElement[] = []; // PC elements displayed in PC build
