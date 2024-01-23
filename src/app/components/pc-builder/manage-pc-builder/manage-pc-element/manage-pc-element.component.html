@@ -4,7 +4,30 @@
     </h2>
     <div class="row row-cols-4">
         <div class="col" *ngFor="let pcElement of pcElements">
-            <div class="card m-3">
+            <ng-template #tooltip>
+                <table class="table table-bordered">
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <td>Price</td>
+                            <td>{{pcElement.price | euroCurrency}}</td>
+                        </tr>
+                        <tr>
+                            <td>Element type</td>
+                            <td>{{pcElement.type}}</td>
+                        </tr>
+                        <tr>
+                            <td># Constraints</td>
+                            <td>{{pcElement.constraints.length}}</td>
+                        </tr>
+                        <tr>
+                            <td># Specifications</td>
+                            <td>{{pcElement.specifications.length}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ng-template>
+            <div class="card m-3" [ngbTooltip]="tooltip" tooltipClass="light-tooltip">
                 <div class="card-body bg-color10">
                     <h5 class="card-title text-truncate pb-1">{{pcElement.brand}} {{pcElement.model}}</h5>
                     <div class="card-text">

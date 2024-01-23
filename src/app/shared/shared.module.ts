@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserModule } from '@angular/platform-browser';
 import { LoaderComponent } from './components/loader/loader.component';
+import { EuroCurrencyPipe } from '../components/pc-builder/euro-currency-pipe/euro-currency-pipe.component';
 
 @NgModule({
-  declarations: [
-    LoaderComponent
-  ],
+  declarations: [LoaderComponent, EuroCurrencyPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -17,6 +16,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     NgbModule,
     MatTooltipModule,
   ],
-  exports: [CommonModule, RouterModule, BrowserModule, NgbModule, MatTooltipModule, LoaderComponent],
+  exports: [CommonModule, RouterModule, BrowserModule, NgbModule, MatTooltipModule, LoaderComponent, EuroCurrencyPipe],
 })
-export class SharedModule {}
+export class SharedModule { }

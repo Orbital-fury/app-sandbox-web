@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrencyPipeComponent } from './currency-pipe.component';
+import { EuroCurrencyPipe } from './euro-currency-pipe.component';
 
-describe('CurrencyPipeComponent', () => {
-  let component: CurrencyPipeComponent;
-  let fixture: ComponentFixture<CurrencyPipeComponent>;
+describe('EuroCurrencyPipe', () => {
+  let component: EuroCurrencyPipe;
+  let fixture: ComponentFixture<EuroCurrencyPipe>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrencyPipeComponent ]
+      declarations: [ EuroCurrencyPipe ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CurrencyPipeComponent);
+    fixture = TestBed.createComponent(EuroCurrencyPipe);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

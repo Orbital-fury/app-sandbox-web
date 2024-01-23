@@ -7,7 +7,7 @@ registerLocaleData(localeFr);
 @Pipe({
   name: 'euroCurrency',
 })
-export class CurrencyPipeComponent implements PipeTransform {
+export class EuroCurrencyPipe implements PipeTransform {
 
   transform(value: number,
     currencyCode: string = 'EUR',
