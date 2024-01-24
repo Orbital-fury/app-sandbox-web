@@ -20,28 +20,28 @@ import { ManagePcElementComponent } from './components/pc-builder/manage-pc-buil
 import { ManagePcConstraintComponent } from './components/pc-builder/manage-pc-builder/manage-pc-constraint/manage-pc-constraint.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
   { path: 'test/parallax', component: ParallaxComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'customer/:customerId', component: CustomerComponent },
   {
-    path: 'pc-builder', children: [
-      { path: '', component: PcBuilderComponent },
-      { path: 'pc-elements/:elementId', component: PcElementComponent },
+    path: 'pc-builder', data: { breadcrumb: 'PC Builder' }, children: [
+      { path: '', component: PcBuilderComponent, data: { breadcrumb: '' } },
+      { path: 'pc-elements/:elementId', component: PcElementComponent, data: { breadcrumb: 'PC element' } },
       {
-        path: 'manage-pc-builder', children: [
+        path: 'manage-pc-builder', data: { breadcrumb: 'Admin manager' }, children: [
           { path: '', component: ManagePcBuilderComponent },
           {
             path: 'pc-elements', children: [
-              { path: '', component: ManagePcElementComponent },
-              { path: 'create', component: UpdatePcElementComponent },
-              { path: ':elementId', component: UpdatePcElementComponent },
+              { path: '', component: ManagePcElementComponent, data: { breadcrumb: 'PC elements' } },
+              { path: 'create', component: UpdatePcElementComponent, data: { breadcrumb: 'Create' } },
+              { path: 'edit/:elementId', component: UpdatePcElementComponent, data: { breadcrumb: '' } },
             ]
           },
           {
             path: 'pc-constraints', children: [
-              { path: '', component: ManagePcConstraintComponent },
-              { path: 'create', component: UpdatePcConstraintComponent },
+              { path: '', component: ManagePcConstraintComponent, data: { breadcrumb: 'PC constraints' } },
+              { path: 'create', component: UpdatePcConstraintComponent, data: { breadcrumb: 'Create' } },
             ]
           },
         ]
