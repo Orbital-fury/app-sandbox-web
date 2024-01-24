@@ -1,4 +1,5 @@
-.breadcrumb-item a {
-  color: red !important;
+.breadcrumb-item a,
+.breadcrumb-item a:visited,
+.breadcrumb-item a:hover {
   text-decoration: underline !important;
 }
