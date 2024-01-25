@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadPcElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
 import { selectPcElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
@@ -16,16 +17,20 @@ export class ManagePcElementComponent implements OnInit, OnDestroy {
   pcElements: PcElement[] = [];
   private subs = new SubSink();
 
-  constructor(private readonly pcElementStore: Store<PcElementsState>) {}
+  constructor(private router: Router, private readonly pcElementStore: Store<PcElementsState>) { }
 
   ngOnInit() {
     this.subs.sink = this.pcElementStore.select(selectPcElements).subscribe(pcElements => this.pcElements = pcElements);
 
     this.pcElementStore.dispatch(loadPcElements());
   }
-  
+
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  goToAddPcElement() {
+    this.router.navigate([`${this.router.url}/create`]);
   }
 
 }

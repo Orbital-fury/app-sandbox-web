@@ -2,22 +2,23 @@
     <h2 class="border-bottom title-border pb-1 mb-4">
         Manage PC constraints
     </h2>
+    <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcConstraint()">+ Add</button>
     <div class="row row-cols-4">
         <div class="col" *ngFor="let pcConstraint of pcConstraints">
             <ng-template #tooltip>
                 code: {{pcConstraint.code}}<br>
                 type: {{pcConstraint.type}}
             </ng-template>
-                <div class="card m-3" [ngbTooltip]="tooltip" tooltipClass="light-tooltip">
-                    <div class="card-body">
+            <div class="card m-3" [ngbTooltip]="tooltip" tooltipClass="light-tooltip">
+                <div class="card-body">
 
-                        <h5 class="card-title text-truncate pb-1">{{pcConstraint.name}}</h5>
-                        <div class="card-text">
-                            <button class="btn btn-secondary me-2"><i class="fa-regular fa-pen-to-square"></i></button>
-                            <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-                        </div>
+                    <h5 class="card-title text-truncate pb-1">{{pcConstraint.name}}</h5>
+                    <div class="card-text">
+                        <button class="btn btn-secondary me-2"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>

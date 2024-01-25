@@ -85,3 +85,12 @@ The pc-builder part is an example of how to configure hardware with constraints 
 ### component-store
 
 Example of a component-store, [here (ts file)](/src/app/store/component-store/pc-builder.store.ts)
+
+## Front utilities
+
+- Bootstrap: Company clean style
+- [Swimlane](https://swimlane.github.io/ngx-ui/card): Grey-color scale display with neon style. Examples:
+    - [Card](https://swimlane.github.io/ngx-ui/card)
+    - [Notification](https://swimlane.github.io/ngx-ui/notification)
+    - [Corner menu](https://swimlane.github.io/ngx-ui/plus-menu)
+    - [Stepper](https://swimlane.github.io/ngx-ui/stepper)

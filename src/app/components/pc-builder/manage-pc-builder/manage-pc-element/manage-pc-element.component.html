@@ -2,6 +2,7 @@
     <h2 class="border-bottom title-border pb-1 mb-4">
         Manage PC elements
     </h2>
+    <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcElement()">+ Add</button>
     <div class="row row-cols-4">
         <div class="col" *ngFor="let pcElement of pcElements">
             <ng-template #tooltip>

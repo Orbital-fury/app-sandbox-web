@@ -49,7 +49,6 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
       if (this.pcBuildElements.length === 0) {
         this.updateMapElementTypeChoices(this.pcElements);
         this.updatePcElementSelection();
-        console.log("selectPcElements, à lancer qu'une fois pour charger le store")
       }
 
     });

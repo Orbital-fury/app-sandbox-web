@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environment.dev';
-import { PcConstraint, PcConstraints } from 'src/typing-pc-builder';
+import { NewPcConstraint, PcConstraint, PcConstraints } from 'src/typing-pc-builder';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,11 @@ export class PcConstraintService {
     return this.http
       .get<PcConstraints>(this.baseUrl)
       .pipe(map((pcConstraints) => pcConstraints.pcConstraints));
+  }
+
+  createPcConstraint(newPcConstraint: NewPcConstraint): Observable<PcConstraint> {
+    return this.http
+      .post<PcConstraint>(`${this.baseUrl}/create`, newPcConstraint);
   }
 
 }

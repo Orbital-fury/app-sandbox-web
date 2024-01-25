@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.actions';
 import { selectLoadingPcConstraints, selectPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.selectors';
@@ -17,7 +18,7 @@ export class ManagePcConstraintComponent implements OnInit, OnDestroy {
   pcConstraints: PcConstraint[] = [];
   private subs = new SubSink();
 
-  constructor(private readonly pcElementStore: Store<PcConstraintsState>) { }
+  constructor(private router: Router, private readonly pcElementStore: Store<PcConstraintsState>) { }
 
   ngOnInit() {
     this.subs.sink = this.pcElementStore.select(selectPcConstraints).subscribe(pcConstraints => this.pcConstraints = pcConstraints);
@@ -28,6 +29,10 @@ export class ManagePcConstraintComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  goToAddPcConstraint() {
+    this.router.navigate([`${this.router.url}/create`]);
   }
 
 }

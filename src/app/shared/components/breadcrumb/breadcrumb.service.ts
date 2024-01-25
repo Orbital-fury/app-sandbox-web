@@ -1,29 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, distinctUntilChanged, map } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 
 export interface BreadcrumbItem {
     label: string;
     path?: string;
 }
 
+// Source: https://www.vincent-barrault.fr/articles/faire-un-breadcrumb-avec-angular
+
 @Injectable({ providedIn: 'root' })
 export class BreadcrumbService {
-    public items$: Observable<BreadcrumbItem[]>;
+    public breadcrumbs$: Observable<BreadcrumbItem[]>;
 
     constructor(
-        private _router: Router,
-        private _route: ActivatedRoute
+        private router: Router,
+        private route: ActivatedRoute
     ) {
-        this.items$ = this._router.events.pipe(
+        this.breadcrumbs$ = this.router.events.pipe(
             filter(event => event instanceof NavigationEnd),
             distinctUntilChanged(),
-            map(_ => this._buildBreadCrumb(this._route.root))
+            map(_ => this.buildBreadCrumb(this.route.root))
         );
     }
 
-    private _buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: BreadcrumbItem[] = []): BreadcrumbItem[] {
+    private buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: BreadcrumbItem[] = []): BreadcrumbItem[] {
         const newBreadcrumbs = [...breadcrumbs];
         const path = route.snapshot.url.map(segment => segment.path).join('/');
         const nextUrl = `${url}/${path}`.replace('//', '/');
@@ -50,7 +52,7 @@ export class BreadcrumbService {
         }
 
         if (route.firstChild) {
-            return this._buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
+            return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
         }
 
         return newBreadcrumbs;

@@ -1,1 +1,32 @@
-<p>update-pc-constraint works!</p>
+<div class="container">
+    <h2 class="border-bottom title-border pb-1 my-4">{{ update }} a PC constraint</h2>
+    <form [formGroup]="pcConstraintForm">
+        <div class="row mb-3">
+            <label class="col-2 form-label form-text" for="name">Constraint name</label>
+            <div class="col-10">
+                <input class="form-control" [ngClass]="name!.valid ? 'is-valid' : 'is-invalid'" id="name" type="text"
+                    formControlName="name" (input)="handleNameInput()" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-2 form-label form-text" for="code">Constraint code</label>
+            <div class="col-10">
+                <input class="form-control" [ngClass]="code!.valid ? 'is-valid' : 'is-invalid'" id="code" type="text"
+                    formControlName="code" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-2 form-label form-text" for="type">Constraint type</label>
+            <div class="col-10">
+                <input class="form-control" [ngClass]="type!.valid ? 'is-valid' : 'is-invalid'" id="type" type="text"
+                    formControlName="type" />
+            </div>
+        </div>
+    </form>
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-secondary" (click)="onReset()">Reset</button>
+        <button class="btn btn-primary" [disabled]="!pcConstraintForm.valid" (click)="onSubmit()">
+            {{ update }} a PC constraint
+        </button>
+    </div>
+</div>

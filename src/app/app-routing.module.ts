@@ -18,6 +18,8 @@ import { PcBuilderComponent } from './components/pc-builder/pc-builder.component
 import { CustomerComponent } from './components/test/customer/customer.component';
 import { DashboardComponent } from './components/test/dashboard/dashboard.component';
 import { ParallaxComponent } from './components/test/parallax/parallax.component';
+import { machineBreadcrumbResolver } from './resolvers/machine.resolver';
+import { pcElementBreadcrumbResolver } from './resolvers/pc-element.resolver';
 
 const routes: Routes = [
   {
@@ -33,7 +35,10 @@ const routes: Routes = [
       {
         path: 'pc-builder', data: { breadcrumb: 'PC Builder' }, children: [
           { path: '', component: PcBuilderComponent },
-          { path: 'pc-elements/:elementId', data: { breadcrumb: 'PC element - ' }, component: PcElementComponent },
+          {
+            path: 'pc-elements/:elementId', resolve: { pcElementBreadcrumb: pcElementBreadcrumbResolver },
+            data: { breadcrumb: '@pcElementBreadcrumb' }, component: PcElementComponent
+          },
           {
             path: 'manage-pc-builder', data: { breadcrumb: 'Admin manager' }, children: [
               { path: '', component: ManagePcBuilderComponent },
@@ -41,7 +46,11 @@ const routes: Routes = [
                 path: 'pc-elements', data: { breadcrumb: 'PC elements' }, children: [
                   { path: '', component: ManagePcElementComponent },
                   { path: 'create', component: UpdatePcElementComponent, data: { breadcrumb: 'Create' } },
-                  { path: 'edit/:elementId', component: UpdatePcElementComponent, data: { breadcrumb: ' - ' } },
+                  {
+                    path: 'edit/:elementId', component: UpdatePcElementComponent,
+                    resolve: { pcElementBreadcrumb: pcElementBreadcrumbResolver },
+                    data: { breadcrumb: '@pcElementBreadcrumb' }
+                  },
                 ]
               },
               {
@@ -63,7 +72,10 @@ const routes: Routes = [
             children: [
               { path: '', component: ManageMachineComponent },
               { path: 'create', data: { breadcrumb: 'Create' }, component: UpdateMachineComponent },
-              { path: ':machineId', data: { breadcrumb: 'Machine - ' }, component: MachineComponent },
+              {
+                path: ':machineId', resolve: { machineBreadcrumb: machineBreadcrumbResolver },
+                data: { breadcrumb: '@machineBreadcrumb' }, component: MachineComponent
+              },
             ],
             outlet: 'mmm',
           },
