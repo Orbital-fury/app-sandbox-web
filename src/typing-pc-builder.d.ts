@@ -1,5 +1,7 @@
 export type PcElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
 
+export type ConstraintType = "SAME" | "MAX" | "LIMIT" | "CAPACITY";
+
 export interface ElementTypeInfo {
   name: string;
   code: PcElementType;
@@ -24,14 +26,14 @@ export abstract class PcConstraint {
   id: number;
   name: string;
   code: string;
-  type: string;
+  type: ConstraintType;
   value: string[];
 }
 
 export interface NewPcConstraint {
   name: string;
   code: string;
-  type: string;
+  type: ConstraintType;
 }
 
 export interface PcConstraints {

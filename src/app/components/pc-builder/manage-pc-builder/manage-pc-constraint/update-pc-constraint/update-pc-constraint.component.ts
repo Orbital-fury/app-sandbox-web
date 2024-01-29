@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable, of, timer } from 'rxjs';
+import { switchMap } from "rxjs/operators";
+import { createPcConstraint } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.actions';
+import { PcConstraintsState } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.state';
+import { NewPcConstraint } from 'src/typing-pc-builder';
 
 @Component({
   selector: 'app-update-pc-constraint',
@@ -10,13 +16,15 @@ export class UpdatePcConstraintComponent {
 
   update = 'Add';
 
-  pcConstraintForm: FormGroup = this.formBuilder.group({
-    name: ['', Validators.required],
-    code: ['', Validators.required],
-    type: ['', Validators.required]
-  });
+  pcConstraintForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private readonly pcConstraintStore: Store<PcConstraintsState>) {
+    this.pcConstraintForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      code: ['', Validators.required, this.specialCaseForCodeValidator()],
+      type: ['', Validators.required]
+    });
+  }
 
   get name() {
     return this.pcConstraintForm.get('name');
@@ -42,11 +50,33 @@ export class UpdatePcConstraintComponent {
   }
 
   onSubmit() {
-    console.log("on submit ouais ouais")
+    const newPcConstraint: NewPcConstraint = {
+      name: this.name?.value,
+      code: this.code?.value,
+      type: this.type?.value
+    }
+    this.pcConstraintStore.dispatch(createPcConstraint({ newPcConstraint }))
   }
 
   onReset() {
     this.pcConstraintForm.reset();
+  }
+
+  private specialCaseForCodeValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      const value = control.value;
+
+      if (!value) {
+        return of(null);
+      }
+
+      return timer(500).pipe(
+        switchMap(() => {
+          const hasGoodCase = /^[A-Z0-9]+(_[A-Z0-9]+)*$/.test(value);
+          return hasGoodCase ? of(null) : of({ caseForCode: true });
+        })
+      );
+    };
   }
 
 }

@@ -2,7 +2,19 @@
 
 ## Tasks
 
+| Feature                                                      | Status               |
+|--------------------------------------------------------------|----------------------|
+| PC constraint create                                         | :heavy_check_mark:   |
+| PC constraint edit                                           | :x:                  |
+| PC constraint delete                                         | :x:                  |
+| Add toast service                                            | :x:                  |
+| throw Toast on create/update/delete success and all failures | :x:                  |
+| PC element create                                            | :x:                  |
+| PC element edit                                              | :x:                  |
+| PC element delete                                            | :x:                  |
+
 - Develop PC element manager (choice between element and constraint) => add, edit, delete
+- Add toast service and throw Toast on create/update/delete success and all failures
 
 ## Development server
 

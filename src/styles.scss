@@ -54,6 +54,10 @@
   opacity: 0.5;
 }
 
+input.btn-check + label {
+  margin-right: .5rem;
+}
+
 html {
   height: 100%;
 }

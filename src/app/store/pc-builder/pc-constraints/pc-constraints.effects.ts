@@ -3,11 +3,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { PcConstraintService } from 'src/app/services/pc-builder/pc-constraint.service';
 import * as fromPcConstraintsActions from './pc-constraints.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PcConstraintsEffects {
 
-  constructor(private actions$: Actions, private pcConstraintService: PcConstraintService) { }
+  constructor(private actions$: Actions, private pcConstraintService: PcConstraintService, private router: Router) { }
 
   loadPcConstraints$ = createEffect(() =>
     this.actions$.pipe(
@@ -46,7 +47,7 @@ export class PcConstraintsEffects {
   addPcConstraintsSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.createPcConstraintSuccess),
-      tap(() => console.log("Je dois router vers l'url /pc-builder/manage-pc-builder/pc-constraints"))
+      tap(() => this.router.navigate(['/pc-builder/manage-pc-builder/pc-constraints']))
     ), { dispatch: false }
   );
 
