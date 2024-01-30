@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { deletePcConstraint, loadPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.actions';
+import { loadPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.actions';
 import { selectLoadingPcConstraints, selectPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.selectors';
 import { PcConstraintsState } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.state';
 import { PcConstraintWithoutValue } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
+import { ModalDeletePcConstraintComponent } from './modal-delete-pc-constraint/modal-delete-pc-constraint.component';
 
 @Component({
   selector: 'app-manage-pc-constraint',
@@ -18,7 +20,11 @@ export class ManagePcConstraintComponent implements OnInit, OnDestroy {
   pcConstraints: PcConstraintWithoutValue[] = [];
   private subs = new SubSink();
 
-  constructor(private router: Router, private readonly pcElementStore: Store<PcConstraintsState>) { }
+  constructor(
+    private modalService: NgbModal,
+    private router: Router,
+    private readonly pcElementStore: Store<PcConstraintsState>
+  ) { }
 
   ngOnInit() {
     this.subs.sink = this.pcElementStore.select(selectPcConstraints).subscribe(pcConstraints => this.pcConstraints = pcConstraints);
@@ -36,7 +42,10 @@ export class ManagePcConstraintComponent implements OnInit, OnDestroy {
   }
 
   deletePcConstraint(constraintId: number) {
-    this.pcElementStore.dispatch(deletePcConstraint({ pcConstraintId: constraintId }));
+    const modalRef = this.modalService.open(ModalDeletePcConstraintComponent);
+    modalRef.componentInstance.constraintId = constraintId;
+
+    // this.pcElementStore.dispatch(deletePcConstraint({ pcConstraintId: constraintId }));
   }
 
 }
