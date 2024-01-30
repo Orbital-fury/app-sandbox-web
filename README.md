@@ -13,9 +13,6 @@
 | PC element edit                                              | :x:                  |
 | PC element delete                                            | :x:                  |
 
-- Develop PC element manager (choice between element and constraint) => add, edit, delete
-- Add toast service and throw Toast on create/update/delete success and all failures
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -96,13 +93,18 @@ The pc-builder part is an example of how to configure hardware with constraints 
 
 ### component-store
 
-Example of a component-store, [here (ts file)](/src/app/store/component-store/pc-builder.store.ts)
+Example of a component-store [here](/src/app/store/component-store/pc-builder.store.ts)
 
 ## Front utilities
 
 - Bootstrap: Company clean style
+- [Material](https://material.angular.io/): official components library
+- [PrimeNG](https://primeng.org/): considered most powerful, highly customizable
+- [ngx-bootstrap](https://valor-software.com/ngx-bootstrap/#/): is preferred over ng-bootstrap
+- [ng-bootstrap](https://ng-bootstrap.github.io/): angular widget using Bootstrap CSS (feature like: toast with prevent autohide on mouseover)
 - [Swimlane](https://swimlane.github.io/ngx-ui/card): Grey-color scale display with neon style. Examples:
     - [Card](https://swimlane.github.io/ngx-ui/card)
     - [Notification](https://swimlane.github.io/ngx-ui/notification)
     - [Corner menu](https://swimlane.github.io/ngx-ui/plus-menu)
     - [Stepper](https://swimlane.github.io/ngx-ui/stepper)
+- [Syncfusion](https://www.syncfusion.com/angular-components)
