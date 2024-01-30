@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { PcConstraintService } from 'src/app/services/pc-builder/pc-constraint.service';
 import * as fromPcConstraintsActions from './pc-constraints.actions';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class PcConstraintsEffects {
@@ -20,13 +20,6 @@ export class PcConstraintsEffects {
     )
   );
 
-  loadPcConstraintsSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(fromPcConstraintsActions.loadPcConstraintsSuccess),
-      tap(() => console.log("loadPcConstraintsSuccess"))
-    ), { dispatch: false }
-  );
-
   loadPcConstraintsFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.loadPcConstraintsFailure),
@@ -34,27 +27,101 @@ export class PcConstraintsEffects {
     ), { dispatch: false }
   );
 
-  addPcConstraints$ = createEffect(() =>
+  loadSinglePcConstraint$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.loadSinglePcConstraint),
+      switchMap(payload => this.pcConstraintService.getPcConstraint(payload.pcConstraintId).pipe(
+        map(pcConstraint => fromPcConstraintsActions.loadSinglePcConstraintSuccess({ pcConstraint })),
+        catchError(error => of(fromPcConstraintsActions.loadSinglePcConstraintFailure({ error })))
+      ))
+    )
+  );
+
+  loadSinglePcConstraintFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.loadSinglePcConstraintFailure),
+      tap(() => console.log("loadSinglePcConstraintFailure"))
+    ), { dispatch: false }
+  );
+
+  addPcConstraint$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.createPcConstraint),
-      switchMap((payload) => this.pcConstraintService.createPcConstraint(payload.newPcConstraint).pipe(
-        map(createdPcConstraint => fromPcConstraintsActions.createPcConstraintSuccess({ newPcConstraintId: createdPcConstraint.id })),
+      switchMap(payload => this.pcConstraintService.createPcConstraint(payload.newPcConstraint).pipe(
+        map(pcConstraint => fromPcConstraintsActions.createPcConstraintSuccess({ pcConstraint })),
         catchError(error => of(fromPcConstraintsActions.createPcConstraintFailure({ error })))
       ))
     )
   );
 
-  addPcConstraintsSuccess$ = createEffect(() =>
+  addPcConstraintSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.createPcConstraintSuccess),
-      tap(() => this.router.navigate(['/pc-builder/manage-pc-builder/pc-constraints']))
+      tap(payload => {
+        this.router.navigate(['/pc-builder/manage/pc-constraints']);
+        console.log("PC constraint created successfully:", payload.pcConstraint.name);
+      })
     ), { dispatch: false }
   );
 
-  addPcConstraintsFailure$ = createEffect(() =>
+  addPcConstraintFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.createPcConstraintFailure),
       tap(() => console.log("createPcConstraintFailure"))
+    ), { dispatch: false }
+  );
+
+  updatePcConstraint$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.updatePcConstraint),
+      switchMap(payload => this.pcConstraintService.updatePcConstraint(payload.pcConstraint).pipe(
+        map(pcConstraint => fromPcConstraintsActions.updatePcConstraintSuccess({ pcConstraint })),
+        catchError(error => of(fromPcConstraintsActions.updatePcConstraintFailure({ error })))
+      ))
+    )
+  );
+
+  updatePcConstraintSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.updatePcConstraintSuccess),
+      tap(payload => {
+        this.router.navigate(['/pc-builder/manage/pc-constraints']);
+        console.log("PC constraint updated successfully:", payload.pcConstraint.name);
+      })
+    ), { dispatch: false }
+  );
+
+  updatePcConstraintFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.updatePcConstraintFailure),
+      tap(() => console.log("updatePcConstraintFailure"))
+    ), { dispatch: false }
+  );
+
+  deletePcConstraint$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.deletePcConstraint),
+      switchMap(payload => this.pcConstraintService.deletePcConstraint(payload.pcConstraintId).pipe(
+        map(pcConstraintName => fromPcConstraintsActions.deletePcConstraintSuccess({ pcConstraintName })),
+        catchError(error => of(fromPcConstraintsActions.deletePcConstraintFailure({ error })))
+      ))
+    )
+  );
+
+  deletePcConstraintSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.deletePcConstraintSuccess),
+      tap(payload => {
+        this.router.navigate(['/pc-builder/manage/pc-constraints']);
+        console.log("PC constraint deleted successfully:", payload.pcConstraintName);
+      })
+    ), { dispatch: false }
+  );
+
+  deletePcConstraintFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.deletePcConstraintFailure),
+      tap(() => console.log("deletePcConstraintFailure"))
     ), { dispatch: false }
   );
 

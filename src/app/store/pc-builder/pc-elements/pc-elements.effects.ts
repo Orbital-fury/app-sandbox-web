@@ -19,13 +19,6 @@ export class PcElementsEffects {
     )
   );
 
-  loadPcElementsSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(fromPcElementsActions.loadPcElementsSuccess),
-      tap(() => console.log("loadPcElementsSuccess"))
-    ), { dispatch: false }
-  );
-
   loadPcElementsFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcElementsActions.loadPcElementsFailure),
@@ -41,13 +34,6 @@ export class PcElementsEffects {
         catchError(error => of(fromPcElementsActions.loadSinglePcElementFailure({ error })))
       ))
     )
-  );
-
-  loadSinglePcElementSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(fromPcElementsActions.loadSinglePcElementSuccess),
-      tap(() => console.log("loadSinglePcElementSuccess"))
-    ), { dispatch: false }
   );
 
   loadSinglePcElementFailure$ = createEffect(() =>

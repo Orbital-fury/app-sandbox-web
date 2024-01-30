@@ -20,6 +20,7 @@ import { DashboardComponent } from './components/test/dashboard/dashboard.compon
 import { ParallaxComponent } from './components/test/parallax/parallax.component';
 import { machineBreadcrumbResolver } from './resolvers/machine.resolver';
 import { pcElementBreadcrumbResolver } from './resolvers/pc-element.resolver';
+import { pcConstraintBreadcrumbResolver } from './resolvers/pc-constraint.resolver';
 
 const routes: Routes = [
   {
@@ -40,14 +41,14 @@ const routes: Routes = [
             data: { breadcrumb: '@pcElementBreadcrumb' }, component: PcElementComponent
           },
           {
-            path: 'manage-pc-builder', data: { breadcrumb: 'Admin manager' }, children: [
+            path: 'manage', data: { breadcrumb: 'Admin manager' }, children: [
               { path: '', component: ManagePcBuilderComponent },
               {
                 path: 'pc-elements', data: { breadcrumb: 'PC elements' }, children: [
                   { path: '', component: ManagePcElementComponent },
                   { path: 'create', component: UpdatePcElementComponent, data: { breadcrumb: 'Create' } },
                   {
-                    path: 'edit/:elementId', component: UpdatePcElementComponent,
+                    path: ':elementId', component: UpdatePcElementComponent,
                     resolve: { pcElementBreadcrumb: pcElementBreadcrumbResolver },
                     data: { breadcrumb: '@pcElementBreadcrumb' }
                   },
@@ -57,6 +58,11 @@ const routes: Routes = [
                 path: 'pc-constraints', data: { breadcrumb: 'PC constraints' }, children: [
                   { path: '', component: ManagePcConstraintComponent },
                   { path: 'create', component: UpdatePcConstraintComponent, data: { breadcrumb: 'Create' } },
+                  {
+                    path: ':constraintId', component: UpdatePcConstraintComponent,
+                    resolve: { pcConstraintBreadcrumb: pcConstraintBreadcrumbResolver },
+                    data: { breadcrumb: '@pcConstraintBreadcrumb' }
+                  },
                 ]
               },
             ]

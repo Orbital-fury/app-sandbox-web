@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="border-bottom title-border pb-1 my-4">{{ update }} a PC constraint</h2>
+    <h2 class="border-bottom title-border pb-1 my-4">{{ update }} PC constraint</h2>
     <form [formGroup]="pcConstraintForm" (ngSubmit)="onSubmit()">
         <div class="row mb-3">
             <label class="col-2 form-label form-text" for="name">Constraint name</label>
@@ -22,26 +22,24 @@
         <div class="row mb-3">
             <label class="col-2 form-label form-text" for="type">Constraint type</label>
             <div class="col-10">
-                <!-- <input class="form-control" [ngClass]="type!.valid ? 'is-valid' : 'is-invalid'" id="type" type="text"
-                    formControlName="type" /> -->
                 <input type="radio" class="btn-check" id="same" autocomplete="off" formControlName="type" value="SAME">
-                <label class="btn btn-secondary" for="same">Same</label>
+                <label class="btn btn-outline-dark" for="same">Same</label>
 
                 <input type="radio" class="btn-check" id="max" autocomplete="off" formControlName="type" value="MAX">
-                <label class="btn btn-secondary" for="max">Max</label>
+                <label class="btn btn-outline-dark" for="max">Max</label>
 
                 <input type="radio" class="btn-check" id="limit" autocomplete="off" formControlName="type" value="LIMIT">
-                <label class="btn btn-secondary" for="limit">Limit</label>
+                <label class="btn btn-outline-dark" for="limit">Limit</label>
 
                 <input type="radio" class="btn-check" id="capacity" autocomplete="off" formControlName="type" value="CAPACITY">
-                <label class="btn btn-secondary" for="capacity">Capacity</label>
+                <label class="btn btn-outline-dark" for="capacity">Capacity</label>
             </div>
 
         </div>
         <div class="d-flex justify-content-between">
             <button class="btn btn-secondary" (click)="onReset()">Reset</button>
-            <button class="btn btn-primary" [disabled]="!pcConstraintForm.valid" type="submit">
-                {{ update }} a PC constraint
+            <button class="btn btn-primary" [disabled]="!pcConstraintForm.valid || pcConstraintForm.pristine" type="submit">
+                {{ update }} PC constraint
             </button>
         </div>
     </form>

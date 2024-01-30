@@ -6,3 +6,7 @@ export const getPcConstraintsState = createFeatureSelector<PcConstraintsState>('
 export const selectLoadingPcConstraints = createSelector(getPcConstraintsState, state => state.loadingPcConstraints);
 
 export const selectPcConstraints = createSelector(getPcConstraintsState, state => state.pcConstraints);
+
+export const selectLoadingSinglePcConstraint = createSelector(getPcConstraintsState, state => state.loadingSinglePcConstraint);
+
+export const selectSinglePcConstraint = createSelector(getPcConstraintsState, state => state.singlePcConstraint);

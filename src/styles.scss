@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /*
 @import '@swimlane/ngx-datatable/index.scss';
@@ -54,7 +54,7 @@
   opacity: 0.5;
 }
 
-input.btn-check + label {
+input.btn-check+label {
   margin-right: .5rem;
 }
 
@@ -78,6 +78,12 @@ a:visited,
 a:hover {
   text-decoration: none;
   color: var(--color30);
+}
+
+a.btn,
+a.btn:visited,
+a.btn:hover {
+  color: white;
 }
 
 img {

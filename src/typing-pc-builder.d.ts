@@ -30,14 +30,21 @@ export abstract class PcConstraint {
   value: string[];
 }
 
+export abstract class PcConstraintWithoutValue {
+  id: number;
+  name: string;
+  code: string;
+  type: ConstraintType;
+}
+
 export interface NewPcConstraint {
   name: string;
   code: string;
   type: ConstraintType;
 }
 
-export interface PcConstraints {
-  pcConstraints: PcConstraint[];
+export interface PcConstraintsWithoutValue {
+  pcConstraints: PcConstraintWithoutValue[];
 }
 
 export abstract class PcSpecification {

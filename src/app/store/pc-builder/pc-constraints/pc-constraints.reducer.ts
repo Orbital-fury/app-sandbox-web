@@ -20,5 +20,22 @@ export const reducer = createReducer(
     loadingPcConstraints: false,
     pcElements: [],
     error
-  }))
+  })),
+
+  on(fromPcConstraintsActions.loadSinglePcConstraint, (state) => ({
+    ...state,
+    loadingSinglePcConstraint: true
+  })),
+  on(fromPcConstraintsActions.loadSinglePcConstraintSuccess, (state, { pcConstraint }) => ({
+    ...state,
+    loadingSinglePcConstraint: false,
+    singlePcConstraint: pcConstraint,
+    error: ''
+  })),
+  on(fromPcConstraintsActions.loadSinglePcConstraintFailure, (state, { error }) => ({
+    ...state,
+    loadingSinglePcConstraint: false,
+    singlePcConstraint: undefined,
+    error
+  })),
 );

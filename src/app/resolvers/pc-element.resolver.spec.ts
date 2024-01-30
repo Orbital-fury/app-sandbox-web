@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
-import { pcElementResolver } from './pc-element.resolver';
+import { pcElementBreadcrumbResolver } from './pc-element.resolver';
 
-describe('pcElementResolver', () => {
-  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
-      TestBed.runInInjectionContext(() => pcElementResolver(...resolverParameters));
+describe('pcElementBreadcrumbResolver', () => {
+  const executeResolver: ResolveFn<string> = (...resolverParameters) =>
+    TestBed.runInInjectionContext(() => pcElementBreadcrumbResolver(...resolverParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

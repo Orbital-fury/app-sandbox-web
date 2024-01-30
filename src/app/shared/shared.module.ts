@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,9 +12,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     CommonModule,
     RouterModule,
     BrowserModule,
-    NgbModule,
-    MatTooltipModule,
+    NgbModule
   ],
-  exports: [CommonModule, RouterModule, BrowserModule, NgbModule, MatTooltipModule, LoaderComponent, EuroCurrencyPipe],
+  exports: [CommonModule, RouterModule, BrowserModule, NgbModule, LoaderComponent, EuroCurrencyPipe],
 })
 export class SharedModule { }

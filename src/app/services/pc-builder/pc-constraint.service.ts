@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environment.dev';
-import { NewPcConstraint, PcConstraint, PcConstraints } from 'src/typing-pc-builder';
+import { NewPcConstraint, PcConstraintWithoutValue, PcConstraintsWithoutValue } from 'src/typing-pc-builder';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,30 @@ export class PcConstraintService {
 
   constructor(private http: HttpClient) { }
 
-  getPcConstraints(): Observable<PcConstraint[]> {
+  getPcConstraints(): Observable<PcConstraintWithoutValue[]> {
     return this.http
-      .get<PcConstraints>(this.baseUrl)
+      .get<PcConstraintsWithoutValue>(this.baseUrl)
       .pipe(map((pcConstraints) => pcConstraints.pcConstraints));
   }
 
-  createPcConstraint(newPcConstraint: NewPcConstraint): Observable<PcConstraint> {
+  getPcConstraint(id: number): Observable<PcConstraintWithoutValue> {
     return this.http
-      .post<PcConstraint>(`${this.baseUrl}/create`, newPcConstraint);
+      .get<PcConstraintWithoutValue>(`${this.baseUrl}/${id}`);
+  }
+
+  createPcConstraint(newPcConstraint: NewPcConstraint): Observable<PcConstraintWithoutValue> {
+    return this.http
+      .post<PcConstraintWithoutValue>(this.baseUrl, newPcConstraint);
+  }
+
+  updatePcConstraint(pcConstraint: PcConstraintWithoutValue): Observable<PcConstraintWithoutValue> {
+    return this.http
+      .put<PcConstraintWithoutValue>(`${this.baseUrl}/${pcConstraint.id}`, pcConstraint);
+  }
+
+  deletePcConstraint(pcConstraintId: number): Observable<string> {
+    return this.http
+      .delete<string>(`${this.baseUrl}/${pcConstraintId}`);
   }
 
 }
