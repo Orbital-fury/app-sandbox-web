@@ -12,7 +12,7 @@ export class PcConstraintsEffects {
 
   loadPcConstraints$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromPcConstraintsActions.loadPcConstraints),
+      ofType(fromPcConstraintsActions.loadPcConstraints, fromPcConstraintsActions.deletePcConstraintSuccess),
       switchMap(() => this.pcConstraintService.getPcConstraints().pipe(
         map(pcConstraints => fromPcConstraintsActions.loadPcConstraintsSuccess({ pcConstraints })),
         catchError(error => of(fromPcConstraintsActions.loadPcConstraintsFailure({ error })))
@@ -41,6 +41,23 @@ export class PcConstraintsEffects {
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.loadSinglePcConstraintFailure),
       tap(() => console.log("loadSinglePcConstraintFailure"))
+    ), { dispatch: false }
+  );
+
+  loadPcElementsConstraintValues$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.loadPcElementsConstraintValues),
+      switchMap(payload => this.pcConstraintService.getPcElementAndConstraintValues(payload.pcConstraintId).pipe(
+        map(pcElements => fromPcConstraintsActions.loadPcElementsConstraintValuesSuccess({ pcElements })),
+        catchError(error => of(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure({ error })))
+      ))
+    )
+  );
+
+  loadPcElementsConstraintValuesFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure),
+      tap(() => console.log("loadPcElementsConstraintValuesFailure"))
     ), { dispatch: false }
   );
 
@@ -102,7 +119,7 @@ export class PcConstraintsEffects {
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.deletePcConstraint),
       switchMap(payload => this.pcConstraintService.deletePcConstraint(payload.pcConstraintId).pipe(
-        map(pcConstraintName => fromPcConstraintsActions.deletePcConstraintSuccess({ pcConstraintName })),
+        map(pcConstraint => fromPcConstraintsActions.deletePcConstraintSuccess({ pcConstraint })),
         catchError(error => of(fromPcConstraintsActions.deletePcConstraintFailure({ error })))
       ))
     )
@@ -113,7 +130,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.deletePcConstraintSuccess),
       tap(payload => {
         this.router.navigate(['/pc-builder/manage/pc-constraints']);
-        console.log("PC constraint deleted successfully:", payload.pcConstraintName);
+        console.log("PC constraint deleted successfully:", payload.pcConstraint.name);
       })
     ), { dispatch: false }
   );

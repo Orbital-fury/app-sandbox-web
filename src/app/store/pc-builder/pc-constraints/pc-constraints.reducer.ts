@@ -38,4 +38,21 @@ export const reducer = createReducer(
     singlePcConstraint: undefined,
     error
   })),
+
+  on(fromPcConstraintsActions.loadPcElementsConstraintValues, (state) => ({
+    ...state,
+    loadingPcElementsConstraintValues: true
+  })),
+  on(fromPcConstraintsActions.loadPcElementsConstraintValuesSuccess, (state, { pcElements }) => ({
+    ...state,
+    loadingPcElementsConstraintValues: false,
+    pcElementsConstraintValues: pcElements,
+    error: ''
+  })),
+  on(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure, (state, { error }) => ({
+    ...state,
+    loadingPcElementsConstraintValues: false,
+    pcElementsConstraintValues: [],
+    error
+  })),
 );

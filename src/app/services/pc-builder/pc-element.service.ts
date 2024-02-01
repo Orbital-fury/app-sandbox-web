@@ -20,8 +20,6 @@ export class PcElementService {
 
   getPcElementsWithConstraints(pcElementsFromBuild: PcElement[]): Observable<PcElement[]> {
     const elementFromBuildIds = pcElementsFromBuild.map(element => element.id);
-
-    // Construction des paramètres de requête
     const params = new HttpParams().set('ids', elementFromBuildIds.join(','));
     return this.http
       .get<PcElements>(`${this.baseUrl}/constraints/elements`, { params })

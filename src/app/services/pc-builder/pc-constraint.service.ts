@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environment.dev';
-import { NewPcConstraint, PcConstraintWithoutValue, PcConstraintsWithoutValue } from 'src/typing-pc-builder';
+import { NewPcConstraint, PcConstraintWithoutValue, PcConstraintsWithoutValue, PcElementConstraintValues, PcElementsConstraintValues } from 'src/typing-pc-builder';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,12 @@ export class PcConstraintService {
       .get<PcConstraintWithoutValue>(`${this.baseUrl}/${id}`);
   }
 
+  getPcElementAndConstraintValues(constraintId: number): Observable<PcElementConstraintValues[]> {
+    return this.http
+      .get<PcElementsConstraintValues>(`${this.baseUrl}/${constraintId}/pc-elements`)
+      .pipe(map((pcElements) => pcElements.pcElements));
+  }
+
   createPcConstraint(newPcConstraint: NewPcConstraint): Observable<PcConstraintWithoutValue> {
     return this.http
       .post<PcConstraintWithoutValue>(this.baseUrl, newPcConstraint);
@@ -34,9 +40,9 @@ export class PcConstraintService {
       .put<PcConstraintWithoutValue>(`${this.baseUrl}/${pcConstraint.id}`, pcConstraint);
   }
 
-  deletePcConstraint(pcConstraintId: number): Observable<string> {
+  deletePcConstraint(pcConstraintId: number): Observable<PcConstraintWithoutValue> {
     return this.http
-      .delete<string>(`${this.baseUrl}/${pcConstraintId}`);
+      .delete<PcConstraintWithoutValue>(`${this.baseUrl}/${pcConstraintId}`);
   }
 
 }

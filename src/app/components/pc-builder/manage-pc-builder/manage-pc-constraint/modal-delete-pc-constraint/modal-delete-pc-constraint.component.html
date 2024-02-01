@@ -1,13 +1,42 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 class="modal-title">Delete constraint - are you sure?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
     </div>
-    <div class="modal-body">
-        <p>Modal body text goes here. constraintId = {{constraintId}}</p>
+    <div class="alert alert-warning rounded-0" role="alert">
+        Unexpected bad things will happen if you don't read this!
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    <div class="modal-body">
+        <p>You are going to permanently delete the PC constraint <span
+                class="text-danger fw-bold">{{pcConstraint.name}}</span>.<br>
+            This action <strong>cannot</strong> be undone.</p>
+        <div *ngIf="this.pcElementsConstraintValues.length !== 0">
+            The constraint is linked at least to one PC element:
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Linked PC element</th>
+                        <th>Constraint values</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pcElementConstraintValues of pcElementsConstraintValues">
+                        <td>{{pcElementConstraintValues.pcElementInfo.brand}}
+                            {{pcElementConstraintValues.pcElementInfo.model}}
+                            ({{pcElementConstraintValues.pcElementInfo.type}})</td>
+                        <td>
+                            <ng-container
+                                *ngFor="let constraintValues of pcElementConstraintValues.constraintValues">{{constraintValues}}<br></ng-container>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer justify-content-start">
+        <p>Please type <span class="text-danger fw-bold">{{deleteSecurity}}</span> to confirm.</p>
+        <input class="form-control mb-3" type="text" [(ngModel)]="deleteSecurityInput" required autocomplete="off"/>
+        <button type="button" class="btn btn-outline-danger w-100" (click)="delete()"
+            [disabled]="deleteSecurity !== deleteSecurityInput">Delete constraint</button>
     </div>
 </div>

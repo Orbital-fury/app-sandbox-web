@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { loadPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.actions';
 import { selectLoadingPcConstraints, selectPcConstraints } from 'src/app/store/pc-builder/pc-constraints/pc-constraints.selectors';
@@ -41,11 +41,9 @@ export class ManagePcConstraintComponent implements OnInit, OnDestroy {
     this.router.navigate([`${this.router.url}/create`]);
   }
 
-  deletePcConstraint(constraintId: number) {
-    const modalRef = this.modalService.open(ModalDeletePcConstraintComponent);
-    modalRef.componentInstance.constraintId = constraintId;
-
-    // this.pcElementStore.dispatch(deletePcConstraint({ pcConstraintId: constraintId }));
+  deletePcConstraint(pcConstraint: PcConstraintWithoutValue) {
+    const modalRef = this.modalService.open(ModalDeletePcConstraintComponent, { centered: true, scrollable: true });
+    modalRef.componentInstance.pcConstraint = pcConstraint;
   }
 
 }

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { NewPcConstraint, PcConstraintWithoutValue } from 'src/typing-pc-builder';
+import { NewPcConstraint, PcConstraintWithoutValue, PcElementConstraintValues } from 'src/typing-pc-builder';
 
 export const loadPcConstraints = createAction(
   '[PC Constraints] Load PcConstraints'
@@ -27,6 +27,21 @@ export const loadSinglePcConstraintSuccess = createAction(
 
 export const loadSinglePcConstraintFailure = createAction(
   '[PC Constraint] Load Single PcConstraint Failure',
+  props<{ error: any }>()
+);
+
+export const loadPcElementsConstraintValues = createAction(
+  '[PC Constraint] Load PC elements and their constraint values',
+  props<{ pcConstraintId: number }>()
+);
+
+export const loadPcElementsConstraintValuesSuccess = createAction(
+  '[PC Constraint] Load PC elements and their constraint values Success',
+  props<{ pcElements: PcElementConstraintValues[] }>()
+);
+
+export const loadPcElementsConstraintValuesFailure = createAction(
+  '[PC Constraint] Load PC elements and their constraint values Failure',
   props<{ error: any }>()
 );
 
@@ -67,7 +82,7 @@ export const deletePcConstraint = createAction(
 
 export const deletePcConstraintSuccess = createAction(
   '[PC Constraint] Delete PcConstraint Success',
-  props<{ pcConstraintName: string }>()
+  props<{ pcConstraint: PcConstraintWithoutValue }>()
 );
 
 export const deletePcConstraintFailure = createAction(

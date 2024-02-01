@@ -5,8 +5,8 @@
 | Feature                                                      | Status               |
 |--------------------------------------------------------------|----------------------|
 | PC constraint create                                         | :heavy_check_mark:   |
-| PC constraint edit                                           | :x:                  |
-| PC constraint delete                                         | :x:                  |
+| PC constraint edit                                           | :heavy_check_mark:   |
+| PC constraint delete                                         | :heavy_check_mark:   |
 | Add toast service                                            | :x:                  |
 | throw Toast on create/update/delete success and all failures | :x:                  |
 | PC element create                                            | :x:                  |

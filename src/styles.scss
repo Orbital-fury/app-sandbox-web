@@ -30,6 +30,10 @@
   --bs-btn-border-radius: 0;
 }
 
+.form-control {
+  --bs-border-radius: 0;
+}
+
 .dropdown-menu {
   --bs-dropdown-border-radius: 0;
 }
@@ -88,6 +92,10 @@ a.btn:hover {
 
 img {
   width: 100%;
+}
+
+div.modal-header + div.alert {
+  border-top-width: 0;
 }
 
 .title-border {

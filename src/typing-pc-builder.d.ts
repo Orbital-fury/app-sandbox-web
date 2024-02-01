@@ -22,6 +22,24 @@ export interface PcElement {
   specifications: PcSpecification[];
 }
 
+export interface PcElementBasis {
+  id: number;
+  brand: string;
+  model: string;
+  price: number;
+  img: string | null;
+  type: PcElementType;
+}
+
+export interface PcElementConstraintValues {
+  pcElementInfo: PcElementBasis;
+  constraintValues: string[];
+}
+
+export interface PcElementsConstraintValues {
+  pcElements: PcElementConstraintValues[];
+}
+
 export abstract class PcConstraint {
   id: number;
   name: string;

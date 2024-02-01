@@ -37,7 +37,7 @@
         <label class="col-2 form-label form-text" for="sn">Serial number</label>
         <div class="col-10">
           <input class="form-control" [ngClass]="sn!.valid ? 'is-valid' : 'is-invalid'" id="sn" type="text"
-            formControlName="sn" />
+            formControlName="sn" autocomplete="off" />
         </div>
       </div>
       <div class="row mb-3">
