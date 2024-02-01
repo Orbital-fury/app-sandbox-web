@@ -1,0 +1,27 @@
+// Modification on bootstrap CSS -----------------
+.toast {
+  --bs-toast-border-radius: 0 !important;
+  border-radius: 0 !important;
+  border-width: 0 !important;
+}
+.toast-header {
+  border-bottom-width: 0 !important;
+  padding-bottom: 0 !important;
+}
+// -----------------------------------------------
+
+.toast-custom-info {
+  box-shadow: -5px 0px 0px 0px rgb(var(--bs-info-rgb));
+}
+
+.toast-custom-success {
+  box-shadow: -5px 0px 0px 0px rgb(var(--bs-success-rgb));
+}
+
+.toast-custom-warning {
+  box-shadow: -5px 0px 0px 0px rgb(var(--bs-warning-rgb));
+}
+
+.toast-custom-danger {
+  box-shadow: -5px 0px 0px 0px rgb(var(--bs-danger-rgb));
+}
