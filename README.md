@@ -108,3 +108,9 @@ Example of a component-store [here](/src/app/store/component-store/pc-builder.st
     - [Corner menu](https://swimlane.github.io/ngx-ui/plus-menu)
     - [Stepper](https://swimlane.github.io/ngx-ui/stepper)
 - [Syncfusion](https://www.syncfusion.com/angular-components)
+
+## Good practices
+
+- Explicit public method (?):
+    - https://typescript-eslint.io/rules/explicit-member-accessibility/
+    - https://stackoverflow.com/questions/36943888/typescript-classes-is-explicit-public-modifier-a-best-practice
