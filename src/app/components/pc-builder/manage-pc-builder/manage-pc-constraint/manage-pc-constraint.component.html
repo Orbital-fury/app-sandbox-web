@@ -3,6 +3,7 @@
         Manage PC constraints
     </h2>
     <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcConstraint()">+ Add</button>
+    <button class="fw-bold btn btn-dark mb-3 ms-3" (click)="showToast()">Show toast</button>
     <div class="row row-cols-4">
         <div class="col" *ngFor="let pcConstraint of pcConstraints">
             <ng-template #tooltip>

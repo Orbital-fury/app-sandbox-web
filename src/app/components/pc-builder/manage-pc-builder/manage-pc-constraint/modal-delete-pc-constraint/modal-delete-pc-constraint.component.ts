@@ -26,10 +26,8 @@ export class ModalDeletePcConstraintComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subs.sink = this.pcConstraintStore.select(selectLoadingPcElementsConstraintValues).subscribe(loading => this.loadingPcElementsConstraintValues = loading);
-    this.subs.sink = this.pcConstraintStore.select(selectPcElementsConstraintValues).subscribe(pcElementsConstraintValues => {
-      this.pcElementsConstraintValues = pcElementsConstraintValues
-      console.log("pcElementsConstraintValues : ", pcElementsConstraintValues)
-    });
+    this.subs.sink = this.pcConstraintStore.select(selectPcElementsConstraintValues)
+      .subscribe(pcElementsConstraintValues => this.pcElementsConstraintValues = pcElementsConstraintValues);
 
     this.pcConstraintStore.dispatch(loadPcElementsConstraintValues({ pcConstraintId: this.pcConstraint.id }));
   }

@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
-// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /*
 @import '@swimlane/ngx-datatable/index.scss';
 @import '@swimlane/ngx-datatable/themes/bootstrap.scss';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
 */
+@import 'ngx-toastr/toastr';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'ngx-toastr/toastr-bs5-alert';
+
 
 :root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
@@ -56,6 +61,11 @@
   border-bottom: 0.3em solid;
   border-left: 0.3em solid;
   opacity: 0.5;
+}
+
+.toast-container-position {
+  top: 5rem;
+  right: 12px;
 }
 
 input.btn-check+label {
