@@ -12,7 +12,8 @@
             This action <strong>cannot</strong> be undone.</p>
         <div *ngIf="this.pcElementsConstraintValues.length !== 0">
             The constraint is linked at least to one PC element:
-            <table class="table">
+            <app-loader *ngIf="loadingPcElementsConstraintValues"></app-loader>
+            <table *ngIf="!loadingPcElementsConstraintValues" class="table">
                 <thead>
                     <tr>
                         <th>Linked PC element</th>

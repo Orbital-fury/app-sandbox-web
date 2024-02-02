@@ -1,6 +1,7 @@
 <div class="container">
     <h2 class="border-bottom title-border pb-1 my-4">{{ update }} PC constraint</h2>
-    <form [formGroup]="pcConstraintForm" (ngSubmit)="onSubmit()">
+    <app-loader *ngIf="loadingSinglePcConstraint"></app-loader>
+    <form *ngIf="!loadingSinglePcConstraint" [formGroup]="pcConstraintForm" (ngSubmit)="onSubmit()">
         <div class="row mb-3">
             <label class="col-2 form-label form-text" for="name">Constraint name</label>
             <div class="col-10">

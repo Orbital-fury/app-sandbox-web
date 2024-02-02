@@ -3,7 +3,8 @@
     Manage PC constraints
   </h2>
   <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcConstraint()">+ Add</button>
-  <div class="row row-cols-4">
+  <app-loader *ngIf="loadingPcConstraints"></app-loader>
+  <div class="row row-cols-4" *ngIf="!loadingPcConstraints">
     <div class="col" *ngFor="let pcConstraint of pcConstraints">
       <ng-template #tooltip>
         code: {{pcConstraint.code}}<br>

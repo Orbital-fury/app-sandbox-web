@@ -91,13 +91,10 @@ a,
 a:visited,
 a:hover {
   text-decoration: none;
-  color: var(--color30);
 }
 
-a.btn,
-a.btn:visited,
-a.btn:hover {
-  color: white;
+.text-color30 {
+  color: var(--color30);
 }
 
 img {

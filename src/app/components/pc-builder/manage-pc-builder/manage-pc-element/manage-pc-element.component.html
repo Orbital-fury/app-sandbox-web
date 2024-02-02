@@ -1,42 +1,47 @@
 <div class="m-4">
-    <h2 class="border-bottom title-border pb-1 mb-4">
-        Manage PC elements
-    </h2>
-    <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcElement()">+ Add</button>
-    <div class="row row-cols-4">
-        <div class="col" *ngFor="let pcElement of pcElements">
-            <ng-template #tooltip>
-                <table class="table table-bordered">
-                    <thead></thead>
-                    <tbody>
-                        <tr>
-                            <td>Price</td>
-                            <td>{{pcElement.price | euroCurrency}}</td>
-                        </tr>
-                        <tr>
-                            <td>Element type</td>
-                            <td>{{pcElement.type}}</td>
-                        </tr>
-                        <tr>
-                            <td># Constraints</td>
-                            <td>{{pcElement.constraints.length}}</td>
-                        </tr>
-                        <tr>
-                            <td># Specifications</td>
-                            <td>{{pcElement.specifications.length}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </ng-template>
-            <div class="card m-3" [ngbTooltip]="tooltip" tooltipClass="light-tooltip">
-                <div class="card-body">
-                    <h5 class="card-title text-truncate pb-1">{{pcElement.brand}} {{pcElement.model}}</h5>
-                    <div class="card-text">
-                        <button class="btn btn-secondary me-2"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
-                    </div>
-                </div>
+  <h2 class="border-bottom title-border pb-1 mb-4">
+    Manage PC elements
+  </h2>
+  <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcElement()">+ Add</button>
+  <app-loader *ngIf="loadingPcElements"></app-loader>
+  <div class="row row-cols-4" *ngIf="!loadingPcElements">
+    <div class="col" *ngFor="let pcElement of pcElements">
+      <ng-template #tooltip>
+        <table class="table table-bordered">
+          <thead></thead>
+          <tbody>
+            <tr>
+              <td>Price</td>
+              <td>{{pcElement.price | euroCurrency}}</td>
+            </tr>
+            <tr>
+              <td>Element type</td>
+              <td>{{pcElement.type}}</td>
+            </tr>
+            <tr>
+              <td># Constraints</td>
+              <td>{{pcElement.constraints.length}}</td>
+            </tr>
+            <tr>
+              <td># Specifications</td>
+              <td>{{pcElement.specifications.length}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+      <div class="card m-3" [ngbTooltip]="tooltip" tooltipClass="light-tooltip">
+        <div class="card-body">
+          <h5 class="card-title text-truncate pb-1">{{pcElement.brand}} {{pcElement.model}}</h5>
+          <div class="card-text d-flex justify-content-between">
+            <div>
+              <button class="btn btn-secondary me-2"><i class="fa-regular fa-pen-to-square"></i></button>
+              <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
             </div>
+            <a class="btn btn-outline-secondary" [routerLink]="'/pc-builder/pc-elements/' + pcElement.id" target="_blank"
+              title="Visit information page: {{pcElement.brand}} {{pcElement.model}}">Go to element info</a>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

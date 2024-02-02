@@ -63,14 +63,11 @@
 <div class="row">
   <div class="col-4 mb-3" *ngFor="let machine of machines">
     <div class="card maint-border" [ngClass]="machine.needMaintenance ? 'maint-nok' : 'maint-ok'">
-      <a [routerLink]="[
-          '/',
-          'mmm',
-          { outlets: { mmm: ['manage-machine', machine.id] } }
-        ]">
+      <a [routerLink]="['/','mmm',
+          { outlets: { mmm: ['manage-machine', machine.id] } }]">
         <div class="card-header bg-color10 d-flex justify-content-between">
           <div>
-            <h5 class="">
+            <h5 class="text-color30">
               {{ machine.model.brand.name }} {{ machine.model.name }} ({{ machine.model.type }})
             </h5>
           </div>
@@ -80,8 +77,7 @@
                 'bg-warning': machine.state === 'IDLE',
                 'bg-danger': machine.state === 'STOP',
                 'bg-secondary': machine.state === 'OFF'
-              }"
-              title="Current state">{{ machine.state }}</span>
+              }" title="Current state">{{ machine.state }}</span>
           </div>
         </div>
       </a>
