@@ -7,11 +7,14 @@
 | PC constraint create                                         | :heavy_check_mark:   |
 | PC constraint edit                                           | :heavy_check_mark:   |
 | PC constraint delete                                         | :heavy_check_mark:   |
-| Add toast service                                            | :x:                  |
+| Add toast service                                            | :heavy_check_mark:   |
 | throw Toast on create/update/delete success and all failures | :x:                  |
 | PC element create                                            | :x:                  |
 | PC element edit                                              | :x:                  |
 | PC element delete                                            | :x:                  |
+| Add and manage user connection                               | :x:                  |
+| Add role regarding user and what they can do                 | :x:                  |
+| Try Angular 16 signals                                       | :x:                  |
 
 ## Development server
 
