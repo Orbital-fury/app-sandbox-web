@@ -2,7 +2,7 @@
   <h2 class="border-bottom title-border pb-1 mb-4">
     Manage PC constraints
   </h2>
-  <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcConstraint()">+ Add</button>
+  <button class="fw-bold btn btn-dark mb-3" (click)="goToAddPcConstraint()" type="button">+ Add</button>
   <app-loader *ngIf="loadingPcConstraints"></app-loader>
   <div class="row row-cols-4" *ngIf="!loadingPcConstraints">
     <div class="col" *ngFor="let pcConstraint of pcConstraints">
@@ -17,7 +17,7 @@
             <a routerLink="/pc-builder/manage/pc-constraints/{{pcConstraint.id}}" class="btn btn-secondary me-2">
               <i class="fa-regular fa-pen-to-square"></i>
             </a>
-            <button class="btn btn-danger" (click)="deletePcConstraint(pcConstraint)">
+            <button class="btn btn-danger" (click)="deletePcConstraint(pcConstraint)" type="button">
               <i class="fa-regular fa-trash-can"></i>
             </button>
           </div>

@@ -9,9 +9,10 @@
 | PC constraint delete                                         | :heavy_check_mark:   |
 | Add toast service                                            | :heavy_check_mark:   |
 | throw Toast on create/update/delete success and all failures | :heavy_check_mark:   |
+| PC element delete                                            | :x:                  |
+| Modify reset button when updating an existing resource       | :heavy_check_mark:   |
 | PC element create                                            | :x:                  |
 | PC element edit                                              | :x:                  |
-| PC element delete                                            | :x:                  |
 | Add and manage user connection                               | :x:                  |
 | Add role regarding user and what they can do                 | :x:                  |
 | Try Angular 16 signals                                       | :x:                  |

@@ -103,7 +103,16 @@ export class UpdatePcConstraintComponent implements OnInit, OnDestroy {
   }
 
   onReset() {
-    this.pcConstraintForm.reset();
+    console.log("reset constraint update")
+    if (this.constraintId) {
+      this.name?.patchValue(this.pcConstraint.name);
+      this.code?.patchValue(this.pcConstraint.code);
+      this.type?.patchValue(this.pcConstraint.type);
+      this.pcConstraintForm.markAsPristine();
+      this.pcConstraintForm.markAsUntouched();
+    } else {
+      this.pcConstraintForm.reset()
+    }
   }
 
   private specialCaseForCodeValidator(): AsyncValidatorFn {
