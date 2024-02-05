@@ -1,3 +1,4 @@
+import { ApiError } from "src/app/shared/services/api-response.service";
 import { PcElement, PcElementType } from "src/typing-pc-builder";
 
 export interface PcElementsState {
@@ -7,7 +8,7 @@ export interface PcElementsState {
     loadingPcElements: boolean;
     pcElements: PcElement[];
     pcBuildElements: PcElement[];
-    error: any;
+    error: ApiError | undefined;
 };
 
 export const pcElementsState: PcElementsState = {
@@ -17,5 +18,5 @@ export const pcElementsState: PcElementsState = {
     loadingPcElements: false,
     pcElements: [],
     pcBuildElements: [],
-    error: ''
+    error: undefined
 };

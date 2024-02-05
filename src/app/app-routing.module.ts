@@ -18,9 +18,9 @@ import { PcBuilderComponent } from './components/pc-builder/pc-builder.component
 import { CustomerComponent } from './components/test/customer/customer.component';
 import { DashboardComponent } from './components/test/dashboard/dashboard.component';
 import { ParallaxComponent } from './components/test/parallax/parallax.component';
-import { machineBreadcrumbResolver } from './resolvers/machine.resolver';
-import { pcElementBreadcrumbResolver } from './resolvers/pc-element.resolver';
-import { pcConstraintBreadcrumbResolver } from './resolvers/pc-constraint.resolver';
+import { machineResolver } from './resolvers/machine.resolver';
+import { pcElementResolver } from './resolvers/pc-element.resolver';
+import { pcConstraintResolver } from './resolvers/pc-constraint.resolver';
 
 const routes: Routes = [
   {
@@ -37,8 +37,8 @@ const routes: Routes = [
         path: 'pc-builder', data: { breadcrumb: 'PC Builder' }, children: [
           { path: '', component: PcBuilderComponent },
           {
-            path: 'pc-elements/:elementId', resolve: { pcElementBreadcrumb: pcElementBreadcrumbResolver },
-            data: { breadcrumb: '@pcElementBreadcrumb' }, component: PcElementComponent
+            path: 'pc-elements/:elementId', resolve: { pcElement: pcElementResolver },
+            data: { breadcrumb: '@pcElement.breadcrumb' }, component: PcElementComponent
           },
           {
             path: 'manage', data: { breadcrumb: 'Admin manager' }, children: [
@@ -49,8 +49,8 @@ const routes: Routes = [
                   { path: 'create', component: UpdatePcElementComponent, data: { breadcrumb: 'Create' } },
                   {
                     path: ':elementId', component: UpdatePcElementComponent,
-                    resolve: { pcElementBreadcrumb: pcElementBreadcrumbResolver },
-                    data: { breadcrumb: '@pcElementBreadcrumb' }
+                    resolve: { pcElement: pcElementResolver },
+                    data: { breadcrumb: '@pcElement.breadcrumb' }
                   },
                 ]
               },
@@ -60,8 +60,8 @@ const routes: Routes = [
                   { path: 'create', component: UpdatePcConstraintComponent, data: { breadcrumb: 'Create' } },
                   {
                     path: ':constraintId', component: UpdatePcConstraintComponent,
-                    resolve: { pcConstraintBreadcrumb: pcConstraintBreadcrumbResolver },
-                    data: { breadcrumb: '@pcConstraintBreadcrumb' }
+                    resolve: { pcConstraint: pcConstraintResolver },
+                    data: { breadcrumb: '@pcConstraint.breadcrumb' }
                   },
                 ]
               },
@@ -79,8 +79,8 @@ const routes: Routes = [
               { path: '', component: ManageMachineComponent },
               { path: 'create', data: { breadcrumb: 'Create' }, component: UpdateMachineComponent },
               {
-                path: ':machineId', resolve: { machineBreadcrumb: machineBreadcrumbResolver },
-                data: { breadcrumb: '@machineBreadcrumb' }, component: MachineComponent
+                path: ':machineId', resolve: { machine: machineResolver },
+                data: { breadcrumb: '@machine' }, component: MachineComponent
               },
             ],
             outlet: 'mmm',

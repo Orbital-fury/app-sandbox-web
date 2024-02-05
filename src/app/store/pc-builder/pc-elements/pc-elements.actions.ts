@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { ApiError } from 'src/app/shared/services/api-response.service';
 import { PcElement, PcElementType } from 'src/typing-pc-builder';
 
 export const loadPcElements = createAction(
@@ -12,7 +13,7 @@ export const loadPcElementsSuccess = createAction(
 
 export const loadPcElementsFailure = createAction(
   '[PC Elements] Load PcElements Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const loadSinglePcElement = createAction(
@@ -27,7 +28,7 @@ export const loadSinglePcElementSuccess = createAction(
 
 export const loadSinglePcElementFailure = createAction(
   '[PC Element] Load Single PcElement Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const addPcElementToBuild = createAction(

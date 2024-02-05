@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { ApiError } from 'src/app/shared/services/api-response.service';
 import { NewPcConstraint, PcConstraintWithoutValue, PcElementConstraintValues } from 'src/typing-pc-builder';
 
 export const loadPcConstraints = createAction(
@@ -12,7 +13,7 @@ export const loadPcConstraintsSuccess = createAction(
 
 export const loadPcConstraintsFailure = createAction(
   '[PC Constraints] Load PcConstraints Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const loadSinglePcConstraint = createAction(
@@ -27,7 +28,7 @@ export const loadSinglePcConstraintSuccess = createAction(
 
 export const loadSinglePcConstraintFailure = createAction(
   '[PC Constraint] Load Single PcConstraint Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const loadPcElementsConstraintValues = createAction(
@@ -42,7 +43,7 @@ export const loadPcElementsConstraintValuesSuccess = createAction(
 
 export const loadPcElementsConstraintValuesFailure = createAction(
   '[PC Constraint] Load PC elements and their constraint values Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const createPcConstraint = createAction(
@@ -57,7 +58,7 @@ export const createPcConstraintSuccess = createAction(
 
 export const createPcConstraintFailure = createAction(
   '[PC Constraint] Create PcConstraint Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const updatePcConstraint = createAction(
@@ -72,7 +73,7 @@ export const updatePcConstraintSuccess = createAction(
 
 export const updatePcConstraintFailure = createAction(
   '[PC Constraint] Update PcConstraint Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );
 
 export const deletePcConstraint = createAction(
@@ -87,5 +88,5 @@ export const deletePcConstraintSuccess = createAction(
 
 export const deletePcConstraintFailure = createAction(
   '[PC Constraint] Delete PcConstraint Failure',
-  props<{ error: any }>()
+  props<{ error: ApiError }>()
 );

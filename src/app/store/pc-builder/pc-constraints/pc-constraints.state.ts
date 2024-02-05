@@ -1,3 +1,4 @@
+import { ApiError } from "src/app/shared/services/api-response.service";
 import { PcConstraintWithoutValue, PcElementConstraintValues } from "src/typing-pc-builder";
 
 export interface PcConstraintsState {
@@ -7,7 +8,7 @@ export interface PcConstraintsState {
     singlePcConstraint: PcConstraintWithoutValue | undefined;
     loadingPcElementsConstraintValues: boolean;
     pcElementsConstraintValues: PcElementConstraintValues[];
-    error: any;
+    error: ApiError | undefined;
 };
 
 export const pcConstraintsState: PcConstraintsState = {
@@ -17,5 +18,5 @@ export const pcConstraintsState: PcConstraintsState = {
     singlePcConstraint: undefined,
     loadingPcElementsConstraintValues: false,
     pcElementsConstraintValues: [],
-    error: ''
+    error: undefined
 };

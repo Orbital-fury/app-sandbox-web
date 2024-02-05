@@ -15,7 +15,7 @@ import { PcBuilderModule } from './components/pc-builder/pc-builder.module';
 import { TestModule } from './components/test/test.module';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
-import { effects, reducers } from './store/pc-builder';
+import { effects, reducers } from './store';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LeftTileComponent],

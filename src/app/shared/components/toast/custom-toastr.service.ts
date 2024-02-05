@@ -57,19 +57,19 @@ export class CustomToastrService {
     this.toastrService.show(options.msg, options.title, toastOptions);
   }
 
-  showCustromInfo(title: string, msg: string) {
+  showCustomInfo(title: string, msg: string) {
     this.showCustom({ msg, type: 'info', title, autohide: true })
   }
 
-  showCustromSuccess(title: string, msg: string) {
+  showCustomSuccess(title: string, msg: string) {
     this.showCustom({ msg, type: 'success', title, autohide: true })
   }
 
-  showCustromWarning(title: string, msg: string) {
+  showCustomWarning(title: string, msg: string) {
     this.showCustom({ msg, type: 'warning', title, autohide: true })
   }
 
-  showCustromError(title: string, msg: string) {
+  showCustomError(title: string, msg: string) {
     this.showCustom({ msg, type: 'danger', title, autohide: false })
   }
 

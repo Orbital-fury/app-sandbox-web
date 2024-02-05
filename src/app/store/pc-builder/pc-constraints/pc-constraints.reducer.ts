@@ -13,7 +13,7 @@ export const reducer = createReducer(
     ...state,
     loadingPcConstraints: false,
     pcConstraints,
-    error: ''
+    error: undefined
   })),
   on(fromPcConstraintsActions.loadPcConstraintsFailure, (state, { error }) => ({
     ...state,
@@ -30,7 +30,7 @@ export const reducer = createReducer(
     ...state,
     loadingSinglePcConstraint: false,
     singlePcConstraint: pcConstraint,
-    error: ''
+    error: undefined
   })),
   on(fromPcConstraintsActions.loadSinglePcConstraintFailure, (state, { error }) => ({
     ...state,
@@ -47,7 +47,7 @@ export const reducer = createReducer(
     ...state,
     loadingPcElementsConstraintValues: false,
     pcElementsConstraintValues: pcElements,
-    error: ''
+    error: undefined
   })),
   on(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure, (state, { error }) => ({
     ...state,

@@ -10,18 +10,11 @@
 }
 // -----------------------------------------------
 
-.toast-custom-info {
-  box-shadow: -5px 0px 0px 0px rgb(var(--bs-info-rgb));
-}
-
-.toast-custom-success {
-  box-shadow: -5px 0px 0px 0px rgb(var(--bs-success-rgb));
-}
-
-.toast-custom-warning {
-  box-shadow: -5px 0px 0px 0px rgb(var(--bs-warning-rgb));
-}
-
-.toast-custom-danger {
-  box-shadow: -5px 0px 0px 0px rgb(var(--bs-danger-rgb));
+$toast-types: info success warning danger;
+@each $type in $toast-types {
+  .toast-custom-#{$type} {
+    // box-shadow: -5px 0px 0px 0px rgb(var(--bs-#{$type}-rgb));
+    border: 1px solid rgba(var(--bs-#{$type}-rgb), 0.4) !important;
+    border-left: 5px solid rgb(var(--bs-#{$type}-rgb), 1) !important;
+  }
 }

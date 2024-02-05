@@ -13,7 +13,7 @@ export const reducer = createReducer(
     ...state,
     loadingPcElements: false,
     pcElements,
-    error: ''
+    error: undefined
   })),
   on(fromPcElementsActions.loadPcElementsFailure, (state, { error }) => ({
     ...state,
@@ -30,7 +30,7 @@ export const reducer = createReducer(
     ...state,
     loadingSinglePcElement: false,
     singlePcElement: pcElement,
-    error: ''
+    error: undefined
   })),
   on(fromPcElementsActions.loadSinglePcElementFailure, (state, { error }) => ({
     ...state,

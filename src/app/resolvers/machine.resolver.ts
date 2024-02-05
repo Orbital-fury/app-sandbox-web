@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import { Machine } from 'src/typing-mmm';
 import { MmmMachineService } from '../services/mmm/mmm-machine.service';
 
-export const machineBreadcrumbResolver: ResolveFn<string> = (route, state) => {
+export const machineResolver: ResolveFn<string> = (route, state) => {
   return inject(MmmMachineService).getMachine(parseInt(route.paramMap.get('machineId')!)).pipe(
     map((machine: Machine) => `${machine.model.brand.name} ${machine.model.name}`)
   );

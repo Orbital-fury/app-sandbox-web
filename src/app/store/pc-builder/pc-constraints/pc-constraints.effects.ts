@@ -1,21 +1,29 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { PcConstraintService } from 'src/app/services/pc-builder/pc-constraint.service';
+import { CustomToastrService } from 'src/app/shared/components/toast/custom-toastr.service';
 import * as fromPcConstraintsActions from './pc-constraints.actions';
+import { ApiResponseService } from 'src/app/shared/services/api-response.service';
 
 @Injectable()
 export class PcConstraintsEffects {
 
-  constructor(private actions$: Actions, private pcConstraintService: PcConstraintService, private router: Router) { }
+  constructor(
+    private actions$: Actions,
+    private pcConstraintService: PcConstraintService,
+    private router: Router,
+    private readonly apiResponseService: ApiResponseService
+  ) { }
 
   loadPcConstraints$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.loadPcConstraints, fromPcConstraintsActions.deletePcConstraintSuccess),
       switchMap(() => this.pcConstraintService.getPcConstraints().pipe(
         map(pcConstraints => fromPcConstraintsActions.loadPcConstraintsSuccess({ pcConstraints })),
-        catchError(error => of(fromPcConstraintsActions.loadPcConstraintsFailure({ error })))
+        catchError((error: HttpErrorResponse) => of(fromPcConstraintsActions.loadPcConstraintsFailure({ error: error.error })))
       ))
     )
   );
@@ -23,7 +31,7 @@ export class PcConstraintsEffects {
   loadPcConstraintsFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.loadPcConstraintsFailure),
-      tap(() => console.log("loadPcConstraintsFailure"))
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );
 
@@ -32,7 +40,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.loadSinglePcConstraint),
       switchMap(payload => this.pcConstraintService.getPcConstraint(payload.pcConstraintId).pipe(
         map(pcConstraint => fromPcConstraintsActions.loadSinglePcConstraintSuccess({ pcConstraint })),
-        catchError(error => of(fromPcConstraintsActions.loadSinglePcConstraintFailure({ error })))
+        catchError((error: HttpErrorResponse) => of(fromPcConstraintsActions.loadSinglePcConstraintFailure({ error: error.error })))
       ))
     )
   );
@@ -40,7 +48,7 @@ export class PcConstraintsEffects {
   loadSinglePcConstraintFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.loadSinglePcConstraintFailure),
-      tap(() => console.log("loadSinglePcConstraintFailure"))
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );
 
@@ -49,7 +57,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.loadPcElementsConstraintValues),
       switchMap(payload => this.pcConstraintService.getPcElementAndConstraintValues(payload.pcConstraintId).pipe(
         map(pcElements => fromPcConstraintsActions.loadPcElementsConstraintValuesSuccess({ pcElements })),
-        catchError(error => of(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure({ error })))
+        catchError((error: HttpErrorResponse) => of(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure({ error: error.error })))
       ))
     )
   );
@@ -57,7 +65,7 @@ export class PcConstraintsEffects {
   loadPcElementsConstraintValuesFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.loadPcElementsConstraintValuesFailure),
-      tap(() => console.log("loadPcElementsConstraintValuesFailure"))
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );
 
@@ -66,7 +74,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.createPcConstraint),
       switchMap(payload => this.pcConstraintService.createPcConstraint(payload.newPcConstraint).pipe(
         map(pcConstraint => fromPcConstraintsActions.createPcConstraintSuccess({ pcConstraint })),
-        catchError(error => of(fromPcConstraintsActions.createPcConstraintFailure({ error })))
+        catchError((error: HttpErrorResponse) => of(fromPcConstraintsActions.createPcConstraintFailure({ error: error.error })))
       ))
     )
   );
@@ -76,7 +84,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.createPcConstraintSuccess),
       tap(payload => {
         this.router.navigate(['/pc-builder/manage/pc-constraints']);
-        console.log("PC constraint created successfully:", payload.pcConstraint.name);
+        this.apiResponseService.launchApiSuccess('Creation successful', `PC constraint '${payload.pcConstraint.name}' created successfully`)
       })
     ), { dispatch: false }
   );
@@ -84,7 +92,7 @@ export class PcConstraintsEffects {
   addPcConstraintFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.createPcConstraintFailure),
-      tap(() => console.log("createPcConstraintFailure"))
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );
 
@@ -93,7 +101,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.updatePcConstraint),
       switchMap(payload => this.pcConstraintService.updatePcConstraint(payload.pcConstraint).pipe(
         map(pcConstraint => fromPcConstraintsActions.updatePcConstraintSuccess({ pcConstraint })),
-        catchError(error => of(fromPcConstraintsActions.updatePcConstraintFailure({ error })))
+        catchError((error: HttpErrorResponse) => of(fromPcConstraintsActions.updatePcConstraintFailure({ error: error.error })))
       ))
     )
   );
@@ -103,7 +111,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.updatePcConstraintSuccess),
       tap(payload => {
         this.router.navigate(['/pc-builder/manage/pc-constraints']);
-        console.log("PC constraint updated successfully:", payload.pcConstraint.name);
+        this.apiResponseService.launchApiSuccess('Update successful', `PC constraint '${payload.pcConstraint.name}' updated successfully`)
       })
     ), { dispatch: false }
   );
@@ -111,7 +119,7 @@ export class PcConstraintsEffects {
   updatePcConstraintFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.updatePcConstraintFailure),
-      tap(() => console.log("updatePcConstraintFailure"))
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );
 
@@ -120,7 +128,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.deletePcConstraint),
       switchMap(payload => this.pcConstraintService.deletePcConstraint(payload.pcConstraintId).pipe(
         map(pcConstraint => fromPcConstraintsActions.deletePcConstraintSuccess({ pcConstraint })),
-        catchError(error => of(fromPcConstraintsActions.deletePcConstraintFailure({ error })))
+        catchError((error: HttpErrorResponse) => of(fromPcConstraintsActions.deletePcConstraintFailure({ error: error.error })))
       ))
     )
   );
@@ -130,7 +138,7 @@ export class PcConstraintsEffects {
       ofType(fromPcConstraintsActions.deletePcConstraintSuccess),
       tap(payload => {
         this.router.navigate(['/pc-builder/manage/pc-constraints']);
-        console.log("PC constraint deleted successfully:", payload.pcConstraint.name);
+        this.apiResponseService.launchApiSuccess('Deletion successful', `PC constraint '${payload.pcConstraint.name}' deleted successfully`)
       })
     ), { dispatch: false }
   );
@@ -138,7 +146,7 @@ export class PcConstraintsEffects {
   deletePcConstraintFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.deletePcConstraintFailure),
-      tap(() => console.log("deletePcConstraintFailure"))
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );
 

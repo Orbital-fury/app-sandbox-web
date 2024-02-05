@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
-import { pcConstraintBreadcrumbResolver } from './pc-constraint.resolver';
+import { pcConstraintResolver } from './pc-constraint.resolver';
 
 describe('pcConstraintBreadcrumbResolver', () => {
     const executeResolver: ResolveFn<string> = (...resolverParameters) =>
-        TestBed.runInInjectionContext(() => pcConstraintBreadcrumbResolver(...resolverParameters));
+        TestBed.runInInjectionContext(() => pcConstraintResolver(...resolverParameters));
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
