@@ -1,0 +1,20 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Delete PC element - are you sure?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+    </div>
+    <div class="alert alert-warning rounded-0" role="alert">
+        Unexpected bad things will happen if you don't read this!
+    </div>
+    <div class="modal-body">
+        <p>You are going to permanently delete the PC element <span
+                class="text-danger fw-bold">{{pcElement.brand}} {{pcElement.model}}</span>.<br>
+            This action <strong>cannot</strong> be undone.</p>
+    </div>
+    <div class="modal-footer justify-content-start">
+        <p>Please type <span class="text-danger fw-bold">{{deleteSecurity}}</span> to confirm.</p>
+        <input class="form-control mb-3" type="text" [(ngModel)]="deleteSecurityInput" required autocomplete="off"/>
+        <button type="button" class="btn btn-outline-danger w-100" (click)="delete()"
+            [disabled]="deleteSecurity !== deleteSecurityInput">Delete constraint</button>
+    </div>
+</div>

@@ -34,11 +34,17 @@
           <h5 class="card-title text-truncate pb-1">{{pcElement.brand}} {{pcElement.model}}</h5>
           <div class="card-text d-flex justify-content-between">
             <div>
-              <button class="btn btn-secondary me-2"><i class="fa-regular fa-pen-to-square"></i></button>
-              <button class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></button>
+              <a routerLink="/pc-builder/manage/pc-elements/{{pcElement.id}}" class="btn btn-secondary me-2">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </a>
+              <button class="btn btn-danger" (click)="deletePcElement(pcElement)">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
             </div>
-            <a class="btn btn-outline-secondary" [routerLink]="'/pc-builder/pc-elements/' + pcElement.id" target="_blank"
-              title="Visit information page: {{pcElement.brand}} {{pcElement.model}}">Go to element info</a>
+            <a class="btn btn-outline-secondary" [routerLink]="'/pc-builder/pc-elements/' + pcElement.id"
+              target="_blank" title="Visit information page: {{pcElement.brand}} {{pcElement.model}}">
+              Go to element info
+            </a>
           </div>
         </div>
       </div>

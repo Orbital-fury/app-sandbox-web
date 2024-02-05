@@ -2,12 +2,13 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environment.dev';
-import { PcElement, PcElements } from 'src/typing-pc-builder';
+import { PcElement, PcElementBasis, PcElements } from 'src/typing-pc-builder';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PcElementService {
+  
   private baseUrl = environment.baseUrl + '/pc-elements';
 
   constructor(private http: HttpClient) { }
@@ -27,8 +28,11 @@ export class PcElementService {
   }
 
   getPcElement(id: number): Observable<PcElement> {
-    return this.http
-      .get<PcElement>(`${this.baseUrl}/${id}`);
+    return this.http.get<PcElement>(`${this.baseUrl}/${id}`);
+  }
+
+  deletePcElement(pcElementId: number): Observable<PcElementBasis> {
+    return this.http.delete<PcElementBasis>(`${this.baseUrl}/${pcElementId}`);
   }
 
 }

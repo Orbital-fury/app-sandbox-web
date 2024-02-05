@@ -6,6 +6,7 @@ import { PcElementService } from 'src/app/services/pc-builder/pc-element.service
 import { ApiResponseService } from 'src/app/shared/services/api-response.service';
 import * as fromPcElementsActions from './pc-elements.actions';
 import { CustomToastrService } from 'src/app/shared/components/toast/custom-toastr.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PcElementsEffects {
@@ -13,12 +14,13 @@ export class PcElementsEffects {
   constructor(
     private actions$: Actions,
     private pcElementService: PcElementService,
+    private router: Router,
     private readonly apiResponseService: ApiResponseService
   ) { }
 
   loadPcElements$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromPcElementsActions.loadPcElements),
+      ofType(fromPcElementsActions.loadPcElements, fromPcElementsActions.deletePcElementSuccess),
       switchMap(() => this.pcElementService.getPcElements().pipe(
         map(pcElements => fromPcElementsActions.loadPcElementsSuccess({ pcElements })),
         catchError((error: HttpErrorResponse) => of(fromPcElementsActions.loadPcElementsFailure({ error: error.error })))
@@ -46,6 +48,35 @@ export class PcElementsEffects {
   loadSinglePcElementFailure$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromPcElementsActions.loadSinglePcElementFailure),
+      tap((payload) => this.apiResponseService.launchApiError(payload.error))
+    ), { dispatch: false }
+  );
+
+  deletePcElement$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcElementsActions.deletePcElement),
+      switchMap(payload => this.pcElementService.deletePcElement(payload.pcElementId).pipe(
+        map(pcElement => fromPcElementsActions.deletePcElementSuccess({ pcElement })),
+        catchError((error: HttpErrorResponse) => of(fromPcElementsActions.deletePcElementFailure({ error: error.error })))
+      ))
+    )
+  );
+
+  deletePcElementSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcElementsActions.deletePcElementSuccess),
+      tap(payload => {
+        this.apiResponseService.launchApiSuccess(
+          'Deletion successful',
+          `PC element '${payload.pcElement.brand} ${payload.pcElement.model}' deleted successfully`
+        )
+      })
+    ), { dispatch: false }
+  );
+
+  deletePcElementFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromPcElementsActions.deletePcElementFailure),
       tap((payload) => this.apiResponseService.launchApiError(payload.error))
     ), { dispatch: false }
   );

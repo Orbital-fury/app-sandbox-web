@@ -137,7 +137,6 @@ export class PcConstraintsEffects {
     this.actions$.pipe(
       ofType(fromPcConstraintsActions.deletePcConstraintSuccess),
       tap(payload => {
-        this.router.navigate(['/pc-builder/manage/pc-constraints']);
         this.apiResponseService.launchApiSuccess('Deletion successful', `PC constraint '${payload.pcConstraint.name}' deleted successfully`)
       })
     ), { dispatch: false }

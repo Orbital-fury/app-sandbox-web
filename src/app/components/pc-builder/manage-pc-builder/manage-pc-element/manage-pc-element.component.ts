@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { loadPcElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
 import { selectLoadingPcElements, selectPcElements } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
 import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
-import { PcElement } from 'src/typing-pc-builder';
+import { PcElement, PcElementBasis } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
+import { ModalDeletePcElementComponent } from './modal-delete-pc-element/modal-delete-pc-element.component';
 
 @Component({
   selector: 'app-manage-pc-element',
@@ -18,7 +20,11 @@ export class ManagePcElementComponent implements OnInit, OnDestroy {
   loadingPcElements: boolean;
   private subs = new SubSink();
 
-  constructor(private router: Router, private readonly pcElementStore: Store<PcElementsState>) { }
+  constructor(
+    private modalService: NgbModal,
+    private router: Router,
+    private readonly pcElementStore: Store<PcElementsState>
+  ) { }
 
   ngOnInit() {
     this.subs.sink = this.pcElementStore.select(selectPcElements).subscribe(pcElements => this.pcElements = pcElements);
@@ -33,6 +39,11 @@ export class ManagePcElementComponent implements OnInit, OnDestroy {
 
   goToAddPcElement() {
     this.router.navigate([`${this.router.url}/create`]);
+  }
+
+  deletePcElement(pcElement: PcElementBasis) {
+    const modalRef = this.modalService.open(ModalDeletePcElementComponent, { centered: true, scrollable: true });
+    modalRef.componentInstance.pcElement = pcElement;
   }
 
 }

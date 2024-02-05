@@ -8,7 +8,7 @@
 | PC constraint edit                                           | :heavy_check_mark:   |
 | PC constraint delete                                         | :heavy_check_mark:   |
 | Add toast service                                            | :heavy_check_mark:   |
-| throw Toast on create/update/delete success and all failures | :x:                  |
+| throw Toast on create/update/delete success and all failures | :heavy_check_mark:   |
 | PC element create                                            | :x:                  |
 | PC element edit                                              | :x:                  |
 | PC element delete                                            | :x:                  |
@@ -117,3 +117,7 @@ Example of a component-store [here](/src/app/store/component-store/pc-builder.st
 - Explicit public method (?):
     - https://typescript-eslint.io/rules/explicit-member-accessibility/
     - https://stackoverflow.com/questions/36943888/typescript-classes-is-explicit-public-modifier-a-best-practice
+
+### Questions
+
+- Using modal (to delete resources), should I use @Input() to pass object ? Or should I use the store ? And if no store, should I request to the API ?
