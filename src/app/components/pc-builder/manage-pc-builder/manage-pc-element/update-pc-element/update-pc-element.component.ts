@@ -31,7 +31,7 @@ export class UpdatePcElementComponent {
     private readonly pcElementStore: Store<PcElementsState>,
     private decimalPipe: DecimalPipe
   ) {
-    this.pcElementId = parseInt(this.route.snapshot.paramMap.get('constraintId')!);
+    this.pcElementId = parseInt(this.route.snapshot.paramMap.get('elementId')!);
     this.pcElementForm = this.formBuilder.group({
       brand: ['', [Validators.required, Validators.minLength(3)]],
       model: ['', [Validators.required, Validators.minLength(3)]],

@@ -45,7 +45,7 @@ export abstract class PcConstraint {
   name: string;
   code: string;
   type: ConstraintType;
-  value: string[];
+  values: string[];
 }
 
 export abstract class PcConstraintWithoutValue {
@@ -69,7 +69,7 @@ export abstract class PcSpecification {
   id: number;
   name: string;
   code: string;
-  value: string;
+  values: string[];
 }
 
 export type MoboSize = "ATX" | "E_ATX" | "MICRO_ATX";

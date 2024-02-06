@@ -102,9 +102,9 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
       .forEach(constraint => {
         const key = constraint.code; // Utilisez constraint.id si vous préférez l'id
         if (!constraintMap.has(key)) {
-          constraintMap.set(key, { ...constraint, value: [] });
+          constraintMap.set(key, { ...constraint, values: [] });
         }
-        constraintMap.get(key)!.value.push(...constraint.value);
+        constraintMap.get(key)!.values.push(...constraint.values);
       });
     return Array.from(constraintMap.values());
   }
@@ -126,16 +126,16 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
 
       switch (pcBuildConstraintToManage.type) {
         case 'SAME':
-          return pcBuildConstraintToManage.value.some((valueFromBuildToManage) => {
-            return constraint.value.includes(valueFromBuildToManage);
+          return pcBuildConstraintToManage.values.some((valueFromBuildToManage) => {
+            return constraint.values.includes(valueFromBuildToManage);
           });
         case 'MAX':
-          return parseFloat(pcBuildConstraintToManage.value[0]) >= parseFloat(constraint.value[0]);
+          return parseFloat(pcBuildConstraintToManage.values[0]) >= parseFloat(constraint.values[0]);
         case 'CAPACITY':
           // Gestion du cas CAPACITY
           return true;
         case 'LIMIT':
-          return parseFloat(pcBuildConstraintToManage.value[0]) <= parseFloat(constraint.value[0]);
+          return parseFloat(pcBuildConstraintToManage.values[0]) <= parseFloat(constraint.values[0]);
         default:
           return false; // Au cas où une nouvelle valeur de type serait ajoutée
       }
