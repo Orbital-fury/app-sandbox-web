@@ -17,6 +17,7 @@ import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { effects, reducers } from './store';
 import { connexionRefusedInterceptorProvider } from './interceptors/connexion-refused-interceptor.component';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LeftTileComponent],
@@ -43,7 +44,8 @@ import { connexionRefusedInterceptorProvider } from './interceptors/connexion-re
   ],
   providers: [
     importProvidersFrom(HttpClientModule),
-    connexionRefusedInterceptorProvider
+    connexionRefusedInterceptorProvider,
+    DecimalPipe
   ],
   bootstrap: [AppComponent],
 })

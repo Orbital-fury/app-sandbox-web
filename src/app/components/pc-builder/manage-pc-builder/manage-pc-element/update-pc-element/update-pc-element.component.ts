@@ -1,12 +1,13 @@
+import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { filter, of } from 'rxjs';
-import { loadSinglePcElement } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
+import { filter } from 'rxjs';
+import { createPcElement, loadSinglePcElement, updatePcElement } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
 import { selectLoadingSinglePcElement, selectSinglePcElement } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
 import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
-import { PcElement } from 'src/typing-pc-builder';
+import { PcElement, PcElementBasis } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
 
 @Component({
@@ -27,14 +28,15 @@ export class UpdatePcElementComponent {
   constructor(
     private readonly route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private readonly pcElementStore: Store<PcElementsState>
+    private readonly pcElementStore: Store<PcElementsState>,
+    private decimalPipe: DecimalPipe
   ) {
     this.pcElementId = parseInt(this.route.snapshot.paramMap.get('constraintId')!);
     this.pcElementForm = this.formBuilder.group({
       brand: ['', [Validators.required, Validators.minLength(3)]],
-      model: ['', Validators.required],
-      price: ['', Validators.required],
-      img: ['', Validators.required],
+      model: ['', [Validators.required, Validators.minLength(3)]],
+      price: ['', [Validators.required, this.priceValidator()]],
+      img: [''],
       type: ['', Validators.required]
     });
   }
@@ -76,34 +78,37 @@ export class UpdatePcElementComponent {
   }
 
   onSubmit() {
-    // if (this.pcElementId) {
-    //   const pcConstraint: PcConstraintWithoutValue = {
-    //     id: this.pcElementId,
-    //     name: this.name?.value,
-    //     code: this.code?.value,
-    //     type: this.type?.value
-    //   }
-    //   this.pcConstraintStore.dispatch(updatePcConstraint({ pcConstraint }))
-    // } else {
-    //   const newPcConstraint: NewPcConstraint = {
-    //     name: this.name?.value,
-    //     code: this.code?.value,
-    //     type: this.type?.value
-    //   }
-    //   this.pcConstraintStore.dispatch(createPcConstraint({ newPcConstraint }))
-    // }
+    const img = this.img?.value
+    const pcElement: PcElementBasis = {
+      id: this.pcElementId ? this.pcElementId : -1,
+      brand: this.brand?.value,
+      model: this.model?.value,
+      price: parseFloat(this.decimalPipe.transform(this.price?.value, '1.2-2')!.replaceAll(',','')),
+      img: img === '' ? null : img,
+      type: this.type?.value
+    }
+    if (this.pcElementId) {
+      this.pcElementStore.dispatch(updatePcElement({ pcElement }))
+    } else {
+      this.pcElementStore.dispatch(createPcElement({ newPcElement: pcElement }))
+    }
   }
 
   onReset() {
-    // if (this.pcElementId) {
-    //   this.name?.patchValue(this.pcConstraint.name);
-    //   this.code?.patchValue(this.pcConstraint.code);
-    //   this.type?.patchValue(this.pcConstraint.type);
-    //   this.pcElementForm.markAsPristine();
-    //   this.pcElementForm.markAsUntouched();
-    // } else {
-    //   this.pcElementForm.reset()
-    // }
+    if (this.pcElementId) {
+      this.resetInputOnUpdate()
+      this.pcElementForm.markAsPristine();
+      this.pcElementForm.markAsUntouched();
+    } else {
+      this.pcElementForm.reset()
+    }
+  }
+
+  private priceValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      return (typeof +value === "number" && !isNaN(+value) && parseFloat(value).toFixed(2) !== '0.00') ? null :  { price: true };
+    };
   }
 
   private resetInputOnUpdate() {

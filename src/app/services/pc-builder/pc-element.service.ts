@@ -8,7 +8,7 @@ import { PcElement, PcElementBasis, PcElements } from 'src/typing-pc-builder';
   providedIn: 'root'
 })
 export class PcElementService {
-  
+
   private baseUrl = environment.baseUrl + '/pc-elements';
 
   constructor(private http: HttpClient) { }
@@ -29,6 +29,14 @@ export class PcElementService {
 
   getPcElement(id: number): Observable<PcElement> {
     return this.http.get<PcElement>(`${this.baseUrl}/${id}`);
+  }
+
+  createPcElement(newPcElement: PcElementBasis): Observable<PcElementBasis> {
+    return this.http.post<PcElementBasis>(this.baseUrl, newPcElement);
+  }
+
+  updatePcElement(pcElement: PcElementBasis): Observable<PcElementBasis> {
+    return this.http.put<PcElementBasis>(`${this.baseUrl}/${pcElement.id}`, pcElement);
   }
 
   deletePcElement(pcElementId: number): Observable<PcElementBasis> {

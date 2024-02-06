@@ -3,14 +3,14 @@
     <app-loader *ngIf="loadingSinglePcConstraint"></app-loader>
     <form *ngIf="!loadingSinglePcConstraint" [formGroup]="pcConstraintForm" (ngSubmit)="onSubmit()">
         <div class="row mb-3">
-            <label class="col-2 form-label form-text" for="name">Constraint name</label>
+            <label class="col-2 form-label form-text" for="name">Name</label>
             <div class="col-10">
                 <input class="form-control" [ngClass]="name!.valid ? 'is-valid' : 'is-invalid'" id="name" type="text"
                     formControlName="name" (input)="handleNameInput()" autocomplete="off" />
             </div>
         </div>
         <div class="row mb-3">
-            <label class="col-2 form-label form-text" for="code">Constraint code</label>
+            <label class="col-2 form-label form-text" for="code">Code</label>
             <div class="col-10">
                 <input class="form-control" [ngClass]="code!.valid ? 'is-valid' : 'is-invalid'" id="code" type="text"
                     formControlName="code" autocomplete="off" />
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label class="col-2 form-label form-text" for="type">Constraint type</label>
+            <label class="col-2 form-label form-text" for="type">Type</label>
             <div class="col-10">
                 <input type="radio" class="btn-check" id="same" autocomplete="off" formControlName="type" value="SAME">
                 <label class="btn btn-outline-dark" for="same">Same</label>

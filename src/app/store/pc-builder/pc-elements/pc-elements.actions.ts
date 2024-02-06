@@ -31,6 +31,36 @@ export const loadSinglePcElementFailure = createAction(
   props<{ error: ApiError }>()
 );
 
+export const createPcElement = createAction(
+  '[PC Element] Create PcElement',
+  props<{ newPcElement: PcElementBasis }>()
+);
+
+export const createPcElementSuccess = createAction(
+  '[PC Element] Create PcElement Success',
+  props<{ pcElement: PcElementBasis }>()
+);
+
+export const createPcElementFailure = createAction(
+  '[PC Element] Create PcElement Failure',
+  props<{ error: ApiError }>()
+);
+
+export const updatePcElement = createAction(
+  '[PC Element] Update PcElement',
+  props<{ pcElement: PcElementBasis }>()
+);
+
+export const updatePcElementSuccess = createAction(
+  '[PC Element] Update PcElement Success',
+  props<{ pcElement: PcElementBasis }>()
+);
+
+export const updatePcElementFailure = createAction(
+  '[PC Element] Update PcElement Failure',
+  props<{ error: ApiError }>()
+);
+
 export const deletePcElement = createAction(
   '[PC Element] Delete PcElement',
   props<{ pcElementId: number }>()
