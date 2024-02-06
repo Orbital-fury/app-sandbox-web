@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule, importProvidersFrom, isDevMode } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,7 @@ import { TestModule } from './components/test/test.module';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 import { effects, reducers } from './store';
+import { connexionRefusedInterceptorProvider } from './interceptors/connexion-refused-interceptor.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LeftTileComponent],
@@ -40,7 +41,10 @@ import { effects, reducers } from './store';
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
   ],
-  providers: [],
+  providers: [
+    importProvidersFrom(HttpClientModule),
+    connexionRefusedInterceptorProvider
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

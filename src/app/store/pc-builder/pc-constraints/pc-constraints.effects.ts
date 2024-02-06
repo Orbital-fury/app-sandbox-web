@@ -6,7 +6,7 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { PcConstraintService } from 'src/app/services/pc-builder/pc-constraint.service';
 import { CustomToastrService } from 'src/app/shared/components/toast/custom-toastr.service';
 import * as fromPcConstraintsActions from './pc-constraints.actions';
-import { ApiResponseService } from 'src/app/shared/services/api-response.service';
+import { ApiResponseService } from 'src/app/services/api-response.service';
 
 @Injectable()
 export class PcConstraintsEffects {

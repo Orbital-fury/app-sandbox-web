@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { PcElementService } from 'src/app/services/pc-builder/pc-element.service';
-import { ApiResponseService } from 'src/app/shared/services/api-response.service';
+import { ApiResponseService } from 'src/app/services/api-response.service';
 import * as fromPcElementsActions from './pc-elements.actions';
 import { CustomToastrService } from 'src/app/shared/components/toast/custom-toastr.service';
 import { Router } from '@angular/router';

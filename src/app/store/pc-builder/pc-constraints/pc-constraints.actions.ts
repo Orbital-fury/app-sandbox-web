@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ApiError } from 'src/app/shared/services/api-response.service';
+import { ApiError } from 'src/app/services/api-response.service';
 import { NewPcConstraint, PcConstraintWithoutValue, PcElementConstraintValues } from 'src/typing-pc-builder';
 
 export const loadPcConstraints = createAction(

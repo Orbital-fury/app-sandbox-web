@@ -1,1 +1,15 @@
-<p>update-pc-element works!</p>
+<div class="container">
+    <h2 class="border-bottom title-border pb-1 my-4">{{ update }} PC element</h2>
+    <app-loader *ngIf="loadingSinglePcElement"></app-loader>
+    <form *ngIf="!loadingSinglePcElement" [formGroup]="pcElementForm" (ngSubmit)="onSubmit()">
+        
+        
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" (click)="onReset()" type="button">Reset</button>
+            <button class="btn btn-primary" [disabled]="!pcElementForm.valid || pcElementForm.pristine"
+                type="submit">
+                {{ update }} PC element
+            </button>
+        </div>
+    </form>
+</div>

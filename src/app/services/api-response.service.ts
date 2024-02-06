@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CustomToastrService } from '../components/toast/custom-toastr.service';
+import { CustomToastrService } from '../shared/components/toast/custom-toastr.service';
 
 export interface ApiError {
   status: number;
@@ -20,7 +20,13 @@ export class ApiResponseService {
   }
 
   public launchApiError(apiError: ApiError) {
-    this.toastrService.showCustomError(`Error ${apiError.status} (${apiError.error})`, apiError.message);
+    if (apiError) {
+      this.toastrService.showCustomError(`Error ${apiError.status} (${apiError.error})`, apiError.message);
+    }
+  }
+
+  public launchConnectionRefusedApiError() {
+    this.toastrService.showCustomError('Connection refused', 'No connection with the server. It may be offline/disconnected');
   }
   
 }

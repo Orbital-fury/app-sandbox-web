@@ -45,9 +45,8 @@ export class UpdatePcConstraintComponent implements OnInit, OnDestroy {
         .pipe(filter(data => data !== undefined))
         .subscribe(data => {
           this.pcConstraint = data!;
-          this.name?.patchValue(data?.name);
-          this.code?.patchValue(data?.code);
-          this.type?.patchValue(data?.type);
+          this.resetInputOnUpdate()
+          
         });
       this.subs.sink = this.pcConstraintStore.select(selectLoadingSinglePcConstraint)
         .subscribe(loading => this.loadingSinglePcConstraint = loading);
@@ -103,11 +102,8 @@ export class UpdatePcConstraintComponent implements OnInit, OnDestroy {
   }
 
   onReset() {
-    console.log("reset constraint update")
     if (this.constraintId) {
-      this.name?.patchValue(this.pcConstraint.name);
-      this.code?.patchValue(this.pcConstraint.code);
-      this.type?.patchValue(this.pcConstraint.type);
+      this.resetInputOnUpdate()
       this.pcConstraintForm.markAsPristine();
       this.pcConstraintForm.markAsUntouched();
     } else {
@@ -130,6 +126,14 @@ export class UpdatePcConstraintComponent implements OnInit, OnDestroy {
         })
       );
     };
+  }
+
+  private resetInputOnUpdate() {
+    this.pcConstraintForm.patchValue({
+      name: this.pcConstraint.name,
+      code: this.pcConstraint.code,
+      type: this.pcConstraint.type
+    })
   }
 
 }

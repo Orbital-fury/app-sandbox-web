@@ -1,4 +1,4 @@
-import { ApiError } from "src/app/shared/services/api-response.service";
+import { ApiError } from "src/app/services/api-response.service";
 import { PcElement, PcElementType } from "src/typing-pc-builder";
 
 export interface PcElementsState {
