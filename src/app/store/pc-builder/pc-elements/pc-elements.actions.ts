@@ -33,12 +33,12 @@ export const loadSinglePcElementFailure = createAction(
 
 export const createPcElement = createAction(
   '[PC Element] Create PcElement',
-  props<{ newPcElement: PcElementBasis }>()
+  props<{ newPcElement: PcElement }>()
 );
 
 export const createPcElementSuccess = createAction(
   '[PC Element] Create PcElement Success',
-  props<{ pcElement: PcElementBasis }>()
+  props<{ pcElement: PcElement }>()
 );
 
 export const createPcElementFailure = createAction(
@@ -48,12 +48,12 @@ export const createPcElementFailure = createAction(
 
 export const updatePcElement = createAction(
   '[PC Element] Update PcElement',
-  props<{ pcElement: PcElementBasis }>()
+  props<{ pcElement: PcElement }>()
 );
 
 export const updatePcElementSuccess = createAction(
   '[PC Element] Update PcElement Success',
-  props<{ pcElement: PcElementBasis }>()
+  props<{ pcElement: PcElement }>()
 );
 
 export const updatePcElementFailure = createAction(

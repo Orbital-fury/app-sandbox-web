@@ -31,12 +31,12 @@ export class PcElementService {
     return this.http.get<PcElement>(`${this.baseUrl}/${id}`);
   }
 
-  createPcElement(newPcElement: PcElementBasis): Observable<PcElementBasis> {
-    return this.http.post<PcElementBasis>(this.baseUrl, newPcElement);
+  createPcElement(newPcElement: PcElement): Observable<PcElement> {
+    return this.http.post<PcElement>(this.baseUrl, newPcElement);
   }
 
-  updatePcElement(pcElement: PcElementBasis): Observable<PcElementBasis> {
-    return this.http.put<PcElementBasis>(`${this.baseUrl}/${pcElement.id}`, pcElement);
+  updatePcElement(pcElement: PcElement): Observable<PcElement> {
+    return this.http.put<PcElement>(`${this.baseUrl}/${pcElement.id}`, pcElement);
   }
 
   deletePcElement(pcElementId: number): Observable<PcElementBasis> {

@@ -79,15 +79,19 @@ export class UpdatePcElementComponent {
 
   onSubmit() {
     const img = this.img?.value
-    const pcElement: PcElementBasis = {
+    const pcElement: PcElement = {
       id: this.pcElementId ? this.pcElementId : -1,
       brand: this.brand?.value,
       model: this.model?.value,
-      price: parseFloat(this.decimalPipe.transform(this.price?.value, '1.2-2')!.replaceAll(',','')),
+      price: parseFloat(this.decimalPipe.transform(this.price?.value, '1.2-2')!.replaceAll(',', '')),
       img: img === '' ? null : img,
-      type: this.type?.value
+      type: this.type?.value,
+      constraints: [],
+      specifications: []
     }
     if (this.pcElementId) {
+      pcElement.constraints = this.pcElement.constraints
+      pcElement.specifications = this.pcElement.specifications
       this.pcElementStore.dispatch(updatePcElement({ pcElement }))
     } else {
       this.pcElementStore.dispatch(createPcElement({ newPcElement: pcElement }))
