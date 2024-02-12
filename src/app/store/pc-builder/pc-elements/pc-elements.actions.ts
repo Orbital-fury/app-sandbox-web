@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { ApiError } from 'src/app/services/api-response.service';
-import { PcElement, PcElementBasis, PcElementType } from 'src/typing-pc-builder';
+import { PcElement, PcElementBasis, PcElementTypeEnum } from 'src/typing-pc-builder';
 
 export const loadPcElements = createAction(
   '[PC Elements] Load PcElements'
@@ -88,5 +88,5 @@ export const removePcElementFromBuild = createAction(
 
 export const changeSelectedPcElementType = createAction(
   '[Select PC Element Type] Change PC element type selection',
-  props<{ pcElementType: PcElementType }>()
+  props<{ pcElementType: PcElementTypeEnum }>()
 );

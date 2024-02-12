@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { changeSelectedPcElementType } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
 import { selectPcBuildElements, selectSelectedPcElementType } from 'src/app/store/pc-builder/pc-elements/pc-elements.selectors';
 import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
-import { ElementTypeInfo } from 'src/typing-pc-builder';
+import { PcElementType } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
 
 @Component({
@@ -12,7 +12,7 @@ import { SubSink } from 'subsink';
   styleUrls: ['./element-type-choice.component.scss']
 })
 export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
-  @Input() elementTypeInfo: ElementTypeInfo;
+  @Input() elementTypeInfo: PcElementType;
 
   isElementTypeSelected: boolean; // bar extended to display the selection of type
   isElementTypeInBuild: boolean = true; // switch between blue and green to display unselected or seleted  type in build
@@ -25,7 +25,7 @@ export class ElementTypeChoiceComponent implements OnInit, OnDestroy {
     this.isElementTypeSelected = this.elementTypeInfo.code === "CPU";
 
     this.subs.sink = this.pcElementsStore.select(selectPcBuildElements).subscribe(pcBuildElements =>
-      this.isElementTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.elementTypeInfo.code) !== undefined
+      this.isElementTypeInBuild = pcBuildElements.find(pcBuildElement => pcBuildElement.type.code === this.elementTypeInfo.code) !== undefined
     );
 
     this.subs.sink = this.pcElementsStore.select(selectSelectedPcElementType).subscribe(selectedElementType =>

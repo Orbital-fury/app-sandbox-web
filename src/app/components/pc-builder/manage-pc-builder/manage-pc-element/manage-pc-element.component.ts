@@ -41,7 +41,7 @@ export class ManagePcElementComponent implements OnInit, OnDestroy {
     this.router.navigate([`${this.router.url}/create`]);
   }
 
-  deletePcElement(pcElement: PcElementBasis) {
+  deletePcElement(pcElement: PcElement) {
     const modalRef = this.modalService.open(ModalDeletePcElementComponent, { centered: true, scrollable: true });
     modalRef.componentInstance.pcElement = pcElement;
   }

@@ -1,8 +1,8 @@
 import { ApiError } from "src/app/services/api-response.service";
-import { PcElement, PcElementType } from "src/typing-pc-builder";
+import { PcElement, PcElementTypeEnum } from "src/typing-pc-builder";
 
 export interface PcElementsState {
-    selectedPcElementType: PcElementType;
+    selectedPcElementType: PcElementTypeEnum;
     loadingSinglePcElement: boolean;
     singlePcElement: PcElement | undefined;
     loadingPcElements: boolean;

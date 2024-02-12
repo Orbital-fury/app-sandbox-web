@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import { deletePcElement } from 'src/app/store/pc-builder/pc-elements/pc-elements.actions';
 import { PcElementsState } from 'src/app/store/pc-builder/pc-elements/pc-elements.state';
-import { PcElementBasis } from 'src/typing-pc-builder';
+import { PcElement, PcElementBasis } from 'src/typing-pc-builder';
 import { SubSink } from 'subsink';
 
 @Component({
@@ -13,7 +13,7 @@ import { SubSink } from 'subsink';
 })
 export class ModalDeletePcElementComponent {
 
-  @Input() pcElement: PcElementBasis;
+  @Input() pcElement: PcElement;
 
   loadingPcElement: boolean;
   deleteSecurity: string = "Delete the PC element!";

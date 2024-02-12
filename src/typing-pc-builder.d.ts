@@ -1,75 +1,80 @@
-export type PcElementType = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
+export type PcElementTypeEnum = "CASE" | "MOBO" | "POWER" | "FAN" | "AIO" | "HDD" | "SSD" | "CPU" | "RAM" | "GPU" | "STORAGE" | "COOLING";
 
 export type ConstraintType = "SAME" | "MAX" | "LIMIT" | "CAPACITY";
 
-export interface ElementTypeInfo {
-  name: string;
-  code: PcElementType;
+export interface PcElementType {
+    id: number;
+    name: string;
+    code: PcElementTypeEnum;
+}
+
+export interface PcElementTypes {
+    pcElementTypes: PcElementType[];
 }
 
 export interface PcElements {
-  pcElements: PcElement[];
+    pcElements: PcElement[];
 }
 
 export interface PcElement {
-  id: number;
-  brand: string;
-  model: string;
-  price: number;
-  img: string | null;
-  type: PcElementType;
-  constraints: PcConstraint[];
-  specifications: PcSpecification[];
+    id: number;
+    brand: string;
+    model: string;
+    price: number;
+    img: string | null;
+    type: PcElementType;
+    constraints: PcConstraint[];
+    specifications: PcSpecification[];
 }
 
 export interface PcElementBasis {
-  id: number;
-  brand: string;
-  model: string;
-  price: number;
-  img: string | null;
-  type: PcElementType;
+    id: number;
+    brand: string;
+    model: string;
+    price: number;
+    img: string | null;
+    type: PcElementTypeEnum;
 }
 
 export interface PcElementConstraintValues {
-  pcElementInfo: PcElementBasis;
-  constraintValues: string[];
+    pcElementInfo: PcElementBasis;
+    constraintValues: string[];
 }
 
 export interface PcElementsConstraintValues {
-  pcElements: PcElementConstraintValues[];
+    pcElements: PcElementConstraintValues[];
 }
 
 export abstract class PcConstraint {
-  id: number;
-  name: string;
-  code: string;
-  type: ConstraintType;
-  values: string[];
+    id: number;
+    name: string;
+    code: string;
+    type: ConstraintType;
+    values: string[];
 }
 
 export abstract class PcConstraintWithoutValue {
-  id: number;
-  name: string;
-  code: string;
-  type: ConstraintType;
+    id: number;
+    name: string;
+    code: string;
+    type: ConstraintType;
 }
 
 export interface NewPcConstraint {
-  name: string;
-  code: string;
-  type: ConstraintType;
+    name: string;
+    code: string;
+    type: ConstraintType;
 }
 
 export interface PcConstraintsWithoutValue {
-  pcConstraints: PcConstraintWithoutValue[];
+    pcConstraints: PcConstraintWithoutValue[];
 }
 
 export abstract class PcSpecification {
-  id: number;
-  name: string;
-  code: string;
-  values: string[];
+    id: number;
+    name: string;
+    code: string;
+    values: string[];
 }
 
 export type MoboSize = "ATX" | "E_ATX" | "MICRO_ATX";
