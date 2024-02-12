@@ -54,7 +54,6 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
         //     this.mapElementTypeChoices = new Map<PcElementTypeEnum, PcElement[]>(
         //         this.elementTypeChoices.map(elementType => [elementType.code, []])
         //     );
-            
         // });
 
         this.subs.sink = combineLatest([
@@ -65,7 +64,7 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
             this.mapElementTypeChoices = new Map<PcElementTypeEnum, PcElement[]>(
                 this.elementTypeChoices.map(elementType => [elementType.code, []])
             );
-            
+
             this.pcElements = pcElements
             if (this.pcBuildElements.length === 0) {
                 this.updateMapElementTypeChoices(this.pcElements);
@@ -100,6 +99,8 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
     private updatePcElementSelection() {
         this.pcElementsOfChoosenType = this.mapElementTypeChoices.get(this.selectedElementType)!;
         this.isCurrentElementTypeInBuild = this.pcBuildElements.map(pcBuildElement => pcBuildElement.type.code).includes(this.selectedElementType);
+        console.log('pcElementsOfChoosenType', this.pcElementsOfChoosenType)
+        console.log('mapElementTypeChoices', this.mapElementTypeChoices)
     }
 
     private updateMapElementTypeChoices(fileteredPcElements: PcElement[]) {
@@ -132,7 +133,7 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
 
     private canBeAddedRegardingConstraints(pcElement: PcElement): boolean {
         const pcBuildElementsOfOtherType = this.pcBuildElements.filter(pcBuildElement =>
-            pcBuildElement.type !== pcElement.type
+            pcBuildElement.type.code !== pcElement.type.code
         );
         const pcBuildConstraints = this.getPcConstraintsfromPcElements(pcBuildElementsOfOtherType);
 
