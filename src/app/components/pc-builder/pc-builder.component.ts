@@ -39,23 +39,6 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
         this.subs.sink = this.pcElementTypeStore.select(selectLoadingPcElementTypes).subscribe(loading => this.loadingPcElementTypes = loading);
         this.subs.sink = this.pcElementStore.select(selectLoadingPcElements).subscribe(loading => this.loadingPcElements = loading);
 
-
-        // this.subs.sink = this.pcElementStore.select(selectPcElements).subscribe(pcElements => {
-        //     this.pcElements = pcElements
-        //     if (this.pcBuildElements.length === 0) {
-        //         this.updateMapElementTypeChoices(this.pcElements);
-        //         this.updatePcElementSelection();
-        //     }
-        // });
-
-    
-        // this.subs.sink = this.pcElementTypeStore.select(selectPcElementTypes).subscribe(pcElementTypes => {
-        //     this.elementTypeChoices = pcElementTypes;
-        //     this.mapElementTypeChoices = new Map<PcElementTypeEnum, PcElement[]>(
-        //         this.elementTypeChoices.map(elementType => [elementType.code, []])
-        //     );
-        // });
-
         this.subs.sink = combineLatest([
             this.pcElementStore.select(selectPcElements),
             this.pcElementTypeStore.select(selectPcElementTypes)
