@@ -32,7 +32,10 @@ export class PcBuilderComponent implements OnInit, OnDestroy {
     private mapElementTypeChoices: Map<PcElementTypeEnum, PcElement[]> = new Map<PcElementTypeEnum, PcElement[]>();
     private subs = new SubSink();
 
-    constructor(private readonly pcElementStore: Store<PcElementsState>, private readonly pcElementTypeStore: Store<PcElementTypesState>) { }
+    constructor(
+        private readonly pcElementStore: Store<PcElementsState>,
+        private readonly pcElementTypeStore: Store<PcElementTypesState>
+    ) { }
 
     ngOnInit() {
 
