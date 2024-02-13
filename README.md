@@ -19,13 +19,14 @@
 | Add role regarding user and what they can do                                                                    | :x:                  |
 | Try Angular 16 signals                                                                                          | :x:                  |
 
+## Installation
+
+Install Node.js ^16.14.0 || ^18.10.0 if needed.<br>
+Run `npm install` to install dependencies.
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Running unit tests
 
@@ -45,12 +46,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 - fontawesome used
 - bootstrap loader in shared component
 - [Shared module](/src/app/shared/shared.module.ts) and [core module](/src/app/core.module.ts) set up
+- Home-made breadcrumb using ResolveFn
+- Toastr used (`ngx-toastr`) with custom service and custom toasts
 
 ## mmm (Manage measuring Machine)
 
 Similar to GCD by displaying machines data. Possibility to add new machine. Machines are displayed regarding if a maintenance is needed:
 - using cards ![mmm_manage-machine](/documentation/mmm_manage-machine.PNG)
 - using a custom table ![mmm_maintenance](/documentation/mmm_maintenance.PNG)
+
+Display of metrics using `highcharts` (and `highcharts-angular`) ![mmm_manage-machine_machine](/documentation/mmm_manage-machine_machine.PNG)
 
 ### Structure
 
@@ -74,18 +79,24 @@ The pc-builder part is an example of how to configure hardware with constraints 
 
 ### Structure
 
-- User select an element type (CPU, Case, GPU, RAM, MoBo, etc), then select a PC element to add to the current PC build
-- When PC elements are in PC build, it will adjust the possible selection regarding PC build constraints
+- User select an element type (CPU, Case, GPU, RAM, MoBo, etc), then select a PC element he wants to add to the current PC build
+- When PC elements are in PC build, the possible selection will adjust automatically regarding all the PC build constraints
 ![pc-builder_1](/documentation/pc-builder_1.PNG)
 - All PC elements are retrieved at first, then the logic is made with the Front-end (in order to select the PC elements and adjust the selection)
 - If the logic is made in the Back-end it will take 0.1 second instead of 0.01 second to get the new PC element selection regarding what are the PC elements in the current build. Tests have been made... maybe use another DB structure to prevent this
 ![pc-builder_2](/documentation/pc-builder_2.PNG)
+- An admin panel has been made to manage PC elements and PC constraints. CRUD operations can be operated here
+![pc-builder_manage-elements](/documentation/pc-builder_manage-elements.PNG)
 
 ### Highlights
 
 - [ngrx/store used with pc-builder](/src/app/store/pc-builder)
 - service used for communication between component parent and child, [example here](/src/app/services/pc-builder/element-type-choice.service.ts)
 - custom pipe (currency pipe) [here](/src/app/components/pc-builder/currency-pipe/currency-pipe.component.ts)
+- Reactive form used [here](/src/app/components/pc-builder/manage-pc-builder/manage-pc-element/update-pc-element/update-pc-element.component.ts)
+![pc-builder_manage-elements_add-element](/documentation/pc-builder_manage-elements_add-element.PNG)
+- Modal used when a resource is about to be deleted. Several information can be retrieved and displayed to help the user about what's going to happen
+![pc-builder_manage-constraints_modal-delete](/documentation/pc-builder_manage-constraints_modal-delete.PNG)
 
 ## ngrx/store
 
