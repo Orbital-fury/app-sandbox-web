@@ -15,7 +15,6 @@ export class ModalDeletePcElementComponent {
 
   @Input() pcElement: PcElement;
 
-  loadingPcElement: boolean;
   deleteSecurity: string = "Delete the PC element!";
   deleteSecurityInput: string;
 

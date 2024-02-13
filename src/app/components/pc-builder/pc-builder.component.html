@@ -9,8 +9,8 @@
   <div class="row">
     <div class="row col-8">
       <h3 class="mb-4 text-center" style="color:darkgrey">PC ELEMENTS</h3>
-      <app-loader *ngIf="loadingPcElements"></app-loader>
-      <ng-container *ngIf="!loadingPcElements">
+      <app-loader *ngIf="loadingPcElements || loadingPcElementTypes"></app-loader>
+      <ng-container *ngIf="!loadingPcElements && !loadingPcElementTypes">
         <div class="col-3 pe-0">
           <ng-container *ngFor="let elementTypeChoice of elementTypeChoices">
             <app-element-type-choice [elementTypeInfo]="elementTypeChoice"></app-element-type-choice>

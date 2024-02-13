@@ -13,7 +13,7 @@
 | Modify reset button when updating an existing resource                                                          | :heavy_check_mark:   |
 | PC element create                                                                                               | :heavy_check_mark:   |
 | PC element edit                                                                                                 | :heavy_check_mark:   |
-| Rework DB to link PcConstraintEntity to PcElementType (need to update update-pc-element to manage element type) | :x:                  |
+| Rework DB to link PcConstraintEntity to PcElementType (need to update update-pc-element to manage element type) | :heavy_check_mark:   |
 | On PC element create/edit, should fill what's the constraints and specifications are                            | :x:                  |
 | Add and manage user connection                                                                                  | :x:                  |
 | Add role regarding user and what they can do                                                                    | :x:                  |

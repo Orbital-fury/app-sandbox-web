@@ -1,13 +1,50 @@
 <app-loader *ngIf="loadingSinglePcElement"></app-loader>
-<div class="m-4" *ngIf="!loadingSinglePcElement">
-  <div class="row">
-    <div class="col-12">
-      <h2 class="border-bottom title-border pb-1 mb-4">
+<div class="my-4 container" *ngIf="!loadingSinglePcElement">
+    <h2 class="border-bottom title-border pb-1 mb-4">
         {{pcElement.brand}} {{pcElement.model}}
-      </h2>
+    </h2>
+    <div class="row">
+        <div class="col-8">
+            <div class="mb-5">
+                Blablabla BlablablaBlablabla Blablabla Blablabla Blablabla Blablabla Blablabla Blablabla Blablabla
+                Blablabla Blablabla<br>
+                Blablabla Blablabla Blablabla Blablabla Blablabla Blablabla
+                Blablabla<br>
+                BlablablaBlablabla Blablabla Blablabla BlablablaBlablabla Blablabla Blablabla Blablabla Blablabla
+                Blablabla Blablabla<br>
+                Blablabla Blablabla Blablabla Blablabla Blablabla BlablablaBlablabla Blablabla
+                BlablablaBlablabla BlablablaBlablabla BlablablaBlablabla
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td class="text-primary">Specifications</td>
+                        <td class="text-primary">Values</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let constraint of pcElement.constraints">
+                        <td>{{constraint.name}}</td>
+                        <td>
+                            <ng-container *ngFor="let constraintValues of constraint.values">
+                                {{constraintValues}}<br>
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr *ngFor="let specification of pcElement.specifications">
+                        <td>{{specification.name}}</td>
+                        <td>
+                            <ng-container *ngFor="let specificationValues of specification.values">
+                                {{specificationValues}}<br>
+                            </ng-container>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4 text-center">
+            <img src="{{pcElement.img}}" class="w-50">
+            <div class="fw-bold fs-3 text-primary">{{pcElement.price | euroCurrency}}</div>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    C'est bon !
-  </div>
 </div>
