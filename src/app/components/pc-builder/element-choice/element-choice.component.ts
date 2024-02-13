@@ -24,7 +24,7 @@ export class ElementChoiceComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subs.sink = this.pcElementsStore.select(selectPcBuildElements).subscribe(pcBuildElements => {
       this.isInBuild = pcBuildElements.map(pcBuildElement => pcBuildElement.id).includes(this.pcElement.id);
-      this.canBeAdded = pcBuildElements.find(pcBuildElement => pcBuildElement.type === this.pcElement.type) === undefined;
+      this.canBeAdded = pcBuildElements.find(pcBuildElement => pcBuildElement.type.code === this.pcElement.type.code) === undefined;
     })
   }
 

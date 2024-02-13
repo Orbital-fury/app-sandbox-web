@@ -24,7 +24,7 @@
                     <tr *ngFor="let pcElementConstraintValues of pcElementsConstraintValues">
                         <td>{{pcElementConstraintValues.pcElementInfo.brand}}
                             {{pcElementConstraintValues.pcElementInfo.model}}
-                            ({{pcElementConstraintValues.pcElementInfo.type}})</td>
+                            ({{pcElementConstraintValues.pcElementInfo.type.name}})</td>
                         <td>
                             <ng-container
                                 *ngFor="let constraintValues of pcElementConstraintValues.constraintValues">{{constraintValues}}<br></ng-container>

@@ -33,7 +33,7 @@ export interface PcElementBasis {
     model: string;
     price: number;
     img: string | null;
-    type: PcElementTypeEnum;
+    type: PcElementType;
 }
 
 export interface PcElementConstraintValues {
